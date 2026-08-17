@@ -18,6 +18,10 @@
   @font-face { font-family:'Meta Serif Pro'; src:url('assets/fonts/MetaSerifPro-BookItalic.ttf') format('truetype'); font-weight:400; font-style:italic; font-display:swap; }
   @font-face { font-family:'Brandon Grotesque'; src:url('assets/fonts/BrandonGrotesque-Regular.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
   @font-face { font-family:'Brandon Grotesque'; src:url('assets/fonts/BrandonGrotesque-Medium.otf') format('opentype'); font-weight:500; font-style:normal; font-display:swap; }
+  @keyframes driftA { from { transform:translate3d(-3%,2%,0) scale(1.05); } to { transform:translate3d(4%,-3%,0) scale(1.14); } }
+  @keyframes driftB { from { transform:translate3d(3%,-2%,0) scale(1.10); } to { transform:translate3d(-4%,3%,0) scale(1.02); } }
+  @keyframes driftC { from { transform:translate3d(0,3%,0) scale(1.12); } to { transform:translate3d(2%,-4%,0) scale(1.04); } }
+  @media (prefers-reduced-motion: reduce) { .field > div { animation:none !important; } }
   html, body { margin:0; background:#FBFAF8; -webkit-font-smoothing:antialiased; }
   a { color:#A34A24; text-decoration:none; }
   a:hover { color:#363530; text-decoration:underline; }
@@ -65,28 +69,29 @@
       </div>
     </div>
 
-    <div style="position:relative; margin-top:-64px; min-height:calc(100vh - 34px); overflow:hidden; background:#363530;">
-      <div ref="{{ heroRef }}" role="img" aria-label="A hand settling a Drift sachet into a car sun visor" style="position:absolute; left:0; right:0; top:-8%; height:116%; background-image:url(assets/world-visor.webp); background-size:cover; background-position:56% 0%; will-change:transform;"></div>
+    <div style="position:relative; margin-top:-64px; min-height:calc(100vh - 90px); overflow:hidden; background:#363530;">
+      <div ref="{{ heroRef }}" role="img" aria-label="The copper Drift vent clip on a car dashboard, pines and hills through the windshield" style="position:absolute; left:0; right:0; top:-14%; height:100%; background-image:url(assets/hero-visor.webp); background-size:cover; background-position:22% 34%; will-change:transform;">
+        <div role="img" aria-label="The white Drift home diffuser surrounded by citrus, cedar and blossoms on a sunlit table" style="position:absolute; inset:0; background-image:url(assets/hero-home.webp); background-size:cover; background-position:50% 40%; opacity:{{ heroHomeOpacity }}; transition:opacity 640ms cubic-bezier(0.22,1,0.36,1);"></div>
+      </div>
       <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(54,53,48,0.82) 0%, rgba(54,53,48,0.40) 24%, rgba(54,53,48,0.48) 52%, rgba(54,53,48,0.86) 82%, rgba(54,53,48,0.94) 100%);"></div>
 
-      <div style="position:relative; width:100%; max-width:1440px; margin:0 auto; padding:calc(64px + clamp(64px,12vh,180px)) clamp(24px,5vw,80px) clamp(40px,6vh,72px) clamp(24px,5vw,80px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(40px,8vh,96px); min-height:calc(100vh - 34px);">
+      <div style="position:relative; width:100%; max-width:1440px; margin:0 auto; padding:calc(64px + clamp(40px,7vh,110px)) clamp(24px,5vw,80px) clamp(32px,4vh,56px) clamp(24px,5vw,80px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(14px,2.4vh,30px); min-height:calc(100vh - 90px);">
         <div style="display:flex; flex-direction:column;">
-          <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.2em; color:#D4CDC6;">CAR &amp; HOME FRAGRANCE</div>
-          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(46px,6vw,100px); font-weight:300; line-height:1.05; letter-spacing:-0.02em; color:#FFFFFF; padding-top:clamp(14px,1.6vw,28px); max-width:16ch;">Six scents.<br />Made to last.<br /><em style="font-weight:300;">Now find the one that's yours.</em></div>
-          <div style="font-size:clamp(17px,1.3vw,21px); font-weight:400; line-height:1.42; color:#EDEAE5; padding-top:clamp(20px,2vw,32px); max-width:34ch;">One scent you can recognize before you smell it.</div>
+          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(36px,4.6vw,76px); font-weight:300; line-height:1.02; letter-spacing:-0.02em; color:#FFFFFF; padding-top:clamp(96px,15vh,200px); max-width:16ch;">Six scents.<br />Made to last.<br /><em style="font-weight:300;">Find yours.</em></div>
+          <div style="font-size:clamp(17px,1.3vw,21px); font-weight:400; line-height:1.42; color:#EDEAE5; padding-top:clamp(14px,1.4vw,22px); max-width:40ch;">A freshener for your car, or a diffuser for your home. You can't smell it from here, so we'll ask instead.</div>
         </div>
 
         <div style="display:flex; flex-direction:column; max-width:660px;">
           <sc-if value="{{ q1Unanswered }}" hint-placeholder-val="{{ true }}">
             <div style="display:flex; flex-direction:column;">
-              <div style="font-size:clamp(17px,1.3vw,20px); font-weight:500; color:#FFFFFF;">Where are we scenting?</div>
+              <div style="font-size:clamp(17px,1.3vw,20px); font-weight:500; color:#FFFFFF;">Where should it go?</div>
               <div style="display:flex; border:1px solid rgba(255,255,255,0.22); margin-top:16px; background:rgba(54,53,48,0.30); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);">
                 <button type="button" class="cell" onClick="{{ pickCar }}" style="flex:1; height:56px; display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.22); font-size:16px; font-weight:500; color:rgba(237,234,229,0.78);">My car</button>
                 <button type="button" class="cell" onClick="{{ pickHome }}" style="flex:1; height:56px; display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.22); font-size:16px; font-weight:500; color:rgba(237,234,229,0.78);">My home</button>
                 <button type="button" class="cell" onClick="{{ pickBoth }}" style="flex:1; height:56px; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:500; color:rgba(237,234,229,0.78);">Both</button>
               </div>
               <div style="height:48px; display:flex; align-items:center; justify-content:space-between; gap:16px; padding-top:12px;">
-                <div style="font-size:14px; font-weight:400; color:#D4CDC6;">Question 1 of 6 · about 45 seconds</div>
+                <div style="font-size:14px; font-weight:400; color:#EDEAE5;">Question 1 of 6 · about 45 seconds</div>
                 <button type="button" onClick="{{ toAtlas }}" class="under" style="font-size:15px; font-weight:500; color:#FFFFFF; white-space:nowrap; padding-bottom:2px;">Browse all scents →</button>
               </div>
             </div>
@@ -101,11 +106,14 @@
                 </div>
                 <button type="button" onClick="{{ changeQ1 }}" class="under" style="height:48px; display:flex; align-items:flex-end; padding-bottom:6px; font-size:14px; font-weight:500; color:#FFFFFF;">Change</button>
               </div>
-              <button type="button" onClick="{{ openQuiz }}" class="cta" style="height:56px; margin-top:16px; border-radius:999px; background:#A34A24; color:#FFFFFF; display:flex; align-items:center; justify-content:space-between; padding:0 24px; font-size:15px; font-weight:500;" style-hover="background:#8A3D1D;">
-                <span>{{ continueLabel }}</span>
-                <span style="letter-spacing:0.08em;">{{ nextCounter }} →</span>
+              <button type="button" onClick="{{ openQuiz }}" class="cta" style="height:56px; width:100%; max-width:clamp(340px,32vw,440px); margin-top:16px; border-radius:999px; background:#A34A24; color:#FFFFFF; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:0 24px; font-size:16px; font-weight:500;" style-hover="background:#8A3D1D;">
+                <span>Discover your scent</span>
+                <span style="letter-spacing:0.08em;">{{ remainingShort }} →</span>
               </button>
-              <div style="height:48px; display:flex; align-items:center; font-size:14px; font-weight:400; color:#D4CDC6;">{{ remainingCopy }}</div>
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; height:48px;">
+                <div style="font-size:14px; font-weight:400; color:#D4CDC6;">{{ remainingCopy }}</div>
+                <button type="button" onClick="{{ toAtlas }}" class="under" style="font-size:15px; font-weight:500; color:#FFFFFF; white-space:nowrap;">See all scents →</button>
+              </div>
             </div>
           </sc-if>
         </div>
@@ -113,29 +121,29 @@
     </div>
 
     <div ref="{{ atlasRef }}" style="background:#363530;">
-      <div style="width:100%; max-width:1440px; margin:0 auto; padding:clamp(56px,7vw,110px) clamp(24px,5vw,80px) 0 clamp(24px,5vw,80px); box-sizing:border-box;">
+      <div style="width:100%; max-width:1440px; margin:0 auto; padding:clamp(16px,2vw,36px) clamp(24px,5vw,80px) 0 clamp(24px,5vw,80px); box-sizing:border-box;">
         <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.2em; color:#90928C;">01 / THE MAINSTAYS</div>
         <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(33px,3.4vw,60px); font-weight:300; line-height:1.06; letter-spacing:-0.015em; color:#FFFFFF; padding-top:16px; max-width:22ch;">Six ways to remember a place.</div>
       </div>
 
-      <div class="rail" style="width:100%; max-width:1440px; margin:0 auto; box-sizing:border-box; display:flex; gap:clamp(26px,3vw,52px); overflow-x:auto; padding:clamp(20px,3vw,44px) clamp(24px,5vw,80px) 0 clamp(24px,5vw,80px); border-bottom:1px solid rgba(255,255,255,0.2);">
+      <div class="rail" ref="{{ railRef }}" onPointerDown="{{ railDown }}" onPointerMove="{{ railMove }}" onPointerUp="{{ railUp }}" onPointerCancel="{{ railUp }}" onPointerLeave="{{ railUp }}" onScroll="{{ railScroll }}" style="width:100%; max-width:1440px; margin:0 auto; box-sizing:border-box; display:flex; gap:clamp(26px,3vw,52px); overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x mandatory; scroll-behavior:smooth; cursor:grab; touch-action:pan-x; padding:clamp(20px,3vw,44px) clamp(24px,5vw,80px) 0 clamp(24px,5vw,80px); border-bottom:1px solid rgba(255,255,255,0.2);">
         <sc-for list="{{ atlas }}" as="a" hint-placeholder-count="0">
-          <button type="button" onClick="{{ a.pick }}" style="flex:none; height:48px; display:flex; align-items:center; gap:9px; box-shadow:{{ a.underline }};">
-            <span style="font-size:12px; font-weight:400; color:{{ a.numColor }};">{{ a.num }}</span>
-            <span class="under" style="font-size:clamp(17px,1.3vw,20px); font-weight:500; white-space:nowrap; padding-bottom:2px; color:{{ a.nameColor }};">{{ a.name }}</span>
+          <button type="button" onClick="{{ a.pick }}" style="flex:none; height:48px; scroll-snap-align:center; display:flex; align-items:center; gap:9px; color:{{ a.nameColor }}; box-shadow:{{ a.underline }}; transition:color 180ms ease, box-shadow 180ms ease;" style-hover="color:#FFFFFF; box-shadow:#FFFFFF 0 -2px 0 inset;">
+            <span style="font-size:12px; font-weight:400; opacity:0.72;">{{ a.num }}</span>
+            <span style="font-size:clamp(17px,1.3vw,20px); font-weight:500; white-space:nowrap; padding-bottom:2px;">{{ a.name }}</span>
           </button>
         </sc-for>
       </div>
 
       <div style="width:100%; max-width:1440px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:stretch;">
-        <div style="position:relative; flex:1 1 460px; min-height:clamp(280px,40vw,620px); overflow:hidden; background:#363530;">
+        <div onTouchStart="{{ swipeStart }}" onTouchEnd="{{ swipeEnd }}" onPointerDown="{{ swipeStart }}" onPointerUp="{{ swipeEnd }}" style="position:relative; flex:1 1 460px; min-height:clamp(280px,40vw,620px); overflow:hidden; background:#363530; touch-action:pan-y; cursor:grab;">
           <div ref="{{ bandRef }}" style="position:absolute; inset:-14%;">
             <sc-for list="{{ bands }}" as="b" hint-placeholder-count="0">
               <div role="img" aria-label="{{ b.alt }}" style="position:absolute; inset:0; background-image:url({{ b.img }}); background-size:cover; background-position:center; opacity:{{ b.opacity }}; transform:{{ b.scale }}; transition:opacity 520ms cubic-bezier(0.22,1,0.36,1), transform 900ms cubic-bezier(0.22,1,0.36,1);"></div>
             </sc-for>
           </div>
           <div style="position:absolute; left:0; right:0; bottom:0; height:46%; background:linear-gradient(180deg, rgba(54,53,48,0) 0%, rgba(54,53,48,0.66) 100%);"></div>
-          <div style="position:absolute; left:0; right:0; bottom:0; padding:0 clamp(24px,4vw,56px) 6px clamp(24px,4vw,56px); pointer-events:none;">
+          <div style="position:absolute; left:0; right:0; bottom:0; padding:0 clamp(24px,4vw,56px) 0 clamp(24px,4vw,56px); margin-bottom:-4px; pointer-events:none;">
             <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(54px,6.4vw,124px); font-weight:300; line-height:0.78; color:#EDEAE5; text-transform:uppercase;">{{ bandName }}</div>
           </div>
         </div>
@@ -143,48 +151,19 @@
           <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(23px,2vw,36px); font-weight:400; line-height:1.3; color:#363530; max-width:26ch;">{{ bandLine }}</div>
           <div style="font-size:clamp(13px,1.05vw,15px); font-weight:500; letter-spacing:0.12em; color:#A34A24; padding-top:clamp(26px,2.4vw,40px);">{{ bandNotes }}</div>
           <div style="font-size:clamp(15px,1.15vw,18px); font-weight:400; color:#363530; padding-top:8px;">{{ bandIntensity }}</div>
-          <button type="button" onClick="{{ openQuiz }}" class="lnk" style="height:48px; margin-top:clamp(24px,2vw,36px); display:flex; align-items:center; font-size:clamp(16px,1.2vw,19px); font-weight:500; color:#A34A24;">Find my scent →</button>
+          <div style="display:flex; flex-wrap:wrap; align-items:center; gap:clamp(16px,2vw,40px); margin-top:clamp(24px,2vw,36px);">
+            <button type="button" onClick="{{ openCart }}" class="under" style="height:48px; display:flex; align-items:center; font-size:clamp(16px,1.2vw,19px); font-weight:500; color:#A34A24; padding-bottom:2px;">{{ bandShop }}</button>
+            <button type="button" onClick="{{ openQuiz }}" class="lnk" style="height:48px; display:flex; align-items:center; font-size:clamp(14px,1.05vw,16px); font-weight:400; color:#5B5A54;">Not sure? Find my scent →</button>
+          </div>
         </div>
       </div>
     </div>
 
 <div style="background:#FBFAF8;">
     <div style="width:100%; max-width:1440px; margin:0 auto; padding:clamp(64px,7vw,120px) clamp(24px,5vw,80px) 0 clamp(24px,5vw,80px); box-sizing:border-box; display:flex; flex-direction:column;">
-      <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.2em; color:#A34A24;">THE RITUAL / 01—04</div>
-      <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(33px,3.4vw,58px); font-weight:300; line-height:1.1; letter-spacing:-0.015em; color:#363530; padding-top:18px; max-width:24ch;">Choose it. Live with it. <em style="font-weight:300;">Keep it—or change it.</em></div>
-
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(clamp(170px,20vw,320px),1fr)); border-top:1px solid #EDEAE5; border-left:1px solid #EDEAE5; margin-top:clamp(36px,4vw,64px);">
-        <div style="border-right:1px solid #EDEAE5; border-bottom:1px solid #EDEAE5; padding:clamp(26px,2.4vw,40px) clamp(18px,2vw,32px) clamp(34px,3vw,52px) clamp(18px,2vw,32px); display:flex; flex-direction:column; gap:12px;">
-          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(34px,3vw,52px); font-weight:300; line-height:1; color:#A34A24;">01</div>
-          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(21px,1.7vw,28px); font-weight:400; line-height:1.15; color:#363530;">Choose it.</div>
-          <div style="font-size:clamp(14px,1.1vw,17px); font-weight:400; line-height:1.45; color:#5B5A54;">Six signatures—or the Scent of the Month.</div>
-        </div>
-        <div style="border-right:1px solid #EDEAE5; border-bottom:1px solid #EDEAE5; padding:clamp(26px,2.4vw,40px) clamp(18px,2vw,32px) clamp(34px,3vw,52px) clamp(18px,2vw,32px); display:flex; flex-direction:column; gap:12px;">
-          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(34px,3vw,52px); font-weight:300; line-height:1; color:#363530;">02</div>
-          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(21px,1.7vw,28px); font-weight:400; line-height:1.15; color:#363530;">Set each space.</div>
-          <div style="font-size:clamp(14px,1.1vw,17px); font-weight:400; line-height:1.45; color:#5B5A54;">Choose the right format for car and home.</div>
-        </div>
-        <div style="border-right:1px solid #EDEAE5; border-bottom:1px solid #EDEAE5; padding:clamp(26px,2.4vw,40px) clamp(18px,2vw,32px) clamp(34px,3vw,52px) clamp(18px,2vw,32px); display:flex; flex-direction:column; gap:12px;">
-          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(34px,3vw,52px); font-weight:300; line-height:1; color:#363530;">03</div>
-          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(21px,1.7vw,28px); font-weight:400; line-height:1.15; color:#363530;">Let it live.</div>
-          <div style="font-size:clamp(14px,1.1vw,17px); font-weight:400; line-height:1.45; color:#5B5A54;">Let each fragrance settle into its space.</div>
-        </div>
-        <div style="border-right:1px solid #EDEAE5; border-bottom:1px solid #EDEAE5; padding:clamp(26px,2.4vw,40px) clamp(18px,2vw,32px) clamp(34px,3vw,52px) clamp(18px,2vw,32px); display:flex; flex-direction:column; gap:12px;">
-          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(34px,3vw,52px); font-weight:300; line-height:1; color:#363530;">04</div>
-          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(21px,1.7vw,28px); font-weight:400; line-height:1.15; color:#363530;">Keep or change.</div>
-          <div style="font-size:clamp(14px,1.1vw,17px); font-weight:400; line-height:1.45; color:#5B5A54;">Repeat your scent—or choose another next time.</div>
-        </div>
-      </div>
-
-      <button type="button" onClick="{{ openQuiz }}" style="height:56px; max-width:480px; border-radius:999px; background:#A34A24; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:500; letter-spacing:0.06em; text-decoration:none; margin-top:clamp(36px,4vw,56px);" style-hover="background:#8A3D1D; color:#FFFFFF;">FIND MY SCENT · ABOUT 45S</button>
-    </div>
-  </div>
-
-  <div style="background:#FBFAF8;">
-    <div style="width:100%; max-width:1440px; margin:0 auto; padding:clamp(72px,8vw,130px) clamp(24px,5vw,80px) 0 clamp(24px,5vw,80px); box-sizing:border-box; display:flex; flex-direction:column;">
-      <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.2em; color:#A34A24;">THE MATERIAL EDIT</div>
-      <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(33px,3.4vw,58px); font-weight:300; line-height:1.1; letter-spacing:-0.015em; color:#363530; padding-top:18px;">Choose your <em style="font-weight:300;">expression.</em></div>
-      <div style="font-size:clamp(16px,1.2vw,19px); font-weight:400; line-height:1.45; color:#363530; padding-top:18px;">One scent system. Three material expressions.</div>
+      <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.2em; color:#A34A24;">02 / THE MATERIAL EDIT</div>
+      <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(33px,3.4vw,58px); font-weight:300; line-height:1.1; letter-spacing:-0.015em; color:#363530; padding-top:18px;">Same scent.<br /><em style="font-weight:300;">Your material.</em></div>
+      <div style="font-size:clamp(16px,1.2vw,19px); font-weight:400; line-height:1.45; color:#363530; padding-top:18px;">Three car fresheners. One scent system.</div>
       <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.16em; color:#A34A24; padding-top:20px;">01—03 / SWIPE TO EXPLORE</div>
     </div>
 
@@ -195,53 +174,120 @@
           <div style="position:absolute; left:0; top:0; background:rgba(251,250,248,0.9); padding:7px 12px; font-size:11px; font-weight:500; letter-spacing:0.14em; color:#5B5A54;">BESTSELLER</div>
           <div style="position:absolute; right:0; top:0; background:rgba(251,250,248,0.9); padding:7px 12px; font-size:11px; font-weight:400; letter-spacing:0.1em; color:#5B5A54;">01 / 03</div>
         </div>
-        <div style="padding-top:22px; font-size:clamp(12px,1vw,13px); font-weight:500; letter-spacing:0.16em; color:#5B5A54;">SUSTAINABLE ALDER WOOD</div>
+        <div style="padding-top:22px; font-size:clamp(12px,1vw,13px); font-weight:500; letter-spacing:0.16em; color:#5B5A54;">SUSTAINABLY SOURCED WOOD</div>
         <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(29px,2.4vw,40px); font-weight:400; line-height:1.05; color:#363530; padding-top:12px;">Wood Car Freshener</div>
-        <div style="font-size:clamp(15px,1.15vw,18px); font-weight:400; line-height:1.45; color:#5B5A54; padding-top:14px;">A warm, natural expression made from sustainably sourced alder wood.</div>
+        <div style="font-size:clamp(15px,1.15vw,18px); font-weight:400; line-height:1.45; color:#5B5A54; padding-top:14px;">Warm and matte. Absorbs slowly, lets go slowly.</div>
         <div style="flex:1;"></div>
         <div style="height:1px; background:#D4CDC6; margin-top:22px;"></div>
         <div style="height:48px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
-          <div style="font-size:clamp(16px,1.2vw,19px); font-weight:500; color:#363530;">From $8.45</div>
-          <div style="font-size:clamp(15px,1.15vw,18px); font-weight:500; color:#A34A24; cursor:pointer; transition:color 200ms ease;" style-hover="color:#363530;">Explore wood →</div>
-        </div>
-      </div>
-
-      <div style="flex:1 1 clamp(280px,28vw,420px); min-width:clamp(280px,28vw,420px); scroll-snap-align:start; display:flex; flex-direction:column;">
-        <div style="position:relative; aspect-ratio:1/1.08; overflow:hidden;">
-          <img src="assets/photo-visor.webp" alt="A hand pressing the stone freshener into the visor pocket" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:44% 36%; display:block; transition:transform 320ms cubic-bezier(0.22,1,0.36,1);" style-hover="transform:scale(1.03);" />
-          <div style="position:absolute; right:0; top:0; background:rgba(251,250,248,0.9); padding:7px 12px; font-size:11px; font-weight:400; letter-spacing:0.1em; color:#5B5A54;">02 / 03</div>
-        </div>
-        <div style="padding-top:22px; font-size:clamp(12px,1vw,13px); font-weight:500; letter-spacing:0.16em; color:#5B5A54;">ORGANIC POROUS STONE</div>
-        <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(29px,2.4vw,40px); font-weight:400; line-height:1.05; color:#363530; padding-top:12px;">Stone Diffuser</div>
-        <div style="font-size:clamp(15px,1.15vw,18px); font-weight:400; line-height:1.45; color:#5B5A54; padding-top:14px;">An understated expression that holds and releases scent slowly.</div>
-        <div style="flex:1;"></div>
-        <div style="height:1px; background:#D4CDC6; margin-top:22px;"></div>
-        <div style="height:48px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
-          <div style="font-size:clamp(16px,1.2vw,19px); font-weight:500; color:#363530;">From $10.45</div>
-          <div style="font-size:clamp(15px,1.15vw,18px); font-weight:500; color:#A34A24; cursor:pointer; transition:color 200ms ease;" style-hover="color:#363530;">Explore stone →</div>
+          <div style="font-size:clamp(16px,1.2vw,19px); font-weight:500; color:#363530;">From $12.95 · refill</div>
+          <div class="lnk" style="font-size:clamp(15px,1.15vw,18px); font-weight:500; color:#A34A24; cursor:pointer;">Explore wood →</div>
         </div>
       </div>
 
       <div style="flex:1 1 clamp(280px,28vw,420px); min-width:clamp(280px,28vw,420px); scroll-snap-align:start; display:flex; flex-direction:column;">
         <div style="position:relative; aspect-ratio:1/1.08; overflow:hidden;">
           <img src="assets/object-vent.webp" alt="The metal vent clip diffuser installed on a dashboard vent" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:48% 56%; display:block; transition:transform 320ms cubic-bezier(0.22,1,0.36,1);" style-hover="transform:scale(1.03);" />
-          <div style="position:absolute; right:0; top:0; background:rgba(251,250,248,0.9); padding:7px 12px; font-size:11px; font-weight:400; letter-spacing:0.1em; color:#5B5A54;">03 / 03</div>
+          <div style="position:absolute; right:0; top:0; background:rgba(251,250,248,0.9); padding:7px 12px; font-size:11px; font-weight:400; letter-spacing:0.1em; color:#5B5A54;">02 / 03</div>
         </div>
         <div style="padding-top:22px; font-size:clamp(12px,1vw,13px); font-weight:500; letter-spacing:0.16em; color:#5B5A54;">BRUSHED METAL</div>
         <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(29px,2.4vw,40px); font-weight:400; line-height:1.05; color:#363530; padding-top:12px;">Metal Vent Clip</div>
-        <div style="font-size:clamp(15px,1.15vw,18px); font-weight:400; line-height:1.45; color:#5B5A54; padding-top:14px;">A precise expression that carries scent on moving air.</div>
+        <div style="font-size:clamp(15px,1.15vw,18px); font-weight:400; line-height:1.45; color:#5B5A54; padding-top:14px;">Machined and cool. The one people ask about.</div>
         <div style="flex:1;"></div>
         <div style="height:1px; background:#D4CDC6; margin-top:22px;"></div>
         <div style="height:48px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
-          <div style="font-size:clamp(16px,1.2vw,19px); font-weight:500; color:#363530;">From $12.45</div>
-          <div style="font-size:clamp(15px,1.15vw,18px); font-weight:500; color:#A34A24; cursor:pointer; transition:color 200ms ease;" style-hover="color:#363530;">Explore metal →</div>
+          <div style="font-size:clamp(16px,1.2vw,19px); font-weight:500; color:#363530;">From $14.95 · refill</div>
+          <div class="lnk" style="font-size:clamp(15px,1.15vw,18px); font-weight:500; color:#A34A24; cursor:pointer;">Explore metal →</div>
+        </div>
+      </div>
+
+      <div style="flex:1 1 clamp(280px,28vw,420px); min-width:clamp(280px,28vw,420px); scroll-snap-align:start; display:flex; flex-direction:column;">
+        <div style="position:relative; aspect-ratio:1/1.08; overflow:hidden;">
+          <img src="assets/photo-visor.webp" alt="A hand pressing the stone freshener into the visor pocket" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:44% 36%; display:block; transition:transform 320ms cubic-bezier(0.22,1,0.36,1);" style-hover="transform:scale(1.03);" />
+          <div style="position:absolute; right:0; top:0; background:rgba(251,250,248,0.9); padding:7px 12px; font-size:11px; font-weight:400; letter-spacing:0.1em; color:#5B5A54;">03 / 03</div>
+        </div>
+        <div style="padding-top:22px; font-size:clamp(12px,1vw,13px); font-weight:500; letter-spacing:0.16em; color:#5B5A54;">ORGANIC POROUS STONE</div>
+        <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(29px,2.4vw,40px); font-weight:400; line-height:1.05; color:#363530; padding-top:12px;">Stone Diffuser</div>
+        <div style="font-size:clamp(15px,1.15vw,18px); font-weight:400; line-height:1.45; color:#5B5A54; padding-top:14px;">Porous and mineral. The quietest of the three.</div>
+        <div style="flex:1;"></div>
+        <div style="height:1px; background:#D4CDC6; margin-top:22px;"></div>
+        <div style="height:48px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
+          <div style="font-size:clamp(16px,1.2vw,19px); font-weight:500; color:#363530;">From $16.95 · refill</div>
+          <div class="lnk" style="font-size:clamp(15px,1.15vw,18px); font-weight:500; color:#A34A24; cursor:pointer;">Explore stone →</div>
         </div>
       </div>
     </div>
-    <div style="height:clamp(72px,8vw,130px);"></div>
+    <div style="height:clamp(56px,6vw,96px);"></div>
   </div>
 
-  <div style="background:#363530;">
+  <div style="position:relative; background:#F2EBE2; overflow:hidden;">
+      <div class="field" style="position:absolute; inset:0; overflow:hidden; pointer-events:none;">
+        <div style="position:absolute; inset:-30%; background:radial-gradient(58% 46% at 24% 22%, rgba(255,255,255,0.98), rgba(255,255,255,0) 70%); filter:blur(22px); animation:driftA 38s ease-in-out infinite alternate;"></div>
+        <div style="position:absolute; inset:-30%; background:radial-gradient(54% 44% at 78% 36%, rgba(163,74,36,0.21), rgba(163,74,36,0) 68%); filter:blur(32px); animation:driftB 46s ease-in-out infinite alternate;"></div>
+        <div style="position:absolute; inset:-30%; background:radial-gradient(52% 44% at 42% 86%, rgba(237,234,229,0.98), rgba(237,234,229,0) 66%); filter:blur(28px); animation:driftC 42s ease-in-out infinite alternate;"></div>
+        <div style="position:absolute; inset:-30%; background:radial-gradient(36% 30% at 86% 88%, rgba(163,74,36,0.13), rgba(163,74,36,0) 70%); filter:blur(34px); animation:driftA 54s ease-in-out infinite alternate;"></div>
+        <div style="position:absolute; inset:0; background:linear-gradient(152deg, rgba(255,255,255,0.34), rgba(255,255,255,0) 44%, rgba(54,53,48,0.05));"></div>
+        <div style="position:absolute; inset:0; background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;); opacity:0.13; mix-blend-mode:multiply;"></div>
+      </div>
+    <div style="position:relative; width:100%; max-width:1440px; margin:0 auto; padding:clamp(72px,8vw,130px) clamp(24px,5vw,80px) clamp(72px,8vw,130px) clamp(24px,5vw,80px); box-sizing:border-box; display:flex; flex-direction:column;">
+      <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.2em; color:#A34A24;">03 / THE SUBSCRIPTION</div>
+      <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(33px,3.4vw,58px); font-weight:300; line-height:1.1; letter-spacing:-0.015em; color:#363530; padding-top:18px; max-width:24ch;">One scent lasts about a month.<br /><em style="font-weight:300;">Then you decide again.</em></div>
+      <div style="display:flex; flex-wrap:wrap; gap:0 clamp(24px,3vw,56px); margin-top:clamp(36px,4vw,64px);">
+        <div style="flex:1 1 300px; min-width:280px; border-top:1px solid #EDEAE5; border-bottom:1px solid #EDEAE5; margin-bottom:-1px; padding:clamp(24px,2.4vw,38px) 0; display:flex; flex-direction:column; align-items:flex-start; gap:clamp(20px,2vw,32px);">
+          <div style="flex:none; font-family:'Meta Serif Pro',serif; font-size:clamp(86px,7.6vw,132px); font-weight:300; line-height:0.72; letter-spacing:-0.03em; color:#363530; margin-top:-0.06em;">30</div>
+          <div style="width:100%; display:flex; flex-direction:column; gap:10px;">
+            <div style="font-size:clamp(12px,1vw,13px); font-weight:500; letter-spacing:0.16em; color:#A34A24;">THIRTY DAYS</div>
+            <div style="font-size:clamp(16px,1.25vw,20px); font-weight:400; line-height:1.45; color:#363530; max-width:44ch;">Each freshener holds its scent for about a month, then it's done.</div>
+          </div>
+        </div>
+        <div style="flex:1 1 300px; min-width:280px; border-top:1px solid #EDEAE5; border-bottom:1px solid #EDEAE5; margin-bottom:-1px; padding:clamp(24px,2.4vw,38px) 0; display:flex; flex-direction:column; align-items:flex-start; gap:clamp(20px,2vw,32px);">
+          <div style="flex:none; font-family:'Meta Serif Pro',serif; font-size:clamp(86px,7.6vw,132px); font-weight:300; line-height:0.72; letter-spacing:-0.03em; color:#363530; margin-top:-0.06em;">0</div>
+          <div style="width:100%; display:flex; flex-direction:column; gap:10px;">
+            <div style="font-size:clamp(12px,1vw,13px); font-weight:500; letter-spacing:0.16em; color:#A34A24;">NOTHING TO REMEMBER</div>
+            <div style="font-size:clamp(16px,1.25vw,20px); font-weight:400; line-height:1.45; color:#363530; max-width:44ch;">The next one ships before yours fades.</div>
+          </div>
+        </div>
+        <div style="flex:1 1 300px; min-width:280px; border-top:1px solid #EDEAE5; border-bottom:1px solid #EDEAE5; margin-bottom:-1px; padding:clamp(24px,2.4vw,38px) 0; display:flex; flex-direction:column; align-items:flex-start; gap:clamp(20px,2vw,32px);">
+          <div style="flex:none; font-family:'Meta Serif Pro',serif; font-size:clamp(86px,7.6vw,132px); font-weight:300; line-height:0.72; letter-spacing:-0.03em; color:#363530; margin-top:-0.06em;">2</div>
+          <div style="width:100%; display:flex; flex-direction:column; gap:10px;">
+            <div style="font-size:clamp(12px,1vw,13px); font-weight:500; letter-spacing:0.16em; color:#A34A24;">TWO TAPS</div>
+            <div style="font-size:clamp(16px,1.25vw,20px); font-weight:400; line-height:1.45; color:#363530; max-width:44ch;">Keep your scent, switch to another, skip a month, or stop.</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; align-items:center; gap:clamp(16px,2vw,40px); margin-top:clamp(24px,2vw,36px);">
+          <button type="button" onClick="{{ openCart }}" class="under" style="height:48px; display:flex; align-items:center; font-size:clamp(16px,1.2vw,19px); font-weight:500; color:#A34A24; padding-bottom:2px;">Start with Summer Sunset →</button>
+          <button type="button" onClick="{{ openQuiz }}" class="lnk" style="height:48px; display:flex; align-items:center; font-size:clamp(14px,1.05vw,16px); font-weight:400; color:#5B5A54;">Not sure? Find my scent →</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#FBFAF8;">
+    <div style="width:100%; max-width:1440px; margin:0 auto; padding:clamp(72px,8vw,130px) clamp(24px,5vw,80px) clamp(72px,8vw,130px) clamp(24px,5vw,80px); box-sizing:border-box; display:flex; flex-direction:column;">
+      <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.2em; color:#A34A24;">04 / WORD ON THE STREET</div>
+      <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(33px,3.4vw,58px); font-weight:300; line-height:1.1; letter-spacing:-0.015em; color:#363530; padding-top:18px;">Three people.<br /><em style="font-weight:300;">Three scents.</em></div>
+      <div style="display:flex; flex-wrap:wrap; gap:0 clamp(24px,3vw,56px); margin-top:clamp(36px,4vw,64px);">
+        <div style="flex:1 1 300px; min-width:280px; border-top:1px solid #EDEAE5; padding:clamp(28px,2.8vw,44px) 0; display:flex; flex-direction:column; gap:16px;">
+          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(21px,1.9vw,30px); font-weight:400; line-height:1.35; color:#363530; max-width:34ch;">“I love that it clips on the visor flat and the scent is just as strong today as it was when I opened it. 100% recommend!”</div>
+          <div style="font-size:clamp(11px,0.95vw,13px); font-weight:500; letter-spacing:0.14em; color:#5B5A54;">HEATHER L. · SCENT OF THE MONTH · STRENGTH: PERFECT</div>
+        </div>
+        <div style="flex:1 1 300px; min-width:280px; border-top:1px solid #EDEAE5; padding:clamp(28px,2.8vw,44px) 0; display:flex; flex-direction:column; gap:16px;">
+          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(21px,1.9vw,30px); font-weight:400; line-height:1.35; color:#363530; max-width:34ch;">“The Real Deal! Best Car Scents I have ever had!!!”</div>
+          <div style="font-size:clamp(11px,0.95vw,13px); font-weight:500; letter-spacing:0.14em; color:#5B5A54;">VASILIOS A. · AMBER · STRENGTH: PERFECT</div>
+        </div>
+        <div style="flex:1 1 300px; min-width:280px; border-top:1px solid #EDEAE5; padding:clamp(28px,2.8vw,44px) 0; display:flex; flex-direction:column; gap:16px;">
+          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(21px,1.9vw,30px); font-weight:400; line-height:1.35; color:#363530; max-width:34ch;">“We’ll continue to get it. Lawn man approved.”</div>
+          <div style="font-size:clamp(11px,0.95vw,13px); font-weight:500; letter-spacing:0.14em; color:#5B5A54;">WILLIAM S. · TEAK · STRENGTH: PERFECT</div>
+        </div>
+        <div style="flex:1 1 100%; border-top:1px solid #EDEAE5; margin-top:clamp(28px,2.8vw,44px); padding-top:clamp(22px,2vw,32px); text-align:center; font-size:clamp(12px,1vw,14px); font-weight:400; letter-spacing:0.04em; color:#5B5A54;">From 29,000 reviews and 57,000 subscribers.</div>
+      </div>
+    </div>
+  </div>
+
+  <div ref="{{ footerRef }}" style="background:#363530;">
+    <div style="width:100%; max-width:1440px; margin:0 auto; padding:clamp(22px,2vw,30px) clamp(24px,5vw,80px); box-sizing:border-box; border-bottom:1px solid rgba(255,255,255,0.18);">
+      <div style="text-align:center; font-size:clamp(11px,0.95vw,13px); font-weight:500; letter-spacing:0.14em; line-height:1.8; color:#D4CDC6;">SHIPS FREE · CANCEL ANYTIME · CHANGE YOUR SCENT ANY MONTH · SAFE AROUND KIDS AND PETS</div>
+    </div>
     <div style="width:100%; max-width:1440px; margin:0 auto; padding:clamp(64px,7vw,120px) clamp(24px,5vw,80px) clamp(48px,5vw,80px) clamp(24px,5vw,80px); box-sizing:border-box; display:flex; flex-wrap:wrap; gap:clamp(24px,4vw,64px); align-items:flex-end; justify-content:space-between;">
       <div style="flex:1 1 380px; display:flex; flex-direction:column;">
         <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.2em; color:#90928C;">THE NEXT EDITION</div>
@@ -315,6 +361,18 @@
 
   </div>
 
+  <div ref="{{ stickyRef }}" style="position:fixed; left:0; right:0; bottom:0; z-index:5; opacity:0; pointer-events:none; transition:opacity 300ms ease; background:#FBFAF8; border-top:1px solid #D4CDC6;">
+    <div style="width:100%; max-width:1440px; margin:0 auto; padding:8px clamp(16px,4vw,48px) calc(8px + env(safe-area-inset-bottom)) clamp(16px,4vw,48px); box-sizing:border-box; display:flex; align-items:center; justify-content:space-between; gap:16px;">
+      <button type="button" onClick="{{ openQuiz }}" class="cta" style="height:48px; border-radius:999px; background:#A34A24; color:#FFFFFF; display:flex; align-items:center; padding:0 24px; font-size:15px; font-weight:500;" style-hover="background:#8A3D1D;">{{ stickyLabel }}</button>
+      <button type="button" onClick="{{ openCart }}" aria-label="{{ cartAria }}" class="lnk" style="position:relative; width:48px; height:48px; display:flex; align-items:center; justify-content:center; color:#363530;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6H20L18.5 16H5.5L4 6Z" stroke-linejoin="round"></path><path d="M8.5 19.5C8.5 20.3284 7.82843 21 7 21C6.17157 21 5.5 20.3284 5.5 19.5C5.5 18.6716 6.17157 18 7 18C7.82843 18 8.5 18.6716 8.5 19.5Z"></path><path d="M18.5 19.5C18.5 20.3284 17.8284 21 17 21C16.1716 21 15.5 20.3284 15.5 19.5C15.5 18.6716 16.1716 18 17 18C17.8284 18 18.5 18.6716 18.5 19.5Z"></path></svg>
+        <sc-if value="{{ showCount }}" hint-placeholder-val="{{ false }}">
+          <span style="position:absolute; top:6px; right:4px; min-width:17px; height:17px; border-radius:999px; background:#A34A24; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:500; padding:0 4px;">{{ cartCount }}</span>
+        </sc-if>
+      </button>
+    </div>
+  </div>
+
   <div ref="{{ quizScrimRef }}" onClick="{{ askCloseQuiz }}" style="position:fixed; inset:0; z-index:6; background:rgba(54,53,48,0.52); opacity:0; pointer-events:none; transition:opacity 480ms cubic-bezier(0.22,1,0.36,1);"></div>
 
   <div ref="{{ sheetRef }}" role="dialog" aria-modal="true" aria-label="Scent discovery" tabindex="-1" style="position:fixed; left:0; right:0; bottom:0; z-index:7; height:{{ sheetHeight }}; max-width:640px; margin:0 auto; background:#FBFAF8; border-radius:{{ sheetRadius }}; overflow:hidden; transform:translateY(101%); pointer-events:none; transition:transform 580ms cubic-bezier(0.22,1,0.36,1), height 700ms cubic-bezier(0.22,1,0.36,1), border-radius 700ms cubic-bezier(0.22,1,0.36,1); display:flex; flex-direction:column;">
@@ -340,7 +398,7 @@
     </sc-if>
 
     <sc-if value="{{ showQuestion }}" hint-placeholder-val="{{ true }}">
-      <div class="scroll" style="flex:1; display:flex; flex-direction:column; padding:24px clamp(24px,4vw,48px) 8px clamp(24px,4vw,48px);">
+      <div class="scroll" style="flex:1; display:flex; flex-direction:column; padding:32px clamp(24px,4vw,48px) 8px clamp(24px,4vw,48px);">
         <div style="font-size:12px; font-weight:500; letter-spacing:0.16em; color:#A34A24;">{{ folio }}</div>
         <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(30px,3.4vw,48px); font-weight:300; line-height:1.1; color:#363530; padding-top:16px;">{{ questionA }}<br /><em style="font-weight:300;">{{ questionB }}</em></div>
         <div style="font-size:16px; font-weight:400; line-height:1.4; color:#5B5A54; padding-top:12px; max-width:52ch;">{{ helper }}</div>
@@ -467,7 +525,7 @@
           </div>
           <button type="button" ref="{{ addRef }}" onClick="{{ addKit }}" class="cta" style="height:56px; margin-top:24px; border-radius:999px; background:#A34A24; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:500; letter-spacing:0.08em;" style-hover="background:#8A3D1D;">{{ addLabel }}</button>
           <button type="button" onClick="{{ backHome }}" class="lnk" style="height:48px; margin-top:8px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:500; color:#363530;">Back to homepage</button>
-          <div style="height:56px;"></div>
+          <div style="height:24px;"></div>
         </div>
       </div>
     </sc-if>
@@ -476,7 +534,7 @@
   <sc-if value="{{ exitOpen }}" hint-placeholder-val="{{ false }}">
     <div style="position:fixed; inset:0; z-index:9; display:flex; flex-direction:column; justify-content:flex-end;">
       <div onClick="{{ cancelExit }}" style="position:absolute; inset:0; background:rgba(54,53,48,0.42); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);"></div>
-      <div role="dialog" aria-modal="true" aria-label="Leave your scent search?" style="position:relative; max-width:640px; width:100%; margin:0 auto; background:#FBFAF8; border-radius:8px 8px 0 0; padding:32px 24px 24px 24px; display:flex; flex-direction:column; gap:16px;">
+      <div role="dialog" aria-modal="true" aria-label="Leave your scent search?" style="position:relative; max-width:640px; width:100%; box-sizing:border-box; margin:0 auto; background:#FBFAF8; border-radius:8px 8px 0 0; padding:32px 24px calc(24px + env(safe-area-inset-bottom)) 24px; display:flex; flex-direction:column; gap:16px;">
         <div style="font-family:'Meta Serif Pro',serif; font-size:28px; font-weight:300; line-height:1.1; color:#363530;">Leave your scent search?</div>
         <div style="font-size:16px; font-weight:400; line-height:1.45; color:#5B5A54;">Your progress can wait here until you're ready.</div>
         <button type="button" onClick="{{ saveExit }}" class="cta" style="height:56px; border-radius:999px; background:#A34A24; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:500;" style-hover="background:#8A3D1D;">Save &amp; return home</button>
@@ -499,28 +557,45 @@
       </button>
     </div>
 
-    <sc-if value="{{ cartHasItem }}" hint-placeholder-val="{{ true }}">
-      <div class="scroll" ref="{{ cartBodyRef }}" onScroll="{{ onCartScroll }}" style="flex:1; display:flex; flex-direction:column;">
-        <div style="position:relative; flex:none; height:268px; min-height:268px; overflow:hidden; background:#EDEAE5;">
-          <div ref="{{ cartImgRef }}" role="img" aria-label="{{ formatAlt }}" style="position:absolute; inset:-14%; background-image:url({{ formatImg }}); background-size:cover; background-position:{{ formatPos }}; will-change:transform;"></div>
-        </div>
+    <div aria-hidden="true" style="position:absolute; left:0; right:0; top:0; height:34%; pointer-events:none; background:{{ cartVeil }};"></div>
 
-        <div style="padding:24px 24px 0 24px; display:flex; flex-direction:column; gap:12px;">
-          <div style="font-size:12px; font-weight:500; letter-spacing:0.16em; color:#A34A24;">YOUR SCENT</div>
-          <div style="font-family:'Meta Serif Pro',serif; font-size:34px; font-weight:300; line-height:1; color:#363530;">{{ resultName }}</div>
-          <div style="font-family:'Meta Serif Pro',serif; font-size:17px; font-weight:400; line-height:1.35; color:#5B5A54;">{{ resultLine }}</div>
-          <div style="font-size:12px; font-weight:500; letter-spacing:0.12em; color:#5B5A54;">{{ resultNotes }}</div>
-          <div style="display:flex; flex-direction:column; gap:4px; padding-top:8px; border-top:1px solid #EDEAE5;">
-            <div style="font-size:16px; font-weight:500; padding-top:8px; color:#363530;">{{ formatName }}</div>
-            <div style="font-size:15px; font-weight:400; color:#5B5A54;">{{ configLine }}</div>
-            <div style="font-size:15px; font-weight:400; color:#5B5A54;">Visor clip included</div>
+    <sc-if value="{{ cartHasItem }}" hint-placeholder-val="{{ true }}">
+      <div class="scroll" ref="{{ cartBodyRef }}" onScroll="{{ onCartScroll }}" style="position:relative; flex:1; display:flex; flex-direction:column;">
+        <div style="padding:20px 24px 0 24px; display:flex; gap:16px;">
+          <div style="width:64px; height:64px; flex:none; overflow:hidden; background:#EDEAE5; border-radius:4px;">
+            <div ref="{{ cartImgRef }}" role="img" aria-label="{{ formatAlt }}" style="width:100%; height:100%; background-image:url({{ formatImg }}); background-size:cover; background-position:{{ formatPos }};"></div>
           </div>
-          <button type="button" onClick="{{ toggleEdit }}" class="lnk" style="height:48px; align-self:flex-start; display:flex; align-items:center; font-size:15px; font-weight:500; color:#A34A24;">{{ editLabel }}</button>
-          <button type="button" onClick="{{ askRemove }}" class="lnk" style="height:48px; align-self:flex-start; margin-top:-8px; display:flex; align-items:center; font-size:14px; font-weight:400; color:#90928C;">Remove</button>
+          <div style="flex:1; min-width:0; display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px;">
+              <div style="display:flex; align-items:center; gap:10px; min-width:0;">
+                <div style="font-family:'Meta Serif Pro',serif; font-size:28px; font-weight:300; line-height:1; color:#363530;">{{ resultName }}</div>
+              </div>
+              <div style="font-size:16px; font-weight:500; color:#363530; white-space:nowrap;">{{ formatPrice }}</div>
+            </div>
+            <div style="font-size:11px; font-weight:500; letter-spacing:0.12em; color:#A34A24;">{{ resultNotes }}</div>
+            <div style="font-size:14px; font-weight:400; color:#5B5A54;">Starter kit · {{ formatName }}</div>
+            <div style="font-size:12px; font-weight:400; letter-spacing:0.06em; color:#90928C;">Visor clip included</div>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding-top:4px;">
+              <div style="display:flex; align-items:center;">
+                <button type="button" onClick="{{ dec }}" aria-label="Decrease quantity" style="width:40px; height:40px; border:1px solid {{ decBorder }}; display:flex; align-items:center; justify-content:center; color:{{ decColor }};">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 12H18" stroke-linecap="round"></path></svg>
+                </button>
+                <div aria-live="polite" style="width:40px; height:40px; border-top:1px solid #D4CDC6; border-bottom:1px solid #D4CDC6; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:500;">{{ qty }}</div>
+                <button type="button" onClick="{{ inc }}" aria-label="Increase quantity" style="width:40px; height:40px; border:1px solid #D4CDC6; display:flex; align-items:center; justify-content:center; color:#363530;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 6V18M6 12H18" stroke-linecap="round"></path></svg>
+                </button>
+              </div>
+              <div style="display:flex; align-items:center; gap:18px;">
+                <button type="button" onClick="{{ toggleEdit }}" class="lnk" style="height:44px; display:flex; align-items:center; font-size:14px; font-weight:400; color:#5B5A54; white-space:nowrap;">Edit</button>
+                <button type="button" onClick="{{ askRemove }}" class="lnk" style="height:44px; display:flex; align-items:center; font-size:14px; font-weight:400; color:#5B5A54; white-space:nowrap;">Remove</button>
+              </div>
+            </div>
+          </div>
         </div>
+        <div style="margin:16px 24px 0 24px; height:1px; background:#EDEAE5;"></div>
 
         <sc-if value="{{ confirmRemove }}" hint-placeholder-val="{{ false }}">
-          <div style="margin:0 24px; border-top:1px solid #EDEAE5; border-bottom:1px solid #EDEAE5; padding:16px 0; display:flex; align-items:center; justify-content:space-between; gap:16px;">
+          <div style="margin:0 24px; padding:12px 0 0 0; display:flex; align-items:center; justify-content:space-between; gap:16px;">
             <div style="font-size:16px; font-weight:400; color:#363530;">Remove item?</div>
             <div style="display:flex; align-items:center; gap:24px;">
               <button type="button" onClick="{{ doRemove }}" class="lnk" style="height:48px; display:flex; align-items:center; font-size:15px; font-weight:500; color:#A34A24;">Remove</button>
@@ -564,30 +639,17 @@
           </div>
         </sc-if>
 
-        <div style="padding:24px 24px 0 24px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
-          <div style="font-size:15px; font-weight:500; color:#363530;">Quantity</div>
-          <div style="display:flex; align-items:center;">
-            <button type="button" onClick="{{ dec }}" aria-label="Decrease quantity" style="width:48px; height:48px; border:1px solid {{ decBorder }}; display:flex; align-items:center; justify-content:center; color:{{ decColor }};">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 12H18" stroke-linecap="round"></path></svg>
-            </button>
-            <div aria-live="polite" style="width:48px; height:48px; border-top:1px solid #D4CDC6; border-bottom:1px solid #D4CDC6; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:500;">{{ qty }}</div>
-            <button type="button" onClick="{{ inc }}" aria-label="Increase quantity" style="width:48px; height:48px; border:1px solid #D4CDC6; display:flex; align-items:center; justify-content:center; color:#363530;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 6V18M6 12H18" stroke-linecap="round"></path></svg>
-            </button>
-          </div>
-        </div>
-
-        <div style="padding:32px 24px 0 24px; display:flex; flex-direction:column;">
+        <div style="padding:20px 24px 0 24px; display:flex; flex-direction:column;">
           <div style="font-size:12px; font-weight:500; letter-spacing:0.16em; color:#5B5A54;">HOW IT ARRIVES</div>
           <div style="display:flex; flex-direction:column; padding-top:8px;">
-            <button type="button" onClick="{{ pickOnce }}" aria-pressed="{{ oncePressed }}" style="border-top:1px solid #EDEAE5; padding:16px 0; display:flex; align-items:flex-start; gap:16px; min-height:48px;">
+            <button type="button" onClick="{{ pickOnce }}" aria-pressed="{{ oncePressed }}" style="padding:14px 0 6px 0; display:flex; align-items:flex-start; gap:16px; min-height:48px;">
               <span style="width:18px; height:18px; flex:none; margin-top:2px; border-radius:999px; border:1.5px solid {{ onceRing }}; display:flex; align-items:center; justify-content:center;"><span style="width:8px; height:8px; border-radius:999px; background:{{ onceDot }};"></span></span>
               <span style="display:flex; flex-direction:column; gap:4px;">
                 <span style="font-size:16px; font-weight:500; color:{{ onceTitle }};">One-time</span>
                 <span style="font-size:15px; font-weight:400; line-height:1.4; color:#5B5A54;">One delivery. No recurring charge.</span>
               </span>
             </button>
-            <button type="button" onClick="{{ pickSub }}" aria-pressed="{{ subPressed }}" style="border-top:1px solid #EDEAE5; border-bottom:1px solid #EDEAE5; padding:16px 0; display:flex; align-items:flex-start; gap:16px; min-height:48px;">
+            <button type="button" onClick="{{ pickSub }}" aria-pressed="{{ subPressed }}" style="padding:14px 0 6px 0; display:flex; align-items:flex-start; gap:16px; min-height:48px;">
               <span style="width:18px; height:18px; flex:none; margin-top:2px; border-radius:999px; border:1.5px solid {{ subRing }}; display:flex; align-items:center; justify-content:center;"><span style="width:8px; height:8px; border-radius:999px; background:{{ subDot }};"></span></span>
               <span style="display:flex; flex-direction:column; gap:4px;">
                 <span style="font-size:16px; font-weight:500; color:{{ subTitle }};">Subscribe</span>
@@ -595,12 +657,6 @@
               </span>
             </button>
           </div>
-          <sc-if value="{{ subOpen }}" hint-placeholder-val="{{ false }}">
-            <div style="padding:16px 0; border-bottom:1px solid #EDEAE5; display:flex; align-items:baseline; justify-content:space-between; gap:16px;">
-              <div style="font-size:15px; font-weight:500; color:#363530;">Delivery frequency</div>
-              <div style="font-size:15px; font-weight:400; color:#363530;">Every month</div>
-            </div>
-          </sc-if>
         </div>
 
         <sc-if value="{{ showAnother }}" hint-placeholder-val="{{ true }}">
@@ -622,25 +678,24 @@
           </div>
         </sc-if>
 
-        <div style="height:56px;"></div>
+        <div style="height:24px;"></div>
       </div>
 
-      <div style="flex:none; border-top:1px solid #363530; padding:16px 24px 24px 24px; display:flex; flex-direction:column; gap:8px;">
-        <div style="display:flex; align-items:baseline; justify-content:space-between;">
-          <div style="font-size:12px; font-weight:500; letter-spacing:0.14em; color:#5B5A54;">{{ subLabel }}</div>
-          <div style="font-size:16px; font-weight:500; color:#363530;">{{ subtotal }}</div>
+      <div style="flex:none; max-height:34%; border-top:1px solid #363530; padding:12px 24px 16px 24px; display:flex; flex-direction:column; gap:6px;">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:16px;">
+          <div style="font-size:12px; font-weight:500; letter-spacing:0.14em; color:#363530;">{{ subLabel }}</div>
+          <div style="font-family:'Meta Serif Pro',serif; font-size:26px; font-weight:400; color:#363530;">{{ cartTotal }}</div>
         </div>
-        <div style="font-size:14px; font-weight:400; color:#5B5A54;">{{ shipLine }}</div>
-        <sc-if value="{{ isOnce }}" hint-placeholder-val="{{ true }}">
-          <div style="border-top:1px solid #EDEAE5; margin-top:8px; padding-top:12px; display:flex; align-items:baseline; justify-content:space-between;">
-            <div style="font-size:12px; font-weight:500; letter-spacing:0.14em; color:#363530;">TOTAL</div>
-            <div style="font-family:'Meta Serif Pro',serif; font-size:26px; font-weight:400; color:#363530;">{{ cartTotal }}</div>
-          </div>
-        </sc-if>
-        <sc-if value="{{ isSub }}" hint-placeholder-val="{{ false }}">
-          <div style="border-top:1px solid #EDEAE5; margin-top:8px; padding-top:12px; font-size:14px; font-weight:400; color:#5B5A54;">Renews monthly until changed or cancelled.</div>
-        </sc-if>
-        <button type="button" onClick="{{ checkout }}" class="cta" style="height:56px; margin-top:8px; border-radius:999px; background:#A34A24; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:500; letter-spacing:0.08em;" style-hover="background:#8A3D1D;"><span aria-live="polite">{{ checkoutLabel }}</span></button>
+        <div style="font-size:14px; font-weight:400; color:#5B5A54;">{{ totalNote }}</div>
+        <div style="border-top:1px solid #EDEAE5; margin-top:4px; padding:10px 0 2px 0; display:flex; flex-wrap:wrap; gap:2px 10px; font-size:11px; font-weight:500; letter-spacing:0.1em; color:#5B5A54;">
+          <span>CHANGE YOUR SCENT ANY MONTH</span><span aria-hidden="true">·</span>
+          <span>SAFE AROUND KIDS AND PETS</span>
+        </div>
+        <button type="button" onClick="{{ checkout }}" class="cta" style="height:52px; flex:none; margin-top:2px; border-radius:999px; background:#A34A24; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:500; letter-spacing:0.08em;" style-hover="background:#8A3D1D;"><span aria-live="polite">{{ checkoutLabel }}</span></button>
+        <div style="display:flex; gap:8px;">
+          <button type="button" onClick="{{ checkout }}" style="flex:1; height:44px; border-radius:4px; background:#5A31F4; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:500;">Shop Pay</button>
+          <button type="button" onClick="{{ checkout }}" style="flex:1; height:44px; border-radius:4px; background:#000000; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:500;">Apple Pay</button>
+        </div>
       </div>
     </sc-if>
 
@@ -724,16 +779,16 @@
 
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#363530"/><text x="50" y="62" font-family="Georgia,serif" font-size="34" fill="#EDEAE5" text-anchor="middle">df</text></svg></template>
 </x-dc>
-<script type="text/x-dc" data-dc-script>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844}}">
 const STORE = 'drift-prototype-v1';
 
 const SCENTS = {
-  'Cabana': { img: 'assets/world-cabana.webp', line: 'Sunscreen on warm skin, an hour before sunset.', notes: 'COCONUT · BERGAMOT · CEDARWOOD', intensity: 'Balanced — fills the car', clue: 'Coconut, warm sand', t1: 'Cabana', t2: '', pos: '60% 40%', alt: 'A young coconut with a copper straw against open sky' },
-  'Amber': { img: 'assets/world-amber.webp', line: 'A dim room, resin warming on the shelf.', notes: 'VANILLA · AMBER · LAVENDER', intensity: 'Bold — obvious when you open the door', clue: 'Warm resin, fruit', t1: 'Amber', t2: '', pos: '50% 50%', alt: 'Amber resin lit from within' },
-  'Teak': { img: 'assets/world-teak.webp', line: 'Dry wood in a workshop after the saw stops.', notes: 'TEAK · AMBER · CEDAR', intensity: 'Balanced — fills the car', clue: 'Dry wood, bronze', t1: 'Teak', t2: '', pos: '52% 50%', alt: 'Cut teak blocks with lichen and cedar sprigs' },
-  'Open Air': { img: 'assets/world-openair.webp', line: 'Clean linen and cool air moving through an open window.', notes: 'FRESH AIR · CRISP LINEN · MORNING DEW', intensity: 'Subtle — noticed up close', clue: 'CLEAN LINEN · COOL AIR', t1: 'Open', t2: 'Air', pos: '58% 50%', alt: 'A linen sachet knotted to a bare branch' },
-  'Grove': { img: 'assets/world-grove.webp', line: 'Green leaves, bright citrus and soft morning light.', notes: 'JUICY CITRUS · MOUNTAIN GREENS · VANILLA SUGAR', intensity: 'Balanced — fills the car', clue: 'GREEN LEAVES · CITRUS', t1: 'Grove', t2: '', pos: '55% 55%', alt: 'Lemons and a mandarin on linen in low sun' },
-  'Pine': { img: 'assets/world-pine.webp', line: 'Wet forest floor half an hour after rain.', notes: 'MOUNTAIN PINE · CEDAR WOOD · GREEN MOSS', intensity: 'Bold — obvious when you open the door', clue: 'WET MOSS · PINE', t1: 'Pine', t2: '', pos: '50% 50%', alt: 'Wet moss and pine needles on a forest floor' }
+  'Cabana': { g1: '#E4C7A8', g2: '#F7F4EF', img: 'assets/world-cabana.webp', line: 'Sunscreen on warm skin, an hour before sunset.', notes: 'COCONUT · BERGAMOT · CEDARWOOD', intensity: 'Balanced — fills the car', clue: 'Coconut, warm sand', t1: 'Cabana', t2: '', pos: '60% 40%', alt: 'A young coconut with a copper straw against open sky' },
+  'Amber': { g1: '#A34A24', g2: '#4A3B31', img: 'assets/world-amber.webp', line: 'A dim room, resin warming on the shelf.', notes: 'VANILLA · AMBER · LAVENDER', intensity: 'Bold — obvious when you open the door', clue: 'Warm resin, fruit', t1: 'Amber', t2: '', pos: '50% 50%', alt: 'Amber resin lit from within' },
+  'Teak': { g1: '#B8825A', g2: '#6E655B', img: 'assets/world-teak.webp', line: 'Dry wood in a workshop after the saw stops.', notes: 'TEAK · AMBER · CEDAR', intensity: 'Balanced — fills the car', clue: 'Dry wood, bronze', t1: 'Teak', t2: '', pos: '52% 50%', alt: 'Cut teak blocks with lichen and cedar sprigs' },
+  'Open Air': { g1: '#FFFFFF', g2: '#C9CBC7', img: 'assets/world-openair.webp', line: 'Clean linen and cool air moving through an open window.', notes: 'FRESH AIR · CRISP LINEN · MORNING DEW', intensity: 'Subtle — noticed up close', clue: 'CLEAN LINEN · COOL AIR', t1: 'Open', t2: 'Air', pos: '58% 50%', alt: 'A linen sachet knotted to a bare branch' },
+  'Grove': { g1: '#EDEAE5', g2: '#AFA898', img: 'assets/world-grove.webp', line: 'Green leaves, bright citrus and soft morning light.', notes: 'JUICY CITRUS · MOUNTAIN GREENS · VANILLA SUGAR', intensity: 'Balanced — fills the car', clue: 'GREEN LEAVES · CITRUS', t1: 'Grove', t2: '', pos: '55% 55%', alt: 'Lemons and a mandarin on linen in low sun' },
+  'Pine': { g1: '#5B5A54', g2: '#363530', img: 'assets/world-pine.webp', line: 'Wet forest floor half an hour after rain.', notes: 'MOUNTAIN PINE · CEDAR WOOD · GREEN MOSS', intensity: 'Bold — obvious when you open the door', clue: 'WET MOSS · PINE', t1: 'Pine', t2: '', pos: '50% 50%', alt: 'Wet moss and pine needles on a forest floor' }
 };
 const NAMES = ['Cabana', 'Amber', 'Teak', 'Open Air', 'Grove', 'Pine'];
 
@@ -789,7 +844,17 @@ class Component extends DCLogic {
     if (l) l.style.backgroundImage = 'url(assets/logo-' + (solid ? 'dark' : 'light') + '.png)';
   }
   heroRef = React.createRef();
+  stickyRef = React.createRef();
+  footerRef = React.createRef();
   atlasRef = React.createRef();
+  railRef = React.createRef();
+
+  centerTab(i) {
+    const el = this.railRef.current; if (!el) return;
+    const c = el.children[i]; if (!c) return;
+    const target = c.offsetLeft - (el.clientWidth - c.offsetWidth) / 2;
+    el.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+  }
   bandRef = React.createRef();
   sheetRef = React.createRef();
   quizScrimRef = React.createRef();
@@ -825,6 +890,17 @@ class Component extends DCLogic {
           const vh = window.innerHeight || 800;
           const q = Math.max(-1, Math.min(1, (vh / 2 - (r.top + r.height / 2)) / vh));
           this.bandRef.current.style.transform = 'translate3d(0,' + (q * 12).toFixed(2) + '%,0)';
+        }
+        const st = this.stickyRef.current;
+        if (st) {
+          const heroEl = this.heroRef.current && this.heroRef.current.parentElement;
+          const fEl = this.footerRef.current;
+          const vh = window.innerHeight || 800;
+          const past = heroEl ? heroEl.getBoundingClientRect().bottom < 72 : y > 420;
+          const footerIn = fEl ? fEl.getBoundingClientRect().top < vh - 72 : false;
+          const show = past && !footerIn && !this.state.sheet && !this.state.cart && !this.state.atCheckout;
+          st.style.opacity = show ? '1' : '0';
+          st.style.pointerEvents = show ? 'auto' : 'none';
         }
         const scrolled = y > 240;
         if (scrolled !== this._solid) { this._solid = scrolled; this.paintHeader(scrolled); }
@@ -960,7 +1036,8 @@ class Component extends DCLogic {
     const a3 = s.answers[3] && STEPS[3].options.filter((o) => o.key === s.answers[3])[0];
     const a4 = s.answers[4] && STEPS[4].options.filter((o) => o.key === s.answers[4])[0];
     const a5 = s.answers[5] && STEPS[5].options.filter((o) => o.key === s.answers[5])[0];
-    let statement = s.q1 ? 'Starting with ' + s.q1 + '.' : 'Starting fresh.';
+    const Q1PHRASE = { 'My car': 'your car', 'My home': 'your home', 'Both': 'your car and home' };
+    let statement = s.q1 ? 'Starting with ' + (Q1PHRASE[s.q1] || 'your car') + '.' : 'Starting fresh.';
     if (a2) {
       let base = a3 ? a2.join + ' and ' + a3.join : a2.print;
       let tail = '';
@@ -971,6 +1048,7 @@ class Component extends DCLogic {
 
     const vals = {
       pageRef: this.pageRef, heroRef: this.heroRef, atlasRef: this.atlasRef, bandRef: this.bandRef,
+      stickyRef: this.stickyRef, footerRef: this.footerRef,
       sheetRef: this.sheetRef, quizScrimRef: this.quizScrimRef, cartRef: this.cartRef,
       cartScrimRef: this.cartScrimRef, cartBodyRef: this.cartBodyRef, cartImgRef: this.cartImgRef,
       toastRef: this.toastRef, addRef: this.addRef,
@@ -982,6 +1060,7 @@ class Component extends DCLogic {
       q1Unanswered: !s.q1,
       q1Answered: !!s.q1,
       q1Label: s.q1 || '',
+      heroHomeOpacity: s.q1 === 'My home' ? 1 : 0,
       pickCar: () => this.pickQ1('My car'),
       pickHome: () => this.pickQ1('My home'),
       pickBoth: () => this.pickQ1('Both'),
@@ -989,9 +1068,12 @@ class Component extends DCLogic {
       openQuiz: this.openQuiz,
       toAtlas: this.toAtlas,
       continueLabel: answeredCount > 0 ? 'Continue discovery' : 'Start discovery',
+      remainingShort: remaining > 0 ? (6 - remaining) + ' of 6' : 'See your result',
       nextCounter: '0' + Math.min(6, step) + ' / 06',
       remainingCopy: remaining > 0 ? remaining + ' questions left · about 40 seconds' : 'Ready for your result',
 
+      bandShop: 'Shop ' + NAMES[s.band] + ' →',
+      stickyLabel: s.q1 ? 'Continue discovery · ' + remaining + ' questions left' : 'Find my scent · 45s',
       bandName: band.t1 + (band.t2 ? ' ' + band.t2 : ''),
       bandLine: band.line,
       bandNotes: band.notes,
@@ -1085,10 +1167,13 @@ class Component extends DCLogic {
       addAnother: () => this.setState((p) => ({ qty: Math.min(9, p.qty + 1), another: true })),
       undoAnother: () => this.setState((p) => ({ qty: Math.max(1, p.qty - 1), another: false })),
 
+      scentChip: 'linear-gradient(180deg, ' + sc.g1 + ' 0%, ' + sc.g2 + ' 100%)',
+      cartVeil: 'linear-gradient(180deg, ' + sc.g1 + '2E 0%, ' + sc.g1 + '14 46%, rgba(251,250,248,0) 100%)',
       isOnce: s.cadence === 'once',
       isSub: s.cadence === 'sub',
-      subLabel: s.cadence === 'once' ? 'SUBTOTAL' : 'DUE TODAY',
-      shipLine: s.cadence === 'once' ? 'Shipping calculated at checkout' : 'Then ' + (sub === null ? '—' : this.money(sub)) + ' every month',
+      subLabel: 'DUE TODAY',
+      totalNote: s.cadence === 'once' ? 'One delivery. Shipping — Free.' : 'Then ' + (sub === null ? '—' : this.money(sub)) + ' monthly. Cancel anytime.',
+      shipLine: s.cadence === 'once' ? 'Shipping — Free' : 'Then ' + (sub === null ? '—' : this.money(sub)) + ' every month',
       subtotal: sub === null ? '—' : this.money(sub),
       cartTotal: sub === null ? '—' : this.money(sub),
       checkout: this.checkout,
@@ -1101,12 +1186,64 @@ class Component extends DCLogic {
       toastCopy: primary + ' is in Your Drift.'
     };
 
+    vals.railRef = this.railRef;
+    vals.railScroll = () => {
+      clearTimeout(this._railT);
+      this._railT = setTimeout(() => {
+        const el = this.railRef.current; if (!el || this._rail) return;
+        const mid = el.scrollLeft + el.clientWidth / 2;
+        let best = 0, bestD = Infinity;
+        Array.from(el.children).forEach((c, i) => {
+          const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid);
+          if (d < bestD) { bestD = d; best = i; }
+        });
+        if (best !== this.state.band) this.setState({ band: best });
+      }, 110);
+    };
+    vals.railDown = (e) => {
+      const el = this.railRef.current; if (!el) return;
+      this._rail = { x: e.clientX, left: el.scrollLeft, moved: 0 };
+      el.style.cursor = 'grabbing';
+    };
+    vals.railMove = (e) => {
+      const el = this.railRef.current; if (!el || !this._rail) return;
+      const dx = e.clientX - this._rail.x;
+      this._rail.moved = Math.abs(dx);
+      el.scrollLeft = this._rail.left - dx;
+      if (this._rail.moved > 4) e.preventDefault();
+    };
+    vals.railUp = () => {
+      const el = this.railRef.current;
+      if (el) el.style.cursor = 'grab';
+      if (!this._rail) return;
+      const dragged = this._rail.moved > 6;
+      this._railDragged = dragged;
+      this._rail = null;
+      if (!dragged || !el) return;
+      const mid = el.scrollLeft + el.clientWidth / 2;
+      let best = 0, bestD = Infinity;
+      Array.from(el.children).forEach((c, i) => {
+        const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid);
+        if (d < bestD) { bestD = d; best = i; }
+      });
+      this.setState({ band: best }, () => this.centerTab(best));
+    };
+    vals.swipeStart = (e) => { const t = e.touches ? e.touches[0] : e; this._sx = t.clientX; this._sy = t.clientY; };
+    vals.swipeEnd = (e) => {
+      if (this._sx == null) return;
+      const t = e.changedTouches ? e.changedTouches[0] : e;
+      const dx = t.clientX - this._sx, dy = t.clientY - this._sy;
+      this._sx = null;
+      if (Math.abs(dx) < 44 || Math.abs(dx) < Math.abs(dy)) return;
+      const next = (this.state.band + (dx < 0 ? 1 : -1) + NAMES.length) % NAMES.length;
+      this.setState({ band: next }, () => this.centerTab(next));
+    };
     vals.atlas = NAMES.map((n, i) => ({
       name: n, num: '0' + (i + 1),
       nameColor: s.band === i ? '#FFFFFF' : '#D4CDC6',
       numColor: s.band === i ? '#D4CDC6' : '#90928C',
       underline: s.band === i ? '#FFFFFF 0 -2px 0 inset' : 'none',
-      pick: () => this.setState({ band: i })
+      pick: () => { if (this._railDragged) { this._railDragged = false; return; } this.setState({ band: i }, () => this.centerTab(i)); }
     }));
     vals.bands = NAMES.map((n, i) => ({
       img: SCENTS[n].img, alt: SCENTS[n].alt,
