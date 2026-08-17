@@ -1,21 +1,1183 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Drift — scent-first concept</title>
-    
-    <meta name="description" content="Transform Drift&#39;s existing visual assets into a premium user experience by strategically categorizing and enhancing imagery for marketing and product presentation.">
-    <meta name="robots" content="noindex, nofollow">
-    <meta property="og:title" content="Drift — scent-first concept">
-    <meta property="og:description" content="Transform Drift&#39;s existing visual assets into a premium user experience by strategically categorizing and enhancing imagery for marketing and product presentation.">
-    <script type="module" crossorigin src="./assets/index-CcZ5IzMp.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CgINt6Hr.css">
-  </head>
-  <body>
-    
-    <div id="root"></div>
-    
-  </body>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drift — scent-first concept</title>
+<meta name="description" content="A concept redesign of the Drift mobile experience — homepage, quiz, result and cart. Not affiliated with Drift or Scentbird.">
+<meta name="robots" content="noindex, nofollow">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  @font-face { font-family:'Meta Serif Pro'; src:url('assets/fonts/MetaSerifPro-Light.ttf') format('truetype'); font-weight:300; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Meta Serif Pro'; src:url('assets/fonts/MetaSerifPro-LightItalic.ttf') format('truetype'); font-weight:300; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Meta Serif Pro'; src:url('assets/fonts/MetaSerifPro-Book.ttf') format('truetype'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Meta Serif Pro'; src:url('assets/fonts/MetaSerifPro-BookItalic.ttf') format('truetype'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Brandon Grotesque'; src:url('assets/fonts/BrandonGrotesque-Regular.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Brandon Grotesque'; src:url('assets/fonts/BrandonGrotesque-Medium.otf') format('opentype'); font-weight:500; font-style:normal; font-display:swap; }
+  html, body { margin:0; background:#FBFAF8; -webkit-font-smoothing:antialiased; }
+  a { color:#A34A24; text-decoration:none; }
+  a:hover { color:#363530; text-decoration:underline; }
+  button { font:inherit; color:inherit; background:none; border:none; margin:0; padding:0; text-align:left; cursor:pointer; }
+  button:focus-visible { outline:2px solid #A34A24; outline-offset:2px; }
+  .scroll { overflow-y:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+  .scroll::-webkit-scrollbar { display:none; }
+  .rail { scrollbar-width:none; -ms-overflow-style:none; scroll-snap-type:x mandatory; scroll-padding-left:clamp(24px,5vw,80px); }
+  .rail::-webkit-scrollbar { display:none; }
+  @media (hover:hover) and (pointer:fine) {
+    .lnk:hover { color:#A34A24 !important; }
+    .opt:hover { border-color:#A34A24 !important; }
+    .cell:hover { background:rgba(255,255,255,0.06) !important; }
+    .under:hover { box-shadow:#A34A24 0 1px 0 !important; }
+  }
+  .lnk, .opt, .cell, .under { transition:color 180ms cubic-bezier(0.22,1,0.36,1), border-color 180ms cubic-bezier(0.22,1,0.36,1), background 180ms ease, box-shadow 200ms ease; }
+  .cta { transition:background 200ms ease, transform 140ms ease; }
+  .cta:active { transform:scale(0.995); }
+</style>
+</helmet>
+
+<div style="font-family:'Brandon Grotesque',sans-serif; color:#363530; background:#FBFAF8; position:relative; width:100%; min-height:100vh; overflow-x:clip;">
+
+  <div ref="{{ pageRef }}" style="position:relative; width:100%; background:#363530;">
+
+    <div style="min-height:34px; background:#363530; display:flex; align-items:center; justify-content:center; padding:8px 24px;">
+      <div class="lnk" style="font-size:12px; font-weight:500; color:#FFFFFF; cursor:pointer;">Explore the Ocean Wave limited drop →</div>
+    </div>
+
+    <div ref="{{ headerRef }}" style="position:sticky; top:0; z-index:4; height:64px; background:transparent; border-bottom:1px solid transparent; color:#EDEAE5; transition:background 260ms ease, border-color 260ms ease, color 260ms ease; display:flex; align-items:center; justify-content:space-between; padding:0 clamp(8px,3vw,48px); transition:background 260ms ease, border-color 260ms ease;">
+      <button type="button" aria-label="Menu" class="lnk" style="width:48px; height:48px; display:flex; align-items:center; justify-content:center; color:inherit;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 8H20M4 16H20" stroke-linecap="round"></path></svg>
+      </button>
+      <div ref="{{ logoRef }}" role="img" aria-label="drift" style="width:clamp(56px,5vw,80px); height:clamp(22px,2vw,30px); background-image:url(assets/logo-light.png); background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
+      <div style="display:flex;">
+        <button type="button" aria-label="Search" class="lnk" style="width:48px; height:48px; display:flex; align-items:center; justify-content:center; color:inherit;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 20L15.5 15.5M17 10C17 13.866 14.0899 16.866 10.2239 16.866C6.35786 16.866 3.44775 13.866 3.44775 10C3.44775 6.13401 6.35786 3.13401 10.2239 3.13401C14.0899 3.13401 17 6.13401 17 10Z" stroke-linecap="round"></path></svg>
+        </button>
+        <button type="button" onClick="{{ openCart }}" aria-label="{{ cartAria }}" class="lnk" style="position:relative; width:48px; height:48px; display:flex; align-items:center; justify-content:center; color:inherit;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6H20L18.5 16H5.5L4 6Z" stroke-linejoin="round"></path><path d="M8.5 19.5C8.5 20.3284 7.82843 21 7 21C6.17157 21 5.5 20.3284 5.5 19.5C5.5 18.6716 6.17157 18 7 18C7.82843 18 8.5 18.6716 8.5 19.5Z"></path><path d="M18.5 19.5C18.5 20.3284 17.8284 21 17 21C16.1716 21 15.5 20.3284 15.5 19.5C15.5 18.6716 16.1716 18 17 18C17.8284 18 18.5 18.6716 18.5 19.5Z"></path></svg>
+          <sc-if value="{{ showCount }}" hint-placeholder-val="{{ false }}">
+            <span style="position:absolute; top:8px; right:6px; min-width:17px; height:17px; border-radius:999px; background:#A34A24; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:500; padding:0 4px;">{{ cartCount }}</span>
+          </sc-if>
+        </button>
+      </div>
+    </div>
+
+    <div style="position:relative; margin-top:-64px; min-height:calc(100vh - 34px); overflow:hidden; background:#363530;">
+      <div ref="{{ heroRef }}" role="img" aria-label="A hand settling a Drift sachet into a car sun visor" style="position:absolute; left:0; right:0; top:-8%; height:116%; background-image:url(assets/world-visor.webp); background-size:cover; background-position:56% 0%; will-change:transform;"></div>
+      <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(54,53,48,0.82) 0%, rgba(54,53,48,0.40) 24%, rgba(54,53,48,0.48) 52%, rgba(54,53,48,0.86) 82%, rgba(54,53,48,0.94) 100%);"></div>
+
+      <div style="position:relative; width:100%; max-width:1440px; margin:0 auto; padding:calc(64px + clamp(64px,12vh,180px)) clamp(24px,5vw,80px) clamp(40px,6vh,72px) clamp(24px,5vw,80px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(40px,8vh,96px); min-height:calc(100vh - 34px);">
+        <div style="display:flex; flex-direction:column;">
+          <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.2em; color:#D4CDC6;">CAR &amp; HOME FRAGRANCE</div>
+          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(46px,6vw,100px); font-weight:300; line-height:1.05; letter-spacing:-0.02em; color:#FFFFFF; padding-top:clamp(14px,1.6vw,28px); max-width:16ch;">Six scents.<br />Made to last.<br /><em style="font-weight:300;">Now find the one that's yours.</em></div>
+          <div style="font-size:clamp(17px,1.3vw,21px); font-weight:400; line-height:1.42; color:#EDEAE5; padding-top:clamp(20px,2vw,32px); max-width:34ch;">One scent you can recognize before you smell it.</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; max-width:660px;">
+          <sc-if value="{{ q1Unanswered }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex; flex-direction:column;">
+              <div style="font-size:clamp(17px,1.3vw,20px); font-weight:500; color:#FFFFFF;">Where are we scenting?</div>
+              <div style="display:flex; border:1px solid rgba(255,255,255,0.22); margin-top:16px; background:rgba(54,53,48,0.30); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);">
+                <button type="button" class="cell" onClick="{{ pickCar }}" style="flex:1; height:56px; display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.22); font-size:16px; font-weight:500; color:rgba(237,234,229,0.78);">My car</button>
+                <button type="button" class="cell" onClick="{{ pickHome }}" style="flex:1; height:56px; display:flex; align-items:center; justify-content:center; border-right:1px solid rgba(255,255,255,0.22); font-size:16px; font-weight:500; color:rgba(237,234,229,0.78);">My home</button>
+                <button type="button" class="cell" onClick="{{ pickBoth }}" style="flex:1; height:56px; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:500; color:rgba(237,234,229,0.78);">Both</button>
+              </div>
+              <div style="height:48px; display:flex; align-items:center; justify-content:space-between; gap:16px; padding-top:12px;">
+                <div style="font-size:14px; font-weight:400; color:#D4CDC6;">Question 1 of 6 · about 45 seconds</div>
+                <button type="button" onClick="{{ toAtlas }}" class="under" style="font-size:15px; font-weight:500; color:#FFFFFF; white-space:nowrap; padding-bottom:2px;">Browse all scents →</button>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ q1Answered }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; flex-direction:column;">
+              <div style="border-top:1px solid rgba(255,255,255,0.22); border-bottom:1px solid rgba(255,255,255,0.22); padding:16px 0; display:flex; align-items:flex-end; justify-content:space-between; gap:16px;">
+                <div style="display:flex; flex-direction:column; gap:4px;">
+                  <div style="font-size:12px; font-weight:500; letter-spacing:0.16em; color:#D4CDC6;">YOUR STARTING POINT</div>
+                  <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(26px,2.4vw,36px); font-weight:300; line-height:1; color:#FFFFFF;">{{ q1Label }}</div>
+                </div>
+                <button type="button" onClick="{{ changeQ1 }}" class="under" style="height:48px; display:flex; align-items:flex-end; padding-bottom:6px; font-size:14px; font-weight:500; color:#FFFFFF;">Change</button>
+              </div>
+              <button type="button" onClick="{{ openQuiz }}" class="cta" style="height:56px; margin-top:16px; border-radius:999px; background:#A34A24; color:#FFFFFF; display:flex; align-items:center; justify-content:space-between; padding:0 24px; font-size:15px; font-weight:500;" style-hover="background:#8A3D1D;">
+                <span>{{ continueLabel }}</span>
+                <span style="letter-spacing:0.08em;">{{ nextCounter }} →</span>
+              </button>
+              <div style="height:48px; display:flex; align-items:center; font-size:14px; font-weight:400; color:#D4CDC6;">{{ remainingCopy }}</div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+
+    <div ref="{{ atlasRef }}" style="background:#363530;">
+      <div style="width:100%; max-width:1440px; margin:0 auto; padding:clamp(56px,7vw,110px) clamp(24px,5vw,80px) 0 clamp(24px,5vw,80px); box-sizing:border-box;">
+        <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.2em; color:#90928C;">01 / THE MAINSTAYS</div>
+        <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(33px,3.4vw,60px); font-weight:300; line-height:1.06; letter-spacing:-0.015em; color:#FFFFFF; padding-top:16px; max-width:22ch;">Six ways to remember a place.</div>
+      </div>
+
+      <div class="rail" style="width:100%; max-width:1440px; margin:0 auto; box-sizing:border-box; display:flex; gap:clamp(26px,3vw,52px); overflow-x:auto; padding:clamp(20px,3vw,44px) clamp(24px,5vw,80px) 0 clamp(24px,5vw,80px); border-bottom:1px solid rgba(255,255,255,0.2);">
+        <sc-for list="{{ atlas }}" as="a" hint-placeholder-count="0">
+          <button type="button" onClick="{{ a.pick }}" style="flex:none; height:48px; display:flex; align-items:center; gap:9px; box-shadow:{{ a.underline }};">
+            <span style="font-size:12px; font-weight:400; color:{{ a.numColor }};">{{ a.num }}</span>
+            <span class="under" style="font-size:clamp(17px,1.3vw,20px); font-weight:500; white-space:nowrap; padding-bottom:2px; color:{{ a.nameColor }};">{{ a.name }}</span>
+          </button>
+        </sc-for>
+      </div>
+
+      <div style="width:100%; max-width:1440px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:stretch;">
+        <div style="position:relative; flex:1 1 460px; min-height:clamp(280px,40vw,620px); overflow:hidden; background:#363530;">
+          <div ref="{{ bandRef }}" style="position:absolute; inset:-14%;">
+            <sc-for list="{{ bands }}" as="b" hint-placeholder-count="0">
+              <div role="img" aria-label="{{ b.alt }}" style="position:absolute; inset:0; background-image:url({{ b.img }}); background-size:cover; background-position:center; opacity:{{ b.opacity }}; transform:{{ b.scale }}; transition:opacity 520ms cubic-bezier(0.22,1,0.36,1), transform 900ms cubic-bezier(0.22,1,0.36,1);"></div>
+            </sc-for>
+          </div>
+          <div style="position:absolute; left:0; right:0; bottom:0; height:46%; background:linear-gradient(180deg, rgba(54,53,48,0) 0%, rgba(54,53,48,0.66) 100%);"></div>
+          <div style="position:absolute; left:0; right:0; bottom:0; padding:0 clamp(24px,4vw,56px) 6px clamp(24px,4vw,56px); pointer-events:none;">
+            <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(54px,6.4vw,124px); font-weight:300; line-height:0.78; color:#EDEAE5; text-transform:uppercase;">{{ bandName }}</div>
+          </div>
+        </div>
+        <div style="flex:1 1 420px; background:#EDEAE5; padding:clamp(40px,4vw,72px) clamp(24px,4vw,64px); box-sizing:border-box; display:flex; flex-direction:column; justify-content:center;">
+          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(23px,2vw,36px); font-weight:400; line-height:1.3; color:#363530; max-width:26ch;">{{ bandLine }}</div>
+          <div style="font-size:clamp(13px,1.05vw,15px); font-weight:500; letter-spacing:0.12em; color:#A34A24; padding-top:clamp(26px,2.4vw,40px);">{{ bandNotes }}</div>
+          <div style="font-size:clamp(15px,1.15vw,18px); font-weight:400; color:#363530; padding-top:8px;">{{ bandIntensity }}</div>
+          <button type="button" onClick="{{ openQuiz }}" class="lnk" style="height:48px; margin-top:clamp(24px,2vw,36px); display:flex; align-items:center; font-size:clamp(16px,1.2vw,19px); font-weight:500; color:#A34A24;">Find my scent →</button>
+        </div>
+      </div>
+    </div>
+
+<div style="background:#FBFAF8;">
+    <div style="width:100%; max-width:1440px; margin:0 auto; padding:clamp(64px,7vw,120px) clamp(24px,5vw,80px) 0 clamp(24px,5vw,80px); box-sizing:border-box; display:flex; flex-direction:column;">
+      <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.2em; color:#A34A24;">THE RITUAL / 01—04</div>
+      <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(33px,3.4vw,58px); font-weight:300; line-height:1.1; letter-spacing:-0.015em; color:#363530; padding-top:18px; max-width:24ch;">Choose it. Live with it. <em style="font-weight:300;">Keep it—or change it.</em></div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(clamp(170px,20vw,320px),1fr)); border-top:1px solid #EDEAE5; border-left:1px solid #EDEAE5; margin-top:clamp(36px,4vw,64px);">
+        <div style="border-right:1px solid #EDEAE5; border-bottom:1px solid #EDEAE5; padding:clamp(26px,2.4vw,40px) clamp(18px,2vw,32px) clamp(34px,3vw,52px) clamp(18px,2vw,32px); display:flex; flex-direction:column; gap:12px;">
+          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(34px,3vw,52px); font-weight:300; line-height:1; color:#A34A24;">01</div>
+          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(21px,1.7vw,28px); font-weight:400; line-height:1.15; color:#363530;">Choose it.</div>
+          <div style="font-size:clamp(14px,1.1vw,17px); font-weight:400; line-height:1.45; color:#5B5A54;">Six signatures—or the Scent of the Month.</div>
+        </div>
+        <div style="border-right:1px solid #EDEAE5; border-bottom:1px solid #EDEAE5; padding:clamp(26px,2.4vw,40px) clamp(18px,2vw,32px) clamp(34px,3vw,52px) clamp(18px,2vw,32px); display:flex; flex-direction:column; gap:12px;">
+          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(34px,3vw,52px); font-weight:300; line-height:1; color:#363530;">02</div>
+          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(21px,1.7vw,28px); font-weight:400; line-height:1.15; color:#363530;">Set each space.</div>
+          <div style="font-size:clamp(14px,1.1vw,17px); font-weight:400; line-height:1.45; color:#5B5A54;">Choose the right format for car and home.</div>
+        </div>
+        <div style="border-right:1px solid #EDEAE5; border-bottom:1px solid #EDEAE5; padding:clamp(26px,2.4vw,40px) clamp(18px,2vw,32px) clamp(34px,3vw,52px) clamp(18px,2vw,32px); display:flex; flex-direction:column; gap:12px;">
+          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(34px,3vw,52px); font-weight:300; line-height:1; color:#363530;">03</div>
+          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(21px,1.7vw,28px); font-weight:400; line-height:1.15; color:#363530;">Let it live.</div>
+          <div style="font-size:clamp(14px,1.1vw,17px); font-weight:400; line-height:1.45; color:#5B5A54;">Let each fragrance settle into its space.</div>
+        </div>
+        <div style="border-right:1px solid #EDEAE5; border-bottom:1px solid #EDEAE5; padding:clamp(26px,2.4vw,40px) clamp(18px,2vw,32px) clamp(34px,3vw,52px) clamp(18px,2vw,32px); display:flex; flex-direction:column; gap:12px;">
+          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(34px,3vw,52px); font-weight:300; line-height:1; color:#363530;">04</div>
+          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(21px,1.7vw,28px); font-weight:400; line-height:1.15; color:#363530;">Keep or change.</div>
+          <div style="font-size:clamp(14px,1.1vw,17px); font-weight:400; line-height:1.45; color:#5B5A54;">Repeat your scent—or choose another next time.</div>
+        </div>
+      </div>
+
+      <button type="button" onClick="{{ openQuiz }}" style="height:56px; max-width:480px; border-radius:999px; background:#A34A24; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:500; letter-spacing:0.06em; text-decoration:none; margin-top:clamp(36px,4vw,56px);" style-hover="background:#8A3D1D; color:#FFFFFF;">FIND MY SCENT · ABOUT 45S</button>
+    </div>
+  </div>
+
+  <div style="background:#FBFAF8;">
+    <div style="width:100%; max-width:1440px; margin:0 auto; padding:clamp(72px,8vw,130px) clamp(24px,5vw,80px) 0 clamp(24px,5vw,80px); box-sizing:border-box; display:flex; flex-direction:column;">
+      <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.2em; color:#A34A24;">THE MATERIAL EDIT</div>
+      <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(33px,3.4vw,58px); font-weight:300; line-height:1.1; letter-spacing:-0.015em; color:#363530; padding-top:18px;">Choose your <em style="font-weight:300;">expression.</em></div>
+      <div style="font-size:clamp(16px,1.2vw,19px); font-weight:400; line-height:1.45; color:#363530; padding-top:18px;">One scent system. Three material expressions.</div>
+      <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.16em; color:#A34A24; padding-top:20px;">01—03 / SWIPE TO EXPLORE</div>
+    </div>
+
+    <div class="rail" style="width:100%; max-width:1440px; margin:0 auto; box-sizing:border-box; display:flex; gap:clamp(16px,2vw,32px); overflow-x:auto; padding:clamp(28px,3vw,48px) clamp(24px,5vw,80px) 0 clamp(24px,5vw,80px);">
+      <div style="flex:1 1 clamp(280px,28vw,420px); min-width:clamp(280px,28vw,420px); scroll-snap-align:start; display:flex; flex-direction:column;">
+        <div style="position:relative; aspect-ratio:1/1.08; overflow:hidden;">
+          <img src="assets/world-forest.webp" alt="A hand clipping the wood freshener to a visor, pines beyond the windshield" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:52% 42%; display:block; transition:transform 320ms cubic-bezier(0.22,1,0.36,1);" style-hover="transform:scale(1.03);" />
+          <div style="position:absolute; left:0; top:0; background:rgba(251,250,248,0.9); padding:7px 12px; font-size:11px; font-weight:500; letter-spacing:0.14em; color:#5B5A54;">BESTSELLER</div>
+          <div style="position:absolute; right:0; top:0; background:rgba(251,250,248,0.9); padding:7px 12px; font-size:11px; font-weight:400; letter-spacing:0.1em; color:#5B5A54;">01 / 03</div>
+        </div>
+        <div style="padding-top:22px; font-size:clamp(12px,1vw,13px); font-weight:500; letter-spacing:0.16em; color:#5B5A54;">SUSTAINABLE ALDER WOOD</div>
+        <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(29px,2.4vw,40px); font-weight:400; line-height:1.05; color:#363530; padding-top:12px;">Wood Car Freshener</div>
+        <div style="font-size:clamp(15px,1.15vw,18px); font-weight:400; line-height:1.45; color:#5B5A54; padding-top:14px;">A warm, natural expression made from sustainably sourced alder wood.</div>
+        <div style="flex:1;"></div>
+        <div style="height:1px; background:#D4CDC6; margin-top:22px;"></div>
+        <div style="height:48px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
+          <div style="font-size:clamp(16px,1.2vw,19px); font-weight:500; color:#363530;">From $8.45</div>
+          <div style="font-size:clamp(15px,1.15vw,18px); font-weight:500; color:#A34A24; cursor:pointer; transition:color 200ms ease;" style-hover="color:#363530;">Explore wood →</div>
+        </div>
+      </div>
+
+      <div style="flex:1 1 clamp(280px,28vw,420px); min-width:clamp(280px,28vw,420px); scroll-snap-align:start; display:flex; flex-direction:column;">
+        <div style="position:relative; aspect-ratio:1/1.08; overflow:hidden;">
+          <img src="assets/photo-visor.webp" alt="A hand pressing the stone freshener into the visor pocket" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:44% 36%; display:block; transition:transform 320ms cubic-bezier(0.22,1,0.36,1);" style-hover="transform:scale(1.03);" />
+          <div style="position:absolute; right:0; top:0; background:rgba(251,250,248,0.9); padding:7px 12px; font-size:11px; font-weight:400; letter-spacing:0.1em; color:#5B5A54;">02 / 03</div>
+        </div>
+        <div style="padding-top:22px; font-size:clamp(12px,1vw,13px); font-weight:500; letter-spacing:0.16em; color:#5B5A54;">ORGANIC POROUS STONE</div>
+        <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(29px,2.4vw,40px); font-weight:400; line-height:1.05; color:#363530; padding-top:12px;">Stone Diffuser</div>
+        <div style="font-size:clamp(15px,1.15vw,18px); font-weight:400; line-height:1.45; color:#5B5A54; padding-top:14px;">An understated expression that holds and releases scent slowly.</div>
+        <div style="flex:1;"></div>
+        <div style="height:1px; background:#D4CDC6; margin-top:22px;"></div>
+        <div style="height:48px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
+          <div style="font-size:clamp(16px,1.2vw,19px); font-weight:500; color:#363530;">From $10.45</div>
+          <div style="font-size:clamp(15px,1.15vw,18px); font-weight:500; color:#A34A24; cursor:pointer; transition:color 200ms ease;" style-hover="color:#363530;">Explore stone →</div>
+        </div>
+      </div>
+
+      <div style="flex:1 1 clamp(280px,28vw,420px); min-width:clamp(280px,28vw,420px); scroll-snap-align:start; display:flex; flex-direction:column;">
+        <div style="position:relative; aspect-ratio:1/1.08; overflow:hidden;">
+          <img src="assets/object-vent.webp" alt="The metal vent clip diffuser installed on a dashboard vent" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:48% 56%; display:block; transition:transform 320ms cubic-bezier(0.22,1,0.36,1);" style-hover="transform:scale(1.03);" />
+          <div style="position:absolute; right:0; top:0; background:rgba(251,250,248,0.9); padding:7px 12px; font-size:11px; font-weight:400; letter-spacing:0.1em; color:#5B5A54;">03 / 03</div>
+        </div>
+        <div style="padding-top:22px; font-size:clamp(12px,1vw,13px); font-weight:500; letter-spacing:0.16em; color:#5B5A54;">BRUSHED METAL</div>
+        <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(29px,2.4vw,40px); font-weight:400; line-height:1.05; color:#363530; padding-top:12px;">Metal Vent Clip</div>
+        <div style="font-size:clamp(15px,1.15vw,18px); font-weight:400; line-height:1.45; color:#5B5A54; padding-top:14px;">A precise expression that carries scent on moving air.</div>
+        <div style="flex:1;"></div>
+        <div style="height:1px; background:#D4CDC6; margin-top:22px;"></div>
+        <div style="height:48px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
+          <div style="font-size:clamp(16px,1.2vw,19px); font-weight:500; color:#363530;">From $12.45</div>
+          <div style="font-size:clamp(15px,1.15vw,18px); font-weight:500; color:#A34A24; cursor:pointer; transition:color 200ms ease;" style-hover="color:#363530;">Explore metal →</div>
+        </div>
+      </div>
+    </div>
+    <div style="height:clamp(72px,8vw,130px);"></div>
+  </div>
+
+  <div style="background:#363530;">
+    <div style="width:100%; max-width:1440px; margin:0 auto; padding:clamp(64px,7vw,120px) clamp(24px,5vw,80px) clamp(48px,5vw,80px) clamp(24px,5vw,80px); box-sizing:border-box; display:flex; flex-wrap:wrap; gap:clamp(24px,4vw,64px); align-items:flex-end; justify-content:space-between;">
+      <div style="flex:1 1 380px; display:flex; flex-direction:column;">
+        <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.2em; color:#90928C;">THE NEXT EDITION</div>
+        <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(33px,3.4vw,58px); font-weight:300; line-height:1.1; letter-spacing:-0.015em; color:#FFFFFF; padding-top:18px;">Stay close <em style="font-weight:300;">to the scent.</em></div>
+        <div style="font-size:clamp(16px,1.2vw,19px); font-weight:400; line-height:1.45; color:#D4CDC6; padding-top:16px; max-width:38ch;">Limited drops, new scents and the occasional note from Drift.</div>
+      </div>
+      <div style="flex:1 1 340px; max-width:520px; display:flex; align-items:center; justify-content:space-between; gap:16px; height:56px; border-bottom:1px solid rgba(255,255,255,0.34);">
+        <div style="font-size:clamp(17px,1.3vw,20px); font-weight:400; color:#90928C;">Email address</div>
+        <div style="font-size:14px; font-weight:500; letter-spacing:0.08em; color:#A34A24; cursor:pointer; transition:color 200ms ease;" style-hover="color:#FFFFFF;">JOIN →</div>
+      </div>
+    </div>
+
+    <div style="width:100%; max-width:1440px; margin:0 auto; padding:0 clamp(24px,5vw,80px) clamp(40px,5vw,72px) clamp(24px,5vw,80px); box-sizing:border-box; display:flex; flex-direction:column;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(clamp(140px,16vw,260px),1fr)); gap:clamp(24px,3vw,48px); padding-top:clamp(40px,4vw,64px);">
+        <div style="display:flex; flex-direction:column;">
+          <div style="font-size:clamp(12px,1vw,13px); font-weight:500; letter-spacing:0.16em; color:#90928C; padding-bottom:12px;">DISCOVER</div>
+          <div style="height:48px; display:flex; align-items:center; font-size:16px; color:#EDEAE5; cursor:pointer; transition:color 180ms ease;" style-hover="color:#FFFFFF;">Shop</div>
+          <div style="height:48px; display:flex; align-items:center; font-size:16px; color:#EDEAE5; cursor:pointer; transition:color 180ms ease;" style-hover="color:#FFFFFF;">Catalog</div>
+          <div style="height:48px; display:flex; align-items:center; font-size:16px; color:#EDEAE5; cursor:pointer; transition:color 180ms ease;" style-hover="color:#FFFFFF;">Find your scent</div>
+          <div style="height:48px; display:flex; align-items:center; font-size:16px; color:#EDEAE5; cursor:pointer; transition:color 180ms ease;" style-hover="color:#FFFFFF;">Ingredients</div>
+          <div style="height:48px; display:flex; align-items:center; font-size:16px; color:#EDEAE5; cursor:pointer; transition:color 180ms ease;" style-hover="color:#FFFFFF;">Blog</div>
+        </div>
+        <div style="display:flex; flex-direction:column;">
+          <div style="font-size:clamp(12px,1vw,13px); font-weight:500; letter-spacing:0.16em; color:#90928C; padding-bottom:12px;">DRIFT</div>
+          <div style="height:48px; display:flex; align-items:center; font-size:16px; color:#EDEAE5; cursor:pointer; transition:color 180ms ease;" style-hover="color:#FFFFFF;">About us</div>
+          <div style="height:48px; display:flex; align-items:center; font-size:16px; color:#EDEAE5; cursor:pointer; transition:color 180ms ease;" style-hover="color:#FFFFFF;">Store locator</div>
+          <div style="height:48px; display:flex; align-items:center; font-size:16px; color:#EDEAE5; cursor:pointer; transition:color 180ms ease;" style-hover="color:#FFFFFF;">Contact</div>
+          <div style="height:48px; display:flex; align-items:center; font-size:16px; color:#EDEAE5; cursor:pointer; transition:color 180ms ease;" style-hover="color:#FFFFFF;">Accessibility</div>
+        </div>
+        <div style="display:flex; flex-direction:column;">
+          <div style="font-size:clamp(12px,1vw,13px); font-weight:500; letter-spacing:0.16em; color:#90928C; padding-bottom:12px;">HELP</div>
+          <div style="height:48px; display:flex; align-items:center; font-size:16px; color:#EDEAE5; cursor:pointer; transition:color 180ms ease;" style-hover="color:#FFFFFF;">FAQs</div>
+          <div style="height:48px; display:flex; align-items:center; font-size:16px; color:#EDEAE5; cursor:pointer; transition:color 180ms ease;" style-hover="color:#FFFFFF;">Help Center</div>
+          <div style="height:48px; display:flex; align-items:center; font-size:16px; color:#EDEAE5; cursor:pointer; transition:color 180ms ease;" style-hover="color:#FFFFFF;">Shipping</div>
+          <div style="height:48px; display:flex; align-items:center; font-size:16px; color:#EDEAE5; cursor:pointer; transition:color 180ms ease;" style-hover="color:#FFFFFF;">Returns</div>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:clamp(4px,1vw,20px); padding:clamp(24px,3vw,44px) 0 clamp(22px,2vw,36px) 0;">
+        <div style="width:48px; height:48px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#EDEAE5; transition:color 200ms ease, opacity 200ms ease;" style-hover="color:#FFFFFF;">
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 16.036 4.38573 19.5165 7.78168 21.085C7.63209 19.8974 7.625 18.2588 7.94042 16.9202L9.20845 11.5303C9.20845 11.5303 8.88219 10.8767 8.88219 9.89965C8.88219 8.1691 9.88607 6.87708 11.1396 6.87708C12.2045 6.87708 12.7214 7.67566 12.7214 8.63319C12.7214 9.70275 12.0401 10.2281 11.6841 11.3323C11.3852 12.2575 12.1466 12.9984 13.0487 12.9984C14.6865 12.9984 15.9392 11.2758 15.9392 8.78426C15.9392 6.57793 14.3514 5.04414 12.1158 5.04414C9.52554 5.04414 7.95462 6.98925 7.95462 9.42672C7.95462 10.4578 8.35105 11.5583 8.81523 12.149C8.91039 12.2701 8.92131 12.3592 8.89278 12.477L8.55217 13.8828C8.51323 14.0435 8.4116 14.0818 8.2435 14.0041C6.70347 13.2872 5.71966 11.2589 5.71966 9.39088C5.71966 6.30541 7.96207 3.48624 12.3926 3.48624C16.0351 3.48624 18.7774 6.08272 18.7774 9.17068C18.7774 12.7846 16.5057 15.6548 13.3858 15.6548C12.3243 15.6548 11.3312 15.1037 10.9859 14.5204C10.9859 14.5204 10.4079 16.7199 10.2646 17.2662C9.83152 18.9169 8.71887 20.893 8.16738 22C9.36214 22.6568 10.6868 23 12 23Z"></path> </svg>
+        </div>
+        <div style="width:48px; height:48px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#EDEAE5; transition:color 200ms ease, opacity 200ms ease;" style-hover="color:#FFFFFF;">
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect> <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path> <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line> </svg>
+        </div>
+        <div style="width:48px; height:48px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#EDEAE5; transition:color 200ms ease, opacity 200ms ease;" style-hover="color:#FFFFFF;">
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path> </svg>
+        </div>
+        <div style="width:48px; height:48px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#EDEAE5; transition:color 200ms ease, opacity 200ms ease;" style-hover="color:#FFFFFF;">
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path> </svg>
+        </div>
+        <div style="width:48px; height:48px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#EDEAE5; transition:color 200ms ease, opacity 200ms ease;" style-hover="color:#FFFFFF;">
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path> <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon> </svg>
+        </div>
+      </div>
+
+      <div style="height:1px; background:rgba(255,255,255,0.18);"></div>
+      <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(33px,3.4vw,58px); font-weight:300; line-height:1.1; letter-spacing:-0.015em; color:#FFFFFF; padding-top:clamp(52px,5vw,88px); max-width:22ch;">Drift turns scent into place.</div>
+      <img src="assets/logo-light.png" alt="drift" style="width:clamp(96px,8vw,132px); height:auto; flex:none; align-self:flex-start; object-fit:contain; display:block; margin:clamp(32px,3vw,48px) 0 clamp(40px,4vw,56px) 0;" />
+
+      <div style="height:1px; background:rgba(255,255,255,0.18);"></div>
+      <div style="font-size:13px; font-weight:500; letter-spacing:0.14em; color:#EDEAE5; padding-top:34px;">US / UNITED STATES</div>
+      <div style="display:flex; flex-wrap:wrap; gap:8px 26px; padding-top:26px; font-size:14px; font-weight:400; color:#90928C;">
+        <div>© 2026 Drift</div>
+        <div style="cursor:pointer; transition:color 180ms ease;" style-hover="color:#EDEAE5;">Terms of Service</div>
+        <div style="cursor:pointer; transition:color 180ms ease;" style-hover="color:#EDEAE5;">Refund policy</div>
+        <div style="cursor:pointer; transition:color 180ms ease;" style-hover="color:#EDEAE5;">Subscription policy</div>
+        <div style="cursor:pointer; transition:color 180ms ease;" style-hover="color:#EDEAE5;">Privacy policy</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div ref="{{ quizScrimRef }}" onClick="{{ askCloseQuiz }}" style="position:fixed; inset:0; z-index:6; background:rgba(54,53,48,0.52); opacity:0; pointer-events:none; transition:opacity 480ms cubic-bezier(0.22,1,0.36,1);"></div>
+
+  <div ref="{{ sheetRef }}" role="dialog" aria-modal="true" aria-label="Scent discovery" tabindex="-1" style="position:fixed; left:0; right:0; bottom:0; z-index:7; height:{{ sheetHeight }}; max-width:640px; margin:0 auto; background:#FBFAF8; border-radius:{{ sheetRadius }}; overflow:hidden; transform:translateY(101%); pointer-events:none; transition:transform 580ms cubic-bezier(0.22,1,0.36,1), height 700ms cubic-bezier(0.22,1,0.36,1), border-radius 700ms cubic-bezier(0.22,1,0.36,1); display:flex; flex-direction:column;">
+
+    <sc-if value="{{ showChrome }}" hint-placeholder-val="{{ true }}">
+      <div style="flex:none;">
+        <div style="height:56px; display:flex; align-items:center; justify-content:space-between; padding:0 8px;">
+          <button type="button" onClick="{{ quizBack }}" aria-label="Previous question" class="lnk" style="width:48px; height:48px; display:flex; align-items:center; justify-content:center; color:#363530;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 18L9 12L15 6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </button>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <img src="assets/logo-dark.png" alt="drift" style="width:50px; height:20px; display:block; object-fit:contain;" />
+            <div aria-live="polite" style="font-size:12px; font-weight:500; letter-spacing:0.14em; color:#5B5A54;">{{ counter }}</div>
+          </div>
+          <button type="button" onClick="{{ askCloseQuiz }}" aria-label="Close" class="lnk" style="width:48px; height:48px; display:flex; align-items:center; justify-content:center; color:#363530;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 18L18 6M6 6L18 18" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </button>
+        </div>
+        <div style="height:2px; background:#EDEAE5;">
+          <div role="progressbar" style="height:2px; width:{{ progressWidth }}; background:#A34A24; transition:width 460ms cubic-bezier(0.22,1,0.36,1);"></div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ showQuestion }}" hint-placeholder-val="{{ true }}">
+      <div class="scroll" style="flex:1; display:flex; flex-direction:column; padding:24px clamp(24px,4vw,48px) 8px clamp(24px,4vw,48px);">
+        <div style="font-size:12px; font-weight:500; letter-spacing:0.16em; color:#A34A24;">{{ folio }}</div>
+        <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(30px,3.4vw,48px); font-weight:300; line-height:1.1; color:#363530; padding-top:16px;">{{ questionA }}<br /><em style="font-weight:300;">{{ questionB }}</em></div>
+        <div style="font-size:16px; font-weight:400; line-height:1.4; color:#5B5A54; padding-top:12px; max-width:52ch;">{{ helper }}</div>
+
+        <sc-if value="{{ isPhoto }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; flex-direction:column; gap:16px; padding-top:24px;">
+            <sc-for list="{{ options }}" as="o" hint-placeholder-count="0">
+              <button type="button" class="opt" onClick="{{ o.pick }}" aria-pressed="{{ o.pressed }}" style="border:1px solid {{ o.border }}; display:flex; align-items:stretch; min-height:104px; overflow:hidden;">
+                <span style="width:39%; max-width:220px; flex:none; position:relative; overflow:hidden;">
+                  <span role="img" aria-label="{{ o.alt }}" style="position:absolute; inset:0; background-image:url({{ o.img }}); background-size:cover; background-position:{{ o.pos }}; transform:{{ o.imgScale }}; transition:transform 320ms cubic-bezier(0.22,1,0.36,1);"></span>
+                </span>
+                <span style="flex:1; padding:16px; display:flex; flex-direction:column; justify-content:center; gap:8px; min-width:0;">
+                  <span style="font-size:20px; font-weight:500; line-height:1; color:{{ o.titleColor }};">{{ o.title }}</span>
+                  <span style="font-size:16px; font-weight:400; line-height:1.4; color:#5B5A54;">{{ o.desc }}</span>
+                </span>
+              </button>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isQ4 }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; padding-top:24px;">
+            <sc-for list="{{ presence }}" as="o" hint-placeholder-count="0">
+              <button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.pressed }}" style="border-top:1px solid {{ o.border }}; padding:20px 0; display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:48px;">
+                <span style="display:flex; flex-direction:column; gap:8px;">
+                  <span style="font-size:20px; font-weight:500; line-height:1; color:{{ o.titleColor }};">{{ o.title }}</span>
+                  <span style="font-size:16px; font-weight:400; line-height:1.4; color:#5B5A54;">{{ o.desc }}</span>
+                </span>
+                <span style="width:48px; height:48px; flex:none; display:flex; align-items:center; justify-content:center; color:{{ o.iconColor }};">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="0.75"></circle>
+                    <circle cx="12" cy="12" r="4" stroke-dasharray="0.1 3" style="opacity:{{ o.w1 }};"></circle>
+                    <circle cx="12" cy="12" r="7" stroke-dasharray="0.1 3.4" style="opacity:{{ o.w2 }};"></circle>
+                    <circle cx="12" cy="12" r="10" stroke-dasharray="0.1 3.8" style="opacity:{{ o.w3 }};"></circle>
+                  </svg>
+                </span>
+              </button>
+            </sc-for>
+            <div style="border-top:1px solid #EDEAE5;"></div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isQ6 }}" hint-placeholder-val="{{ false }}">
+          <div style="margin:24px clamp(-48px,-4vw,-24px) 0 clamp(-48px,-4vw,-24px); display:flex; flex-direction:column;">
+            <div style="display:flex; height:clamp(340px,42vh,460px); overflow:hidden;">
+              <sc-for list="{{ finalPair }}" as="o" hint-placeholder-count="0">
+                <button type="button" onClick="{{ o.pick }}" onMouseEnter="{{ o.enter }}" onFocus="{{ o.enter }}" aria-pressed="{{ o.pressed }}" aria-label="{{ o.a11y }}" style="flex:0 0 {{ o.w }}; position:relative; overflow:hidden; border:none; border-right:{{ o.divider }}; opacity:{{ o.panelOpacity }}; transition:flex-basis 380ms cubic-bezier(0.22,1,0.36,1), opacity 380ms ease;">
+                  <span role="img" aria-label="{{ o.alt }}" style="position:absolute; inset:0; background-image:url({{ o.img }}); background-size:cover; background-position:{{ o.pos }}; transform:{{ o.imgScale }}; transition:transform 380ms cubic-bezier(0.22,1,0.36,1);"></span>
+                  <span style="position:absolute; left:0; right:0; bottom:0; height:52%; background:linear-gradient(180deg, rgba(54,53,48,0) 0%, rgba(54,53,48,0.58) 100%);"></span>
+                  <sc-if value="{{ o.chosen }}" hint-placeholder-val="{{ false }}">
+                    <span style="position:absolute; left:0; right:0; top:0; padding:16px; font-size:12px; font-weight:500; letter-spacing:0.16em; color:#FFFFFF;">YOUR INSTINCT</span>
+                  </sc-if>
+                  <span style="position:absolute; left:0; right:0; bottom:0; padding:0 16px 24px 16px; display:flex; flex-direction:column; gap:8px;">
+                    <span style="display:flex; flex-direction:column; justify-content:flex-end; min-height:56px;">
+                      <span style="font-family:'Meta Serif Pro',serif; font-size:clamp(28px,3vw,40px); font-weight:300; line-height:1; color:#FFFFFF; text-transform:uppercase;">{{ o.t1 }}</span>
+                      <span style="font-family:'Meta Serif Pro',serif; font-size:clamp(28px,3vw,40px); font-weight:300; line-height:1; color:#FFFFFF; text-transform:uppercase;">{{ o.t2 }}</span>
+                    </span>
+                    <span style="font-size:12px; font-weight:500; letter-spacing:0.1em; line-height:1.3; min-height:32px; color:#EDEAE5;">{{ o.clue }}</span>
+                  </span>
+                  <sc-if value="{{ o.chosen }}" hint-placeholder-val="{{ false }}">
+                    <span style="position:absolute; left:0; right:0; bottom:0; height:2px; background:#A34A24;"></span>
+                  </sc-if>
+                </button>
+              </sc-for>
+            </div>
+            <div aria-live="polite" style="background:#EDEAE5; padding:24px; min-height:96px; box-sizing:border-box; display:flex; align-items:center;">
+              <span style="font-family:'Meta Serif Pro',serif; font-size:16px; font-weight:400; line-height:1.2; color:#363530;">{{ caption }}</span>
+            </div>
+          </div>
+        </sc-if>
+
+        <div style="height:24px;"></div>
+      </div>
+
+      <div style="flex:none; border-top:1px solid #D4CDC6; padding:16px clamp(24px,4vw,48px) 24px clamp(24px,4vw,48px); min-height:104px; box-sizing:border-box; display:flex; flex-direction:column; gap:8px;">
+        <div style="font-size:12px; font-weight:500; letter-spacing:0.16em; color:#A34A24;">YOUR SCENT PRINT, SO FAR</div>
+        <div aria-live="polite" style="font-family:'Meta Serif Pro',serif; font-size:20px; font-weight:300; line-height:1.25; color:#363530;">{{ printStatement }}</div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ showResult }}" hint-placeholder-val="{{ false }}">
+      <div class="scroll" style="flex:1; display:flex; flex-direction:column;">
+        <div style="position:relative; height:{{ heroHeight }}; flex:none; overflow:hidden; background:#363530; transition:height 700ms cubic-bezier(0.22,1,0.36,1);">
+          <div role="img" aria-label="{{ resultAlt }}" style="position:absolute; inset:0; background-image:url({{ resultImg }}); background-size:cover; background-position:center;"></div>
+          <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(54,53,48,0.30) 0%, rgba(54,53,48,0) 34%, rgba(54,53,48,0.78) 86%, rgba(54,53,48,0.92) 100%);"></div>
+          <div style="position:absolute; left:0; right:0; bottom:0; padding:0 clamp(24px,4vw,48px) 24px clamp(24px,4vw,48px); display:flex; flex-direction:column; gap:12px; opacity:{{ resultCopyOpacity }}; transition:opacity 620ms cubic-bezier(0.22,1,0.36,1);">
+            <div style="font-size:12px; font-weight:500; letter-spacing:0.18em; color:#D4CDC6;">YOUR CLOSEST MATCH</div>
+            <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(46px,5vw,76px); font-weight:400; line-height:0.92; color:#FFFFFF; text-transform:uppercase;">{{ resultName }}</div>
+            <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(18px,1.6vw,24px); font-weight:400; line-height:1.3; color:#EDEAE5; max-width:30ch;">{{ resultLine }}</div>
+            <div style="font-size:12px; font-weight:500; letter-spacing:0.14em; color:#D4CDC6;">{{ resultNotes }}</div>
+          </div>
+        </div>
+
+        <div style="padding:32px clamp(24px,4vw,48px) 0 clamp(24px,4vw,48px); display:flex; flex-direction:column; gap:8px;">
+          <div style="font-size:12px; font-weight:500; letter-spacing:0.16em; color:#A34A24;">YOUR SCENT PRINT</div>
+          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(24px,2.4vw,34px); font-weight:300; line-height:1.2; color:#363530;">{{ printStatement }}</div>
+        </div>
+
+        <div style="padding:32px clamp(24px,4vw,48px) 0 clamp(24px,4vw,48px); display:flex; flex-direction:column;">
+          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(26px,2.6vw,38px); font-weight:300; line-height:1.1; color:#363530;">{{ whyTitle }}</div>
+          <div style="display:flex; flex-direction:column; padding-top:16px;">
+            <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="0">
+              <div style="border-top:1px solid #EDEAE5; padding:16px 0; display:flex; flex-direction:column; gap:8px;">
+                <div style="font-size:12px; font-weight:500; letter-spacing:0.14em; color:#5B5A54;">{{ r.label }}</div>
+                <div style="font-size:16px; font-weight:400; line-height:1.45; color:#363530;">{{ r.copy }}</div>
+              </div>
+            </sc-for>
+            <div style="border-top:1px solid #EDEAE5; padding-top:16px; font-family:'Meta Serif Pro',serif; font-size:20px; font-weight:400; line-height:1.3; color:#363530;">{{ whyClosing }}</div>
+          </div>
+        </div>
+
+        <div style="padding:32px clamp(24px,4vw,48px) 0 clamp(24px,4vw,48px); display:flex; flex-direction:column;">
+          <div style="font-size:12px; font-weight:500; letter-spacing:0.16em; color:#A34A24;">YOUR KIT</div>
+          <div style="border-top:1px solid #EDEAE5; margin-top:16px; padding:16px 0; display:flex; align-items:center; justify-content:space-between; gap:16px;">
+            <div style="display:flex; flex-direction:column; gap:4px;">
+              <div style="font-size:12px; font-weight:500; letter-spacing:0.12em; color:#90928C;">FORMAT</div>
+              <div style="font-size:16px; font-weight:500;">{{ formatName }}</div>
+            </div>
+            <div style="font-size:16px; font-weight:400;">{{ formatPrice }}</div>
+          </div>
+          <div style="border-top:1px solid #D4CDC6; border-bottom:1px solid #D4CDC6; padding:16px 0; display:flex; align-items:baseline; justify-content:space-between;">
+            <div style="font-size:16px; font-weight:400;">Total</div>
+            <div style="font-family:'Meta Serif Pro',serif; font-size:26px; font-weight:400;">{{ formatPrice }}</div>
+          </div>
+          <button type="button" ref="{{ addRef }}" onClick="{{ addKit }}" class="cta" style="height:56px; margin-top:24px; border-radius:999px; background:#A34A24; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:500; letter-spacing:0.08em;" style-hover="background:#8A3D1D;">{{ addLabel }}</button>
+          <button type="button" onClick="{{ backHome }}" class="lnk" style="height:48px; margin-top:8px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:500; color:#363530;">Back to homepage</button>
+          <div style="height:56px;"></div>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ exitOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; inset:0; z-index:9; display:flex; flex-direction:column; justify-content:flex-end;">
+      <div onClick="{{ cancelExit }}" style="position:absolute; inset:0; background:rgba(54,53,48,0.42); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);"></div>
+      <div role="dialog" aria-modal="true" aria-label="Leave your scent search?" style="position:relative; max-width:640px; width:100%; margin:0 auto; background:#FBFAF8; border-radius:8px 8px 0 0; padding:32px 24px 24px 24px; display:flex; flex-direction:column; gap:16px;">
+        <div style="font-family:'Meta Serif Pro',serif; font-size:28px; font-weight:300; line-height:1.1; color:#363530;">Leave your scent search?</div>
+        <div style="font-size:16px; font-weight:400; line-height:1.45; color:#5B5A54;">Your progress can wait here until you're ready.</div>
+        <button type="button" onClick="{{ saveExit }}" class="cta" style="height:56px; border-radius:999px; background:#A34A24; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:500;" style-hover="background:#8A3D1D;">Save &amp; return home</button>
+        <button type="button" onClick="{{ startOver }}" style="height:56px; border-radius:999px; border:1px solid #363530; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:500; color:#363530;">Start over</button>
+        <button type="button" onClick="{{ cancelExit }}" class="lnk" style="height:48px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:500; color:#5B5A54;">Cancel</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <div ref="{{ cartScrimRef }}" onClick="{{ closeCart }}" style="position:fixed; inset:0; z-index:10; background:rgba(54,53,48,0.48); opacity:0; pointer-events:none; transition:opacity 200ms linear;"></div>
+
+  <div ref="{{ cartRef }}" role="dialog" aria-modal="true" aria-label="Your Drift cart" tabindex="-1" style="position:fixed; top:0; bottom:0; right:0; z-index:11; width:100%; max-width:520px; background:#FBFAF8; transform:translateX(101%); pointer-events:none; transition:transform 440ms cubic-bezier(0.22,1,0.36,1); display:flex; flex-direction:column;">
+    <div style="flex:none; border-bottom:1px solid #D4CDC6; padding:16px 24px; display:flex; align-items:flex-end; justify-content:space-between; gap:16px;">
+      <div style="display:flex; align-items:baseline; gap:12px;">
+        <h2 style="margin:0; font-family:'Meta Serif Pro',serif; font-size:30px; font-weight:300; line-height:1; color:#363530; text-transform:uppercase;">Your Drift</h2>
+        <div aria-live="polite" style="font-size:13px; font-weight:500; letter-spacing:0.12em; color:#5B5A54;">{{ countLabel }}</div>
+      </div>
+      <button type="button" onClick="{{ closeCart }}" aria-label="Close cart" class="lnk" style="width:48px; height:48px; margin:-8px -12px -8px 0; display:flex; align-items:center; justify-content:flex-end; color:#363530;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 18L18 6M6 6L18 18" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </button>
+    </div>
+
+    <sc-if value="{{ cartHasItem }}" hint-placeholder-val="{{ true }}">
+      <div class="scroll" ref="{{ cartBodyRef }}" onScroll="{{ onCartScroll }}" style="flex:1; display:flex; flex-direction:column;">
+        <div style="position:relative; flex:none; height:268px; min-height:268px; overflow:hidden; background:#EDEAE5;">
+          <div ref="{{ cartImgRef }}" role="img" aria-label="{{ formatAlt }}" style="position:absolute; inset:-14%; background-image:url({{ formatImg }}); background-size:cover; background-position:{{ formatPos }}; will-change:transform;"></div>
+        </div>
+
+        <div style="padding:24px 24px 0 24px; display:flex; flex-direction:column; gap:12px;">
+          <div style="font-size:12px; font-weight:500; letter-spacing:0.16em; color:#A34A24;">YOUR SCENT</div>
+          <div style="font-family:'Meta Serif Pro',serif; font-size:34px; font-weight:300; line-height:1; color:#363530;">{{ resultName }}</div>
+          <div style="font-family:'Meta Serif Pro',serif; font-size:17px; font-weight:400; line-height:1.35; color:#5B5A54;">{{ resultLine }}</div>
+          <div style="font-size:12px; font-weight:500; letter-spacing:0.12em; color:#5B5A54;">{{ resultNotes }}</div>
+          <div style="display:flex; flex-direction:column; gap:4px; padding-top:8px; border-top:1px solid #EDEAE5;">
+            <div style="font-size:16px; font-weight:500; padding-top:8px; color:#363530;">{{ formatName }}</div>
+            <div style="font-size:15px; font-weight:400; color:#5B5A54;">{{ configLine }}</div>
+            <div style="font-size:15px; font-weight:400; color:#5B5A54;">Visor clip included</div>
+          </div>
+          <button type="button" onClick="{{ toggleEdit }}" class="lnk" style="height:48px; align-self:flex-start; display:flex; align-items:center; font-size:15px; font-weight:500; color:#A34A24;">{{ editLabel }}</button>
+          <button type="button" onClick="{{ askRemove }}" class="lnk" style="height:48px; align-self:flex-start; margin-top:-8px; display:flex; align-items:center; font-size:14px; font-weight:400; color:#90928C;">Remove</button>
+        </div>
+
+        <sc-if value="{{ confirmRemove }}" hint-placeholder-val="{{ false }}">
+          <div style="margin:0 24px; border-top:1px solid #EDEAE5; border-bottom:1px solid #EDEAE5; padding:16px 0; display:flex; align-items:center; justify-content:space-between; gap:16px;">
+            <div style="font-size:16px; font-weight:400; color:#363530;">Remove item?</div>
+            <div style="display:flex; align-items:center; gap:24px;">
+              <button type="button" onClick="{{ doRemove }}" class="lnk" style="height:48px; display:flex; align-items:center; font-size:15px; font-weight:500; color:#A34A24;">Remove</button>
+              <button type="button" onClick="{{ cancelRemove }}" class="lnk" style="height:48px; display:flex; align-items:center; font-size:15px; font-weight:400; color:#5B5A54;">Cancel</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ editOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:16px; background:#EDEAE5; padding:24px 0; display:flex; flex-direction:column; gap:24px;">
+            <div style="padding:0 24px; font-size:12px; font-weight:500; letter-spacing:0.16em; color:#5B5A54;">SCENT</div>
+            <div class="rail" style="display:flex; gap:12px; overflow-x:auto; padding:0 24px;">
+              <sc-for list="{{ cartScents }}" as="sc" hint-placeholder-count="0">
+                <button type="button" onClick="{{ sc.pick }}" aria-pressed="{{ sc.pressed }}" style="flex:none; width:128px; scroll-snap-align:start; display:flex; flex-direction:column; border-bottom:2px solid {{ sc.rule }};">
+                  <span style="position:relative; height:100px; overflow:hidden; display:block;">
+                    <span role="img" aria-label="{{ sc.alt }}" style="position:absolute; inset:0; background-image:url({{ sc.img }}); background-size:cover; background-position:center;"></span>
+                  </span>
+                  <span style="padding:12px 0; display:flex; flex-direction:column; gap:4px;">
+                    <span style="font-family:'Meta Serif Pro',serif; font-size:20px; font-weight:400; line-height:1; color:{{ sc.titleColor }};">{{ sc.name }}</span>
+                    <span style="font-size:13px; font-weight:400; line-height:1.35; color:#5B5A54;">{{ sc.clue }}</span>
+                  </span>
+                </button>
+              </sc-for>
+            </div>
+            <div style="padding:0 24px; font-size:12px; font-weight:500; letter-spacing:0.16em; color:#5B5A54;">MATERIAL</div>
+            <div style="padding:0 24px; display:flex; flex-direction:column;">
+              <sc-for list="{{ cartFormats }}" as="fm" hint-placeholder-count="0">
+                <button type="button" onClick="{{ fm.pick }}" aria-pressed="{{ fm.pressed }}" style="border-top:1px solid #D4CDC6; padding:16px 0; display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:48px;">
+                  <span style="display:flex; align-items:center; gap:16px;">
+                    <span style="width:2px; height:34px; background:{{ fm.rule }};"></span>
+                    <span style="display:flex; flex-direction:column; gap:4px;">
+                      <span style="font-size:16px; font-weight:500; color:{{ fm.titleColor }};">{{ fm.name }}</span>
+                      <span style="font-size:14px; font-weight:400; color:#5B5A54;">{{ fm.desc }}</span>
+                    </span>
+                  </span>
+                  <span style="font-size:15px; font-weight:400; color:#363530;">{{ fm.price }}</span>
+                </button>
+              </sc-for>
+              <div style="border-top:1px solid #D4CDC6;"></div>
+            </div>
+          </div>
+        </sc-if>
+
+        <div style="padding:24px 24px 0 24px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
+          <div style="font-size:15px; font-weight:500; color:#363530;">Quantity</div>
+          <div style="display:flex; align-items:center;">
+            <button type="button" onClick="{{ dec }}" aria-label="Decrease quantity" style="width:48px; height:48px; border:1px solid {{ decBorder }}; display:flex; align-items:center; justify-content:center; color:{{ decColor }};">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 12H18" stroke-linecap="round"></path></svg>
+            </button>
+            <div aria-live="polite" style="width:48px; height:48px; border-top:1px solid #D4CDC6; border-bottom:1px solid #D4CDC6; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:500;">{{ qty }}</div>
+            <button type="button" onClick="{{ inc }}" aria-label="Increase quantity" style="width:48px; height:48px; border:1px solid #D4CDC6; display:flex; align-items:center; justify-content:center; color:#363530;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 6V18M6 12H18" stroke-linecap="round"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <div style="padding:32px 24px 0 24px; display:flex; flex-direction:column;">
+          <div style="font-size:12px; font-weight:500; letter-spacing:0.16em; color:#5B5A54;">HOW IT ARRIVES</div>
+          <div style="display:flex; flex-direction:column; padding-top:8px;">
+            <button type="button" onClick="{{ pickOnce }}" aria-pressed="{{ oncePressed }}" style="border-top:1px solid #EDEAE5; padding:16px 0; display:flex; align-items:flex-start; gap:16px; min-height:48px;">
+              <span style="width:18px; height:18px; flex:none; margin-top:2px; border-radius:999px; border:1.5px solid {{ onceRing }}; display:flex; align-items:center; justify-content:center;"><span style="width:8px; height:8px; border-radius:999px; background:{{ onceDot }};"></span></span>
+              <span style="display:flex; flex-direction:column; gap:4px;">
+                <span style="font-size:16px; font-weight:500; color:{{ onceTitle }};">One-time</span>
+                <span style="font-size:15px; font-weight:400; line-height:1.4; color:#5B5A54;">One delivery. No recurring charge.</span>
+              </span>
+            </button>
+            <button type="button" onClick="{{ pickSub }}" aria-pressed="{{ subPressed }}" style="border-top:1px solid #EDEAE5; border-bottom:1px solid #EDEAE5; padding:16px 0; display:flex; align-items:flex-start; gap:16px; min-height:48px;">
+              <span style="width:18px; height:18px; flex:none; margin-top:2px; border-radius:999px; border:1.5px solid {{ subRing }}; display:flex; align-items:center; justify-content:center;"><span style="width:8px; height:8px; border-radius:999px; background:{{ subDot }};"></span></span>
+              <span style="display:flex; flex-direction:column; gap:4px;">
+                <span style="font-size:16px; font-weight:500; color:{{ subTitle }};">Subscribe</span>
+                <span style="font-size:15px; font-weight:400; line-height:1.4; color:#5B5A54;">Delivered every month. Change or cancel anytime.</span>
+              </span>
+            </button>
+          </div>
+          <sc-if value="{{ subOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:16px 0; border-bottom:1px solid #EDEAE5; display:flex; align-items:baseline; justify-content:space-between; gap:16px;">
+              <div style="font-size:15px; font-weight:500; color:#363530;">Delivery frequency</div>
+              <div style="font-size:15px; font-weight:400; color:#363530;">Every month</div>
+            </div>
+          </sc-if>
+        </div>
+
+        <sc-if value="{{ showAnother }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:32px 24px 0 24px; display:flex; flex-direction:column;">
+            <div style="border-top:1px solid #EDEAE5; padding-top:16px; display:flex; flex-direction:column; gap:8px;">
+              <div style="font-size:12px; font-weight:500; letter-spacing:0.16em; color:#5B5A54;">ANOTHER SPACE</div>
+              <div style="font-family:'Meta Serif Pro',serif; font-size:22px; font-weight:400; line-height:1.2; color:#363530;">{{ anotherTitle }}</div>
+              <div style="font-size:15px; font-weight:400; line-height:1.45; color:#5B5A54;">{{ anotherCopy }}</div>
+              <sc-if value="{{ anotherAdded }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; align-items:center; gap:16px;">
+                  <div style="font-size:15px; font-weight:500; color:#363530;">{{ anotherFeedback }}</div>
+                  <button type="button" onClick="{{ undoAnother }}" class="lnk" style="height:48px; display:flex; align-items:center; font-size:15px; font-weight:400; color:#5B5A54;">Undo</button>
+                </div>
+              </sc-if>
+              <sc-if value="{{ anotherIdle }}" hint-placeholder-val="{{ true }}">
+                <button type="button" onClick="{{ addAnother }}" class="lnk" style="height:48px; align-self:flex-start; display:flex; align-items:center; font-size:15px; font-weight:500; color:#A34A24;">{{ anotherAction }}</button>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+
+        <div style="height:56px;"></div>
+      </div>
+
+      <div style="flex:none; border-top:1px solid #363530; padding:16px 24px 24px 24px; display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; align-items:baseline; justify-content:space-between;">
+          <div style="font-size:12px; font-weight:500; letter-spacing:0.14em; color:#5B5A54;">{{ subLabel }}</div>
+          <div style="font-size:16px; font-weight:500; color:#363530;">{{ subtotal }}</div>
+        </div>
+        <div style="font-size:14px; font-weight:400; color:#5B5A54;">{{ shipLine }}</div>
+        <sc-if value="{{ isOnce }}" hint-placeholder-val="{{ true }}">
+          <div style="border-top:1px solid #EDEAE5; margin-top:8px; padding-top:12px; display:flex; align-items:baseline; justify-content:space-between;">
+            <div style="font-size:12px; font-weight:500; letter-spacing:0.14em; color:#363530;">TOTAL</div>
+            <div style="font-family:'Meta Serif Pro',serif; font-size:26px; font-weight:400; color:#363530;">{{ cartTotal }}</div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ isSub }}" hint-placeholder-val="{{ false }}">
+          <div style="border-top:1px solid #EDEAE5; margin-top:8px; padding-top:12px; font-size:14px; font-weight:400; color:#5B5A54;">Renews monthly until changed or cancelled.</div>
+        </sc-if>
+        <button type="button" onClick="{{ checkout }}" class="cta" style="height:56px; margin-top:8px; border-radius:999px; background:#A34A24; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:500; letter-spacing:0.08em;" style-hover="background:#8A3D1D;"><span aria-live="polite">{{ checkoutLabel }}</span></button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
+      <div class="scroll" style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:0 24px; gap:16px;">
+        <sc-if value="{{ showUndo }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; align-items:center; gap:16px; border-bottom:1px solid #EDEAE5; padding-bottom:16px;">
+            <div style="font-size:15px; font-weight:400; color:#5B5A54;">{{ undoCopy }}</div>
+            <button type="button" onClick="{{ undoRemove }}" class="lnk" style="height:48px; display:flex; align-items:center; font-size:15px; font-weight:500; color:#A34A24;">Undo</button>
+          </div>
+        </sc-if>
+        <div style="font-family:'Meta Serif Pro',serif; font-size:34px; font-weight:300; line-height:1.1; color:#363530;">Nothing here yet.</div>
+        <div style="font-size:16px; font-weight:400; line-height:1.45; color:#5B5A54;">Your Scent Print is still waiting.</div>
+        <button type="button" onClick="{{ returnToPrint }}" class="cta" style="height:56px; margin-top:16px; border-radius:999px; background:#A34A24; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:500; letter-spacing:0.08em;" style-hover="background:#8A3D1D;">RETURN TO MY SCENT PRINT →</button>
+        <button type="button" onClick="{{ closeCart }}" class="lnk" style="height:48px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:500; color:#363530;">Browse all scents</button>
+      </div>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ atCheckout }}" hint-placeholder-val="{{ false }}">
+    <div class="scroll" style="position:fixed; inset:0; z-index:12; background:#FFFFFF; display:flex; flex-direction:column; align-items:center;">
+      <div style="width:100%; max-width:640px; display:flex; flex-direction:column;">
+        <div style="border-bottom:1px solid #EDEAE5; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
+          <button type="button" onClick="{{ backToCart }}" class="lnk" style="height:48px; display:flex; align-items:center; gap:8px; font-size:14px; font-weight:500; color:#363530;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 18L9 12L15 6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span>Cart</span>
+          </button>
+          <div style="font-size:12px; font-weight:500; letter-spacing:0.14em; color:#5B5A54;">SECURE CHECKOUT</div>
+        </div>
+
+        <div style="background:#EDEAE5; padding:24px; display:flex; align-items:center; gap:16px;">
+          <div role="img" aria-label="{{ formatAlt }}" style="width:64px; height:64px; flex:none; background-image:url({{ formatImg }}); background-size:cover; background-position:{{ formatPos }};"></div>
+          <div style="display:flex; flex-direction:column; gap:4px; min-width:0;">
+            <div style="font-family:'Meta Serif Pro',serif; font-size:24px; font-weight:400; line-height:1; color:#363530;">{{ resultName }}</div>
+            <div style="font-size:14px; font-weight:400; color:#5B5A54;">{{ coFormatLine }}</div>
+            <div style="font-size:14px; font-weight:500; color:#363530;">{{ coModel }}</div>
+          </div>
+          <div style="flex:1;"></div>
+          <div style="font-size:16px; font-weight:500; color:#363530;">{{ cartTotal }}</div>
+        </div>
+
+        <div style="padding:24px; display:flex; flex-direction:column; gap:12px;">
+          <div style="font-size:12px; font-weight:500; letter-spacing:0.16em; color:#5B5A54;">EXPRESS CHECKOUT</div>
+          <div style="display:flex; gap:8px;">
+            <div style="flex:1; height:48px; border-radius:4px; background:#5A31F4; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:500;">Shop Pay</div>
+            <div style="flex:1; height:48px; border-radius:4px; background:#000000; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:500;">Apple Pay</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; padding:8px 0;">
+            <div style="flex:1; height:1px; background:#EDEAE5;"></div>
+            <div style="font-size:13px; font-weight:400; color:#90928C;">or pay another way</div>
+            <div style="flex:1; height:1px; background:#EDEAE5;"></div>
+          </div>
+          <div style="font-size:16px; font-weight:500; color:#363530;">Contact</div>
+          <div style="height:48px; border:1px solid #D4CDC6; border-radius:4px; display:flex; align-items:center; padding:0 14px; font-size:15px; color:#90928C;">Email</div>
+          <div style="font-size:16px; font-weight:500; color:#363530; padding-top:8px;">Delivery</div>
+          <div style="height:48px; border:1px solid #D4CDC6; border-radius:4px; display:flex; align-items:center; padding:0 14px; font-size:15px; color:#90928C;">Full name</div>
+          <div style="height:48px; border:1px solid #D4CDC6; border-radius:4px; display:flex; align-items:center; padding:0 14px; font-size:15px; color:#90928C;">Address</div>
+          <div style="display:flex; gap:8px;">
+            <div style="flex:1; height:48px; border:1px solid #D4CDC6; border-radius:4px; display:flex; align-items:center; padding:0 14px; font-size:15px; color:#90928C;">City</div>
+            <div style="width:120px; height:48px; border:1px solid #D4CDC6; border-radius:4px; display:flex; align-items:center; padding:0 14px; font-size:15px; color:#90928C;">ZIP</div>
+          </div>
+          <div style="font-size:14px; font-weight:400; line-height:1.5; color:#5B5A54;">Shipping is calculated in the next step.</div>
+          <button type="button" onClick="{{ backHome }}" class="lnk" style="height:48px; display:flex; align-items:center; font-size:15px; font-weight:500; color:#A34A24;">← Back to homepage</button>
+          <div style="display:flex; flex-wrap:wrap; gap:8px 20px; padding:8px 0 40px 0; font-size:13px; font-weight:400; color:#90928C;">
+            <div>Refund policy</div>
+            <div>Shipping policy</div>
+            <div>Privacy policy</div>
+            <div>Terms of service</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <div ref="{{ toastRef }}" style="position:fixed; left:24px; right:24px; bottom:24px; z-index:8; max-width:592px; margin:0 auto; background:#363530; padding:16px; display:flex; align-items:center; justify-content:space-between; gap:16px; opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 260ms cubic-bezier(0.22,1,0.36,1), transform 260ms cubic-bezier(0.22,1,0.36,1);">
+    <div style="font-family:'Meta Serif Pro',serif; font-size:17px; font-weight:400; line-height:1.2; color:#FFFFFF;">{{ toastCopy }}</div>
+    <button type="button" onClick="{{ openCart }}" style="font-size:14px; font-weight:500; color:#EDEAE5; white-space:nowrap;" style-hover="color:#FFFFFF;">View cart →</button>
+  </div>
+
+</div>
+
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#363530"/><text x="50" y="62" font-family="Georgia,serif" font-size="34" fill="#EDEAE5" text-anchor="middle">df</text></svg></template>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const STORE = 'drift-prototype-v1';
+
+const SCENTS = {
+  'Cabana': { img: 'assets/world-cabana.webp', line: 'Sunscreen on warm skin, an hour before sunset.', notes: 'COCONUT · BERGAMOT · CEDARWOOD', intensity: 'Balanced — fills the car', clue: 'Coconut, warm sand', t1: 'Cabana', t2: '', pos: '60% 40%', alt: 'A young coconut with a copper straw against open sky' },
+  'Amber': { img: 'assets/world-amber.webp', line: 'A dim room, resin warming on the shelf.', notes: 'VANILLA · AMBER · LAVENDER', intensity: 'Bold — obvious when you open the door', clue: 'Warm resin, fruit', t1: 'Amber', t2: '', pos: '50% 50%', alt: 'Amber resin lit from within' },
+  'Teak': { img: 'assets/world-teak.webp', line: 'Dry wood in a workshop after the saw stops.', notes: 'TEAK · AMBER · CEDAR', intensity: 'Balanced — fills the car', clue: 'Dry wood, bronze', t1: 'Teak', t2: '', pos: '52% 50%', alt: 'Cut teak blocks with lichen and cedar sprigs' },
+  'Open Air': { img: 'assets/world-openair.webp', line: 'Clean linen and cool air moving through an open window.', notes: 'FRESH AIR · CRISP LINEN · MORNING DEW', intensity: 'Subtle — noticed up close', clue: 'CLEAN LINEN · COOL AIR', t1: 'Open', t2: 'Air', pos: '58% 50%', alt: 'A linen sachet knotted to a bare branch' },
+  'Grove': { img: 'assets/world-grove.webp', line: 'Green leaves, bright citrus and soft morning light.', notes: 'JUICY CITRUS · MOUNTAIN GREENS · VANILLA SUGAR', intensity: 'Balanced — fills the car', clue: 'GREEN LEAVES · CITRUS', t1: 'Grove', t2: '', pos: '55% 55%', alt: 'Lemons and a mandarin on linen in low sun' },
+  'Pine': { img: 'assets/world-pine.webp', line: 'Wet forest floor half an hour after rain.', notes: 'MOUNTAIN PINE · CEDAR WOOD · GREEN MOSS', intensity: 'Bold — obvious when you open the door', clue: 'WET MOSS · PINE', t1: 'Pine', t2: '', pos: '50% 50%', alt: 'Wet moss and pine needles on a forest floor' }
+};
+const NAMES = ['Cabana', 'Amber', 'Teak', 'Open Air', 'Grove', 'Pine'];
+
+const STEPS = {
+  2: { folio: 'SENSORY CLUE / ATMOSPHERE', qa: 'Which atmosphere', qb: 'feels like yours?', helper: 'Choose the atmosphere you want your scent to carry.', options: [
+    { key: 'Open & Airy', title: 'Open & Airy', desc: 'Crisp, spacious, bright.', img: 'assets/world-openair.webp', pos: '50% 40%', alt: 'Linen drifting on a branch against pale sky', join: 'Open, airy', print: 'Open and airy', support: 'space', reason: 'You chose space, brightness and movement.', w: { 'Open Air': 3, 'Grove': 2, 'Pine': 1 } },
+    { key: 'Warm & Intimate', title: 'Warm & Intimate', desc: 'Soft, glowing, close.', img: 'assets/world-amber.webp', pos: '50% 50%', alt: 'Amber resin lit from within', join: 'Warm, intimate', print: 'Warm and intimate', support: 'warmth', reason: 'You chose softness, glow and closeness.', w: { 'Amber': 3, 'Cabana': 2, 'Teak': 1 } },
+    { key: 'Dry & Grounded', title: 'Dry & Grounded', desc: 'Natural, shaded, calm.', img: 'assets/world-teak.webp', pos: '50% 50%', alt: 'Cut teak blocks with lichen', join: 'Dry, grounded', print: 'Dry and grounded', support: 'natural calm', reason: 'You chose natural material, shade and calm.', w: { 'Teak': 3, 'Pine': 2, 'Amber': 1 } }
+  ] },
+  3: { folio: 'SENSORY CLUE / TEXTURE', qa: 'Which texture', qb: 'feels closer?', helper: 'Texture helps us understand whether the scent should feel crisp, smooth or tactile.', options: [
+    { key: 'Crisp & Mineral', title: 'Crisp & Mineral', desc: 'Clean edges. Cool clarity.', img: 'assets/note-mineral.webp', pos: '50% 50%', alt: 'Raw quartz beside pale limestone', join: 'crisp', print: 'crisp', support: 'clean texture', reason: 'You leaned toward clean edges and cool clarity.', w: { 'Open Air': 3, 'Pine': 2, 'Grove': 1 } },
+    { key: 'Smooth & Creamy', title: 'Smooth & Creamy', desc: 'Soft edges. Gentle warmth.', img: 'assets/note-smooth.webp', pos: '50% 50%', alt: 'A smooth pale stone resting in folded cream linen', join: 'smooth', print: 'smooth', support: 'soft texture', reason: 'You leaned toward soft edges and gentle warmth.', w: { 'Cabana': 3, 'Amber': 2, 'Grove': 1 } },
+    { key: 'Raw & Woody', title: 'Raw & Woody', desc: 'Dry grain. Natural depth.', img: 'assets/note-woody.webp', pos: '50% 50%', alt: 'Split raw wood showing dry open grain', join: 'raw and woody', print: 'raw and woody', support: 'raw texture', reason: 'You leaned toward dry grain and natural depth.', w: { 'Teak': 3, 'Pine': 2, 'Amber': 1 } }
+  ] },
+  4: { folio: 'SENSORY CLUE / PRESENCE', qa: 'How should the scent', qb: 'enter the space?', helper: 'This sets how present you want the fragrance to feel.', options: [
+    { key: 'Quiet', title: 'Quiet', desc: 'You notice it when you look for it.', waves: 1, print: 'a quiet presence', reason: 'You want fragrance noticed up close—not across the entire space.' },
+    { key: 'Balanced', title: 'Balanced', desc: 'Present, but never takes over.', waves: 2, print: 'a balanced presence', reason: 'You want fragrance present without taking over the space.' },
+    { key: 'Bold', title: 'Bold', desc: 'Noticeable as soon as you enter.', waves: 3, print: 'a bold presence', reason: 'You want fragrance noticeable the moment you enter.' }
+  ] },
+  5: { folio: 'SENSORY CLUE / WHAT LINGERS', qa: 'What should stay', qb: 'with you?', helper: 'This helps separate scents that can share the same atmosphere but leave different impressions.', options: [
+    { key: 'Fresh & Green', title: 'Fresh & Green', desc: 'Citrus peel, open air, living leaves.', img: 'assets/note-fresh-green.webp', pos: '55% 55%', alt: 'Lemon, peel and citrus leaves on linen', print: 'a fresh, green finish', reason: 'You preferred fresh air, citrus peel and living leaves.', w: { 'Grove': 3, 'Open Air': 2, 'Pine': 1 } },
+    { key: 'Warm & Softly Sweet', title: 'Warm & Softly Sweet', desc: 'Amber, soft fruit, gentle warmth.', img: 'assets/note-warm-sweet.webp', pos: '50% 50%', alt: 'Amber resin beside a halved plum on warm linen', print: 'a warm, softly sweet finish', reason: 'You preferred amber, soft fruit and gentle warmth.', w: { 'Amber': 3, 'Cabana': 2, 'Teak': 1 } },
+    { key: 'Dry Woods & Spice', title: 'Dry Woods & Spice', desc: 'Cedar, grain, grounded depth.', img: 'assets/note-dry-woods.webp', pos: '45% 50%', alt: 'Cedar shavings and cardamom pods on dark stone', print: 'a dry, woody finish', reason: 'You preferred cedar, grain and grounded depth.', w: { 'Teak': 3, 'Pine': 2, 'Amber': 1 } }
+  ] },
+  6: { folio: 'FINAL INSTINCT', qa: 'Which one', qb: 'feels closer?', helper: 'Your earlier answers brought these two directions closest. This last instinct helps us rank them.' }
+};
+
+const FORMATS = [
+  { name: 'Wood Car Freshener', desc: 'Sustainably sourced alder wood.', price: '$8.45', unit: 8.45, img: 'assets/world-forest.webp', pos: '52% 42%', alt: 'A hand clipping the wood freshener to a visor' },
+  { name: 'Stone Car Freshener', desc: 'Organic porous stone.', price: '—', unit: null, img: 'assets/photo-visor.webp', pos: '44% 36%', alt: 'A hand pressing the stone freshener into the visor pocket' },
+  { name: 'Metal Car Freshener', desc: 'Brushed metal vent clip.', price: '—', unit: null, img: 'assets/object-vent.webp', pos: '48% 56%', alt: 'The metal vent clip diffuser on a dashboard vent' }
+];
+
+class Component extends DCLogic {
+  state = {
+    q1: null, band: 0, sheet: false, step: 2, answers: {}, stage: 'quiz',
+    exit: false, q6hover: null, q6sel: null, primary: null,
+    cart: false, everAdded: false, adding: false, toast: false, removed: false, undo: false,
+    format: 0, qty: 1, cadence: 'once', edit: false, confirm: false, another: false,
+    checking: false, atCheckout: false, scrolled: false
+  };
+  pageRef = React.createRef();
+  headerRef = React.createRef();
+  logoRef = React.createRef();
+
+  paintHeader(solid) {
+    const h = this.headerRef.current, l = this.logoRef.current;
+    if (h) {
+      h.style.background = solid ? '#FFFFFF' : 'transparent';
+      h.style.borderBottomColor = solid ? '#EDEAE5' : 'transparent';
+      h.style.color = solid ? '#363530' : '#EDEAE5';
+    }
+    if (l) l.style.backgroundImage = 'url(assets/logo-' + (solid ? 'dark' : 'light') + '.png)';
+  }
+  heroRef = React.createRef();
+  atlasRef = React.createRef();
+  bandRef = React.createRef();
+  sheetRef = React.createRef();
+  quizScrimRef = React.createRef();
+  cartRef = React.createRef();
+  cartScrimRef = React.createRef();
+  cartBodyRef = React.createRef();
+  cartImgRef = React.createRef();
+  toastRef = React.createRef();
+  addRef = React.createRef();
+
+  componentDidMount() {
+    this.reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(STORE) || 'null'); } catch (e) {}
+    if (saved && saved.q1) {
+      this.setState({ q1: saved.q1, answers: saved.answers || {}, step: saved.step || 2, primary: saved.primary || null, format: saved.format || 0, qty: saved.qty || 1, cadence: saved.cadence || 'once', everAdded: !!saved.everAdded });
+    }
+    this._key = (e) => {
+      if (e.key !== 'Escape') return;
+      if (this.state.exit) this.cancelExit();
+      else if (this.state.cart) this.closeCart();
+      else if (this.state.sheet) this.askCloseQuiz();
+    };
+    window.addEventListener('keydown', this._key);
+    this._scroll = () => {
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => {
+        this._raf = null;
+        const y = window.scrollY || 0;
+        if (!this.reduce && this.heroRef.current) this.heroRef.current.style.transform = 'translate3d(0,' + Math.min(8, y / 90).toFixed(2) + '%,0)';
+        if (!this.reduce && this.bandRef.current) {
+          const r = this.bandRef.current.parentElement.getBoundingClientRect();
+          const vh = window.innerHeight || 800;
+          const q = Math.max(-1, Math.min(1, (vh / 2 - (r.top + r.height / 2)) / vh));
+          this.bandRef.current.style.transform = 'translate3d(0,' + (q * 12).toFixed(2) + '%,0)';
+        }
+        const scrolled = y > 240;
+        if (scrolled !== this._solid) { this._solid = scrolled; this.paintHeader(scrolled); }
+      });
+    };
+    window.addEventListener('scroll', this._scroll, { passive: true });
+    requestAnimationFrame(() => { this.syncMotion(); this.paintHeader(false); });
+  }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this._key);
+    window.removeEventListener('scroll', this._scroll);
+    ['_toastT', '_ckT', '_undoT'].forEach((k) => { if (this[k]) clearTimeout(this[k]); });
+  }
+  componentDidUpdate() { this.syncMotion(); }
+
+  syncMotion() {
+    const s = this.state;
+    const sh = this.sheetRef.current, qs = this.quizScrimRef.current;
+    if (sh) { sh.style.transform = s.sheet ? 'translateY(0)' : 'translateY(101%)'; sh.style.pointerEvents = s.sheet ? 'auto' : 'none'; }
+    if (qs) { qs.style.opacity = s.sheet ? '1' : '0'; qs.style.pointerEvents = s.sheet ? 'auto' : 'none'; }
+    const c = this.cartRef.current, cs = this.cartScrimRef.current;
+    if (c) { c.style.transform = s.cart ? 'translateX(0)' : 'translateX(101%)'; c.style.pointerEvents = s.cart ? 'auto' : 'none'; }
+    if (cs) { cs.style.opacity = s.cart ? '1' : '0'; cs.style.pointerEvents = s.cart ? 'auto' : 'none'; }
+    const t = this.toastRef.current, show = s.toast && !s.cart;
+    if (t) { t.style.opacity = show ? '1' : '0'; t.style.transform = show ? 'translateY(0)' : 'translateY(8px)'; t.style.pointerEvents = show ? 'auto' : 'none'; }
+    document.body.style.overflow = (s.cart || s.sheet || s.atCheckout) ? 'hidden' : '';
+  }
+
+  persist(patch) {
+    const s = Object.assign({}, this.state, patch || {});
+    try { localStorage.setItem(STORE, JSON.stringify({ q1: s.q1, answers: s.answers, step: s.step, primary: s.primary, format: s.format, qty: s.qty, cadence: s.cadence, everAdded: s.everAdded })); } catch (e) {}
+  }
+
+  pickQ1(v) { this.setState({ q1: v }); this.persist({ q1: v }); }
+  changeQ1 = () => { this.setState({ q1: null }); this.persist({ q1: null }); };
+  openQuiz = () => {
+    if (!this.state.q1) this.pickQ1('My car');
+    this.setState({ sheet: true, stage: 'quiz' }, () => { const el = this.sheetRef.current; if (el) el.focus(); });
+  };
+  toAtlas = () => { const el = this.atlasRef.current; if (el) window.scrollTo({ top: el.offsetTop - 64, behavior: this.reduce ? 'auto' : 'smooth' }); };
+
+  answer(step, key) {
+    const answers = Object.assign({}, this.state.answers, {});
+    answers[step] = key;
+    this.setState({ answers: answers });
+    this.persist({ answers: answers });
+    setTimeout(() => { if (step < 6) { this.setState({ step: step + 1 }); this.persist({ step: step + 1 }); } }, this.reduce ? 120 : 440);
+  }
+  rank() {
+    const score = { 'Open Air': 0, 'Grove': 0, 'Cabana': 0, 'Amber': 0, 'Teak': 0, 'Pine': 0 };
+    [2, 3, 5].forEach((n) => {
+      const key = this.state.answers[n];
+      if (!key) return;
+      const o = STEPS[n].options.filter((x) => x.key === key)[0];
+      if (o && o.w) Object.keys(o.w).forEach((k) => { score[k] += o.w[k]; });
+    });
+    return NAMES.slice().sort((a, b) => score[b] - score[a]);
+  }
+  chooseFinal(i, name) {
+    this.setState({ q6sel: i, q6hover: i });
+    setTimeout(() => {
+      const answers = Object.assign({}, this.state.answers, { 6: name });
+      this.setState({ answers: answers, primary: name, stage: 'result' });
+      this.persist({ answers: answers, primary: name });
+    }, this.reduce ? 150 : 470);
+  }
+  quizBack = () => {
+    const s = this.state;
+    if (s.stage === 'result') { this.setState({ stage: 'quiz', step: 6, q6sel: null }); return; }
+    if (s.step > 2) { this.setState({ step: s.step - 1 }); this.persist({ step: s.step - 1 }); }
+    else this.askCloseQuiz();
+  };
+  askCloseQuiz = () => { this.setState({ sheet: false }, () => setTimeout(() => this.setState({ exit: true }), this.reduce ? 60 : 420)); };
+  cancelExit = () => this.setState({ exit: false, sheet: true });
+  saveExit = () => { this.persist(); this.setState({ exit: false }); };
+  startOver = () => {
+    try { localStorage.removeItem(STORE); } catch (e) {}
+    this.setState({ exit: false, sheet: false, q1: null, answers: {}, step: 2, stage: 'quiz', primary: null, q6sel: null, q6hover: null });
+  };
+  backHome = () => this.setState({ sheet: false, cart: false, atCheckout: false, exit: false });
+
+  addKit = () => {
+    if (this.state.adding) return;
+    this.setState({ adding: true });
+    setTimeout(() => this.setState({ adding: false, cart: true, everAdded: true, removed: false, toast: false, sheet: false }, () => {
+      const el = this.cartRef.current; if (el) el.focus();
+      this.persist({ everAdded: true });
+    }), this.reduce ? 100 : 320);
+  };
+  openCart = () => {
+    if (this._toastT) clearTimeout(this._toastT);
+    this.setState({ cart: true, toast: false }, () => { const el = this.cartRef.current; if (el) el.focus(); });
+  };
+  closeCart = () => {
+    const keep = !this.state.removed && this.state.everAdded;
+    this.setState({ cart: false, edit: false, confirm: false, checking: false, atCheckout: false, toast: keep });
+    if (this._toastT) clearTimeout(this._toastT);
+    if (keep) this._toastT = setTimeout(() => this.setState({ toast: false }), 2800);
+  };
+  onCartScroll = () => {
+    if (this.reduce || this._praf) return;
+    this._praf = requestAnimationFrame(() => {
+      this._praf = null;
+      const box = this.cartBodyRef.current, img = this.cartImgRef.current;
+      if (!box || !img) return;
+      const p = Math.max(0, Math.min(1, box.scrollTop / 340));
+      img.style.transform = 'translate3d(0,' + (p * 12).toFixed(2) + '%,0)';
+    });
+  };
+  checkout = () => {
+    if (this.state.checking) return;
+    this.setState({ checking: true });
+    if (this._ckT) clearTimeout(this._ckT);
+    this._ckT = setTimeout(() => this.setState({ checking: false, atCheckout: true }), this.reduce ? 200 : 800);
+  };
+  money(n) { return '$' + n.toFixed(2); }
+
+  renderVals() {
+    const s = this.state;
+    const step = s.step;
+    const def = STEPS[step] || STEPS[2];
+    const ranked = this.rank();
+    const pair = ranked.slice(0, 2);
+    const primary = s.primary || pair[0];
+    const sc = SCENTS[primary];
+    const fm = FORMATS[s.format];
+    const sub = fm.unit === null ? null : fm.unit * s.qty;
+    const band = SCENTS[NAMES[s.band]];
+    const answeredCount = [2, 3, 4, 5, 6].filter((n) => s.answers[n]).length;
+    const remaining = 5 - answeredCount;
+
+    const a2 = s.answers[2] && STEPS[2].options.filter((o) => o.key === s.answers[2])[0];
+    const a3 = s.answers[3] && STEPS[3].options.filter((o) => o.key === s.answers[3])[0];
+    const a4 = s.answers[4] && STEPS[4].options.filter((o) => o.key === s.answers[4])[0];
+    const a5 = s.answers[5] && STEPS[5].options.filter((o) => o.key === s.answers[5])[0];
+    let statement = s.q1 ? 'Starting with ' + s.q1 + '.' : 'Starting fresh.';
+    if (a2) {
+      let base = a3 ? a2.join + ' and ' + a3.join : a2.print;
+      let tail = '';
+      if (a4) tail = '—with ' + a4.print;
+      if (a5) tail = tail ? tail + ' and ' + a5.print : '—with ' + a5.print;
+      statement = base + tail + '.';
+    }
+
+    const vals = {
+      pageRef: this.pageRef, heroRef: this.heroRef, atlasRef: this.atlasRef, bandRef: this.bandRef,
+      sheetRef: this.sheetRef, quizScrimRef: this.quizScrimRef, cartRef: this.cartRef,
+      cartScrimRef: this.cartScrimRef, cartBodyRef: this.cartBodyRef, cartImgRef: this.cartImgRef,
+      toastRef: this.toastRef, addRef: this.addRef,
+      onCartScroll: this.onCartScroll,
+
+      headerRef: this.headerRef,
+      logoRef: this.logoRef,
+
+      q1Unanswered: !s.q1,
+      q1Answered: !!s.q1,
+      q1Label: s.q1 || '',
+      pickCar: () => this.pickQ1('My car'),
+      pickHome: () => this.pickQ1('My home'),
+      pickBoth: () => this.pickQ1('Both'),
+      changeQ1: this.changeQ1,
+      openQuiz: this.openQuiz,
+      toAtlas: this.toAtlas,
+      continueLabel: answeredCount > 0 ? 'Continue discovery' : 'Start discovery',
+      nextCounter: '0' + Math.min(6, step) + ' / 06',
+      remainingCopy: remaining > 0 ? remaining + ' questions left · about 40 seconds' : 'Ready for your result',
+
+      bandName: band.t1 + (band.t2 ? ' ' + band.t2 : ''),
+      bandLine: band.line,
+      bandNotes: band.notes,
+      bandIntensity: band.intensity,
+
+      showChrome: s.stage !== 'result',
+      showQuestion: s.stage === 'quiz',
+      showResult: s.stage === 'result',
+      counter: '0' + step + ' / 06',
+      progressWidth: Math.round((step / 6) * 100) + '%',
+      folio: def.folio, questionA: def.qa, questionB: def.qb, helper: def.helper,
+      isPhoto: step === 2 || step === 3 || step === 5,
+      isQ4: step === 4,
+      isQ6: step === 6,
+      printStatement: statement,
+      quizBack: this.quizBack,
+      askCloseQuiz: this.askCloseQuiz,
+      sheetHeight: s.stage === 'result' ? '100%' : '94%',
+      sheetRadius: s.stage === 'result' ? '0px' : '8px 8px 0 0',
+
+      exitOpen: s.exit,
+      cancelExit: this.cancelExit,
+      saveExit: this.saveExit,
+      startOver: this.startOver,
+      backHome: this.backHome,
+
+      resultName: primary,
+      resultImg: sc.img,
+      resultAlt: sc.alt,
+      resultLine: sc.line,
+      resultNotes: sc.notes,
+      heroHeight: 'clamp(360px,52vh,620px)',
+      resultCopyOpacity: 1,
+      whyTitle: 'Why ' + primary,
+      whyClosing: 'Your final instinct confirmed ' + primary + '.',
+
+      formatName: fm.name, formatPrice: fm.price, formatImg: fm.img, formatPos: fm.pos, formatAlt: fm.alt,
+      addKit: this.addKit,
+      addLabel: s.adding ? 'ADDING…' : 'ADD CONFIGURED KIT — ' + (fm.unit === null ? '—' : this.money(fm.unit)),
+
+      openCart: this.openCart,
+      closeCart: this.closeCart,
+      showCount: s.everAdded && !s.removed && !s.cart,
+      cartCount: s.qty,
+      cartAria: 'Open cart, ' + (s.everAdded && !s.removed ? s.qty + ' item' : 'empty'),
+      countLabel: (s.removed ? '00 ITEMS' : '0' + s.qty + (s.qty === 1 ? ' ITEM' : ' ITEMS')),
+      cartHasItem: !s.removed,
+      cartEmpty: s.removed,
+      configLine: (s.cadence === 'once' ? 'One-time' : 'Subscription · Monthly') + ' · Qty ' + s.qty,
+      editOpen: s.edit,
+      editLabel: s.edit ? 'Done' : 'Edit configuration →',
+      toggleEdit: () => this.setState({ edit: !s.edit, confirm: false }),
+      askRemove: () => this.setState({ confirm: true, edit: false }),
+      confirmRemove: s.confirm,
+      cancelRemove: () => this.setState({ confirm: false }),
+      doRemove: () => {
+        this.setState({ confirm: false, removed: true, undo: true });
+        if (this._undoT) clearTimeout(this._undoT);
+        this._undoT = setTimeout(() => this.setState({ undo: false }), 3200);
+      },
+      showUndo: s.undo,
+      undoCopy: primary + ' removed.',
+      undoRemove: () => { if (this._undoT) clearTimeout(this._undoT); this.setState({ removed: false, undo: false }); },
+      returnToPrint: () => this.setState({ removed: false, undo: false, cart: false, qty: 1, another: false, sheet: true, stage: 'result' }),
+
+      qty: s.qty,
+      inc: () => this.setState((p) => ({ qty: Math.min(9, p.qty + 1) })),
+      dec: () => this.setState((p) => ({ qty: Math.max(1, p.qty - 1) })),
+      decBorder: s.qty <= 1 ? '#EDEAE5' : '#D4CDC6',
+      decColor: s.qty <= 1 ? '#CCCBC9' : '#363530',
+
+      oncePressed: s.cadence === 'once' ? 'true' : 'false',
+      subPressed: s.cadence === 'sub' ? 'true' : 'false',
+      onceRing: s.cadence === 'once' ? '#A34A24' : '#BDBDBD',
+      onceDot: s.cadence === 'once' ? '#A34A24' : 'transparent',
+      onceTitle: s.cadence === 'once' ? '#A34A24' : '#363530',
+      subRing: s.cadence === 'sub' ? '#A34A24' : '#BDBDBD',
+      subDot: s.cadence === 'sub' ? '#A34A24' : 'transparent',
+      subTitle: s.cadence === 'sub' ? '#A34A24' : '#363530',
+      pickOnce: () => { this.setState({ cadence: 'once' }); this.persist({ cadence: 'once' }); },
+      pickSub: () => { this.setState({ cadence: 'sub' }); this.persist({ cadence: 'sub' }); },
+      subOpen: s.cadence === 'sub',
+
+      showAnother: fm.unit !== null,
+      anotherIdle: !s.another,
+      anotherAdded: s.another,
+      anotherTitle: 'Bring ' + primary + ' to another car.',
+      anotherCopy: 'Add a second ' + fm.name + '.',
+      anotherAction: 'ADD ANOTHER — ' + (fm.unit === null ? '—' : this.money(fm.unit)) + ' →',
+      anotherFeedback: 'Added · Qty ' + s.qty,
+      addAnother: () => this.setState((p) => ({ qty: Math.min(9, p.qty + 1), another: true })),
+      undoAnother: () => this.setState((p) => ({ qty: Math.max(1, p.qty - 1), another: false })),
+
+      isOnce: s.cadence === 'once',
+      isSub: s.cadence === 'sub',
+      subLabel: s.cadence === 'once' ? 'SUBTOTAL' : 'DUE TODAY',
+      shipLine: s.cadence === 'once' ? 'Shipping calculated at checkout' : 'Then ' + (sub === null ? '—' : this.money(sub)) + ' every month',
+      subtotal: sub === null ? '—' : this.money(sub),
+      cartTotal: sub === null ? '—' : this.money(sub),
+      checkout: this.checkout,
+      checkoutLabel: s.checking ? 'Continuing securely to checkout…' : (s.cadence === 'once' ? 'CHECKOUT — ' : 'CONTINUE WITH SUBSCRIPTION — ') + (sub === null ? '—' : this.money(sub)),
+
+      atCheckout: s.atCheckout,
+      backToCart: () => this.setState({ atCheckout: false }),
+      coFormatLine: fm.name + ' · Qty ' + s.qty,
+      coModel: s.cadence === 'once' ? 'One-time' : 'Monthly subscription',
+      toastCopy: primary + ' is in Your Drift.'
+    };
+
+    vals.atlas = NAMES.map((n, i) => ({
+      name: n, num: '0' + (i + 1),
+      nameColor: s.band === i ? '#FFFFFF' : '#D4CDC6',
+      numColor: s.band === i ? '#D4CDC6' : '#90928C',
+      underline: s.band === i ? '#FFFFFF 0 -2px 0 inset' : 'none',
+      pick: () => this.setState({ band: i })
+    }));
+    vals.bands = NAMES.map((n, i) => ({
+      img: SCENTS[n].img, alt: SCENTS[n].alt,
+      opacity: s.band === i ? 1 : 0,
+      scale: s.band === i ? 'scale(1.02)' : 'scale(1.12)'
+    }));
+
+    vals.options = (def.options || []).map((o) => {
+      const on = s.answers[step] === o.key;
+      return { title: o.title, desc: o.desc, img: o.img, alt: o.alt, pos: o.pos,
+        border: on ? '#A34A24' : '#D4CDC6',
+        titleColor: on ? '#A34A24' : '#363530',
+        imgScale: on ? 'scale(1.06)' : 'scale(1)',
+        pressed: on ? 'true' : 'false',
+        pick: () => this.answer(step, o.key) };
+    });
+    vals.presence = STEPS[4].options.map((o) => {
+      const on = s.answers[4] === o.key;
+      return { title: o.title, desc: o.desc,
+        border: on ? '#A34A24' : '#EDEAE5',
+        titleColor: on ? '#A34A24' : '#363530',
+        iconColor: on ? '#A34A24' : '#5B5A54',
+        w1: o.waves >= 1 ? 1 : 0, w2: o.waves >= 2 ? 1 : 0, w3: o.waves >= 3 ? 1 : 0,
+        pressed: on ? 'true' : 'false',
+        pick: () => this.answer(4, o.key) };
+    });
+    const active = s.q6sel !== null ? s.q6sel : s.q6hover;
+    vals.finalPair = pair.map((name, i) => {
+      const d = SCENTS[name];
+      const on = s.q6sel === i;
+      const hot = active === i;
+      let w = '50%';
+      if (!this.reduce) { if (s.q6sel !== null) w = on ? '64%' : '36%'; else if (s.q6hover !== null) w = hot ? '56%' : '44%'; }
+      return { name: name, t1: d.t1, t2: d.t2, clue: d.clue, img: d.img, alt: d.alt, pos: d.pos,
+        a11y: name + '. ' + d.line, w: w,
+        divider: i === 0 ? '1px solid #EDEAE5' : 'none',
+        panelOpacity: s.q6sel !== null && !on ? 0.82 : 1,
+        imgScale: !this.reduce && hot ? 'scale(1.02)' : 'scale(1)',
+        chosen: on, pressed: on ? 'true' : 'false',
+        enter: () => { if (this.state.q6sel === null) this.setState({ q6hover: i }); },
+        pick: () => this.chooseFinal(i, name) };
+    });
+    vals.caption = active !== null && pair[active] ? SCENTS[pair[active]].line : 'Two directions came closest. Choose the one you would rather live with.';
+
+    vals.reasons = [2, 3, 4, 5].filter((n) => s.answers[n]).map((n) => {
+      const o = STEPS[n].options.filter((x) => x.key === s.answers[n])[0];
+      const head = { 2: 'ATMOSPHERE', 3: 'TEXTURE', 4: 'PRESENCE', 5: 'WHAT LINGERS' }[n];
+      return { label: head + ' / ' + o.key.toUpperCase(), copy: o.reason };
+    });
+
+    vals.cartScents = NAMES.map((n) => {
+      const on = primary === n;
+      return { name: n, clue: SCENTS[n].clue, img: SCENTS[n].img, alt: SCENTS[n].alt,
+        rule: on ? '#A34A24' : 'transparent',
+        titleColor: on ? '#A34A24' : '#363530',
+        pressed: on ? 'true' : 'false',
+        pick: () => { this.setState({ primary: n }); this.persist({ primary: n }); } };
+    });
+    vals.cartFormats = FORMATS.map((x, i) => {
+      const on = s.format === i;
+      return { name: x.name, desc: x.desc, price: x.price,
+        rule: on ? '#A34A24' : 'transparent',
+        titleColor: on ? '#A34A24' : '#363530',
+        pressed: on ? 'true' : 'false',
+        pick: () => { this.setState({ format: i }); this.persist({ format: i }); } };
+    });
+
+    return vals;
+  }
+}
+
+</script>
+</body>
 </html>
