@@ -38,6 +38,28 @@
     .under:hover { box-shadow:#A34A24 0 1px 0 !important; }
   }
   .lnk, .opt, .cell, .under { transition:color 180ms cubic-bezier(0.22,1,0.36,1), border-color 180ms cubic-bezier(0.22,1,0.36,1), background 180ms ease, box-shadow 200ms ease; }
+  @media (min-width:760px) {
+    .subsbody { padding-right:46% !important; }
+    .subsimg { position:absolute !important; right:calc(-1 * clamp(24px,5vw,80px)) !important; bottom:calc(-1 * clamp(72px,8vw,130px)) !important; top:clamp(56px,6vw,96px) !important; width:44% !important; height:auto !important; margin:0 !important; }
+  }
+  @media (min-width:900px) {
+    .medit { display:grid !important; grid-template-columns:minmax(0,1fr) minmax(0,1fr); column-gap:clamp(32px,4vw,72px); align-items:center; }
+    .medit > *:not(.meditimg) { grid-column:1; }
+    .meditimg { grid-column:2 !important; grid-row:1 / span 4 !important; align-self:center; margin-top:0 !important; }
+  }
+  .wcard { transition:transform 260ms cubic-bezier(0.22,1,0.36,1), border-color 260ms ease, background 260ms ease; }
+  @media (hover:hover) and (pointer:fine) {
+    .wcard:hover { transform:translateY(-4px); border-color:#A34A24 !important; background:#FFFFFF !important; }
+  }
+  @media (min-width:600px) {
+    .wots { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(20px,2.4vw,32px); }
+    .wots > .whead, .wots > .wnote { grid-column:1 / -1; }
+  }
+  @media (min-width:980px) {
+    .wots { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .wstag2 { margin-top:clamp(24px,3vw,56px); }
+    .wstag3 { margin-top:clamp(48px,6vw,112px); }
+  }
   .cta { transition:background 200ms ease, transform 140ms ease; }
   .cta:active { transform:scale(0.995); }
 </style>
@@ -147,24 +169,40 @@
             <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(54px,6.4vw,124px); font-weight:300; line-height:0.78; color:#EDEAE5; text-transform:uppercase;">{{ bandName }}</div>
           </div>
         </div>
-        <div style="flex:1 1 420px; background:#EDEAE5; padding:clamp(40px,4vw,72px) clamp(24px,4vw,64px); box-sizing:border-box; display:flex; flex-direction:column; justify-content:center;">
-          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(23px,2vw,36px); font-weight:400; line-height:1.3; color:#363530; max-width:26ch;">{{ bandLine }}</div>
-          <div style="font-size:clamp(13px,1.05vw,15px); font-weight:500; letter-spacing:0.12em; color:#A34A24; padding-top:clamp(26px,2.4vw,40px);">{{ bandNotes }}</div>
-          <div style="font-size:clamp(15px,1.15vw,18px); font-weight:400; color:#363530; padding-top:8px;">{{ bandIntensity }}</div>
-          <div style="display:flex; flex-wrap:wrap; align-items:center; gap:clamp(16px,2vw,40px); margin-top:clamp(24px,2vw,36px);">
-            <button type="button" onClick="{{ openCart }}" class="under" style="height:48px; display:flex; align-items:center; font-size:clamp(16px,1.2vw,19px); font-weight:500; color:#A34A24; padding-bottom:2px;">{{ bandShop }}</button>
-            <button type="button" onClick="{{ openQuiz }}" class="lnk" style="height:48px; display:flex; align-items:center; font-size:clamp(14px,1.05vw,16px); font-weight:400; color:#5B5A54;">Not sure? Find my scent →</button>
+        <div style="flex:1 1 420px; background:#EDEAE5; padding:clamp(36px,3.6vw,64px); box-sizing:border-box; overflow:hidden; display:flex; flex-direction:column; justify-content:center;">
+          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(23px,2vw,34px); font-weight:400; line-height:1.3; color:#363530;">{{ bandLine }}</div>
+          <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(10px,1.4vw,24px); width:100%; padding-top:clamp(16px,1.6vw,24px);">
+            <sc-for list="{{ bandNoteList }}" as="n" hint-placeholder-count="3">
+              <div style="display:flex; flex-direction:column; align-items:center; gap:8px; min-width:0;">
+                <div aria-hidden="true" style="width:28px; height:28px; flex:none; background-color:#363530; -webkit-mask-image:url({{ n.icon }}); mask-image:url({{ n.icon }}); -webkit-mask-size:contain; mask-size:contain; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:center; mask-position:center;"></div>
+                <div style="font-size:clamp(10px,0.82vw,12px); font-weight:500; letter-spacing:0.01em; line-height:1.25; height:2.5em; max-width:100%; word-break:normal; overflow-wrap:normal; hyphens:none; text-align:center; color:#A34A24;">{{ n.label }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="font-size:clamp(15px,1.15vw,18px); font-weight:400; line-height:1.4; color:#363530; padding-top:clamp(16px,1.6vw,24px);">{{ bandIntensity }}</div>
+
+          <div style="display:flex; flex-wrap:nowrap; align-items:flex-end; gap:clamp(14px,2.4vw,40px); margin-top:clamp(36px,3.6vw,56px); margin-bottom:calc(-1 * clamp(36px,3.6vw,64px));">
+            <sc-if value="{{ bandHasPack }}" hint-placeholder-val="{{ false }}">
+              <div style="flex:0 1 clamp(150px,52%,408px); min-width:150px; display:flex; align-items:flex-end; justify-content:flex-start;">
+                <div role="img" aria-label="{{ bandPackAlt }}" style="width:100%; max-width:408px; aspect-ratio:520/515; background-image:url({{ bandPack }}); background-size:contain; background-position:bottom center; background-repeat:no-repeat; margin-bottom:-14%;"></div>
+              </div>
+            </sc-if>
+            <div style="flex:1 1 140px; min-width:140px; display:flex; flex-direction:column; align-items:stretch; gap:12px; padding-bottom:clamp(16px,1.8vw,32px);">
+              <button type="button" onClick="{{ openCart }}" style="height:56px; border:1px solid #A34A24; border-radius:999px; padding:0 16px; display:flex; align-items:center; justify-content:center; font-size:clamp(15px,1.15vw,18px); font-weight:500; color:#A34A24; background:transparent; white-space:nowrap; transition:background 180ms ease, color 180ms ease;" style-hover="background:#A34A24; color:#FFFFFF;">{{ bandShop }}</button>
+              <button type="button" onClick="{{ openQuiz }}" class="lnk" style="height:44px; display:flex; align-items:center; justify-content:center; font-size:clamp(13px,1.05vw,16px); font-weight:400; line-height:1.3; text-align:center; color:#5B5A54;">Not sure? Find my scent →</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
 <div style="background:#FBFAF8;">
-    <div style="width:100%; max-width:1440px; margin:0 auto; padding:clamp(64px,7vw,120px) clamp(24px,5vw,80px) 0 clamp(24px,5vw,80px); box-sizing:border-box; display:flex; flex-direction:column;">
+    <div class="medit" style="width:100%; max-width:1440px; margin:0 auto; padding:clamp(64px,7vw,120px) clamp(24px,5vw,80px) 0 clamp(24px,5vw,80px); box-sizing:border-box; display:flex; flex-direction:column;">
       <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.2em; color:#A34A24;">02 / THE MATERIAL EDIT</div>
       <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(33px,3.4vw,58px); font-weight:300; line-height:1.1; letter-spacing:-0.015em; color:#363530; padding-top:18px;">Same scent.<br /><em style="font-weight:300;">Your material.</em></div>
       <div style="font-size:clamp(16px,1.2vw,19px); font-weight:400; line-height:1.45; color:#363530; padding-top:18px;">Three car fresheners. One scent system.</div>
-      <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.16em; color:#A34A24; padding-top:20px;">01—03 / SWIPE TO EXPLORE</div>
+      <div class="meditimg" role="img" aria-label="The copper vent clip, brushed metal clip and engraved wood block side by side" style="width:100%; max-width:820px; aspect-ratio:1115/351; background-image:url(assets/photo-materials.webp); background-size:contain; background-position:center; background-repeat:no-repeat; margin-top:clamp(28px,3vw,48px);"></div>
+      <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.16em; color:#A34A24; padding-top:clamp(36px,4vw,64px);">01—03 / SWIPE TO EXPLORE</div>
     </div>
 
     <div class="rail" style="width:100%; max-width:1440px; margin:0 auto; box-sizing:border-box; display:flex; gap:clamp(16px,2vw,32px); overflow-x:auto; padding:clamp(28px,3vw,48px) clamp(24px,5vw,80px) 0 clamp(24px,5vw,80px);">
@@ -229,57 +267,84 @@
         <div style="position:absolute; inset:0; background:linear-gradient(152deg, rgba(255,255,255,0.34), rgba(255,255,255,0) 44%, rgba(54,53,48,0.05));"></div>
         <div style="position:absolute; inset:0; background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;); opacity:0.13; mix-blend-mode:multiply;"></div>
       </div>
-    <div style="position:relative; width:100%; max-width:1440px; margin:0 auto; padding:clamp(72px,8vw,130px) clamp(24px,5vw,80px) clamp(72px,8vw,130px) clamp(24px,5vw,80px); box-sizing:border-box; display:flex; flex-direction:column;">
+    <div class="subsbody" style="position:relative; width:100%; max-width:1440px; margin:0 auto; padding:clamp(72px,8vw,130px) clamp(24px,5vw,80px) clamp(72px,8vw,130px) clamp(24px,5vw,80px); box-sizing:border-box; display:flex; flex-direction:column;">
       <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.2em; color:#A34A24;">03 / THE SUBSCRIPTION</div>
       <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(33px,3.4vw,58px); font-weight:300; line-height:1.1; letter-spacing:-0.015em; color:#363530; padding-top:18px; max-width:24ch;">One scent lasts about a month.<br /><em style="font-weight:300;">Then you decide again.</em></div>
-      <div style="display:flex; flex-wrap:wrap; gap:0 clamp(24px,3vw,56px); margin-top:clamp(36px,4vw,64px);">
-        <div style="flex:1 1 300px; min-width:280px; border-top:1px solid #EDEAE5; border-bottom:1px solid #EDEAE5; margin-bottom:-1px; padding:clamp(24px,2.4vw,38px) 0; display:flex; flex-direction:column; align-items:flex-start; gap:clamp(20px,2vw,32px);">
-          <div style="flex:none; font-family:'Meta Serif Pro',serif; font-size:clamp(86px,7.6vw,132px); font-weight:300; line-height:0.72; letter-spacing:-0.03em; color:#363530; margin-top:-0.06em;">30</div>
-          <div style="width:100%; display:flex; flex-direction:column; gap:10px;">
-            <div style="font-size:clamp(12px,1vw,13px); font-weight:500; letter-spacing:0.16em; color:#A34A24;">THIRTY DAYS</div>
-            <div style="font-size:clamp(16px,1.25vw,20px); font-weight:400; line-height:1.45; color:#363530; max-width:44ch;">Each freshener holds its scent for about a month, then it's done.</div>
-          </div>
+      <img class="subsimg" src="assets/object-gift.webp" alt="The copper foil pouch and engraved wood block lifted out of a Drift gift box" style="width:calc(100% + 2 * clamp(24px,5vw,80px)); max-width:none; margin:clamp(36px,4vw,56px) calc(-1 * clamp(24px,5vw,80px)) 0 calc(-1 * clamp(24px,5vw,80px)); height:clamp(240px,52vw,380px); object-fit:cover; object-position:50% 46%; display:block;" />
+      <div style="display:flex; flex-direction:column; margin-top:clamp(36px,4vw,56px);">
+        <div style="padding:0 0 clamp(20px,2vw,30px) 0; display:flex; flex-direction:column; gap:10px;">
+          <div style="font-size:clamp(14px,1.15vw,17px); font-weight:500; letter-spacing:0.16em; color:#A34A24;">THIRTY DAYS</div>
+          <div style="font-size:clamp(16px,1.25vw,20px); font-weight:400; line-height:1.45; color:#363530; max-width:44ch;">Each freshener holds its scent for about a month, then it's done.</div>
         </div>
-        <div style="flex:1 1 300px; min-width:280px; border-top:1px solid #EDEAE5; border-bottom:1px solid #EDEAE5; margin-bottom:-1px; padding:clamp(24px,2.4vw,38px) 0; display:flex; flex-direction:column; align-items:flex-start; gap:clamp(20px,2vw,32px);">
-          <div style="flex:none; font-family:'Meta Serif Pro',serif; font-size:clamp(86px,7.6vw,132px); font-weight:300; line-height:0.72; letter-spacing:-0.03em; color:#363530; margin-top:-0.06em;">0</div>
-          <div style="width:100%; display:flex; flex-direction:column; gap:10px;">
-            <div style="font-size:clamp(12px,1vw,13px); font-weight:500; letter-spacing:0.16em; color:#A34A24;">NOTHING TO REMEMBER</div>
-            <div style="font-size:clamp(16px,1.25vw,20px); font-weight:400; line-height:1.45; color:#363530; max-width:44ch;">The next one ships before yours fades.</div>
-          </div>
+        <div style="border-top:1px solid rgba(54,53,48,0.12); padding:clamp(20px,2vw,30px) 0; display:flex; flex-direction:column; gap:10px;">
+          <div style="font-size:clamp(14px,1.15vw,17px); font-weight:500; letter-spacing:0.16em; color:#A34A24;">NOTHING TO REMEMBER</div>
+          <div style="font-size:clamp(16px,1.25vw,20px); font-weight:400; line-height:1.45; color:#363530; max-width:44ch;">The next one ships before yours fades.</div>
         </div>
-        <div style="flex:1 1 300px; min-width:280px; border-top:1px solid #EDEAE5; border-bottom:1px solid #EDEAE5; margin-bottom:-1px; padding:clamp(24px,2.4vw,38px) 0; display:flex; flex-direction:column; align-items:flex-start; gap:clamp(20px,2vw,32px);">
-          <div style="flex:none; font-family:'Meta Serif Pro',serif; font-size:clamp(86px,7.6vw,132px); font-weight:300; line-height:0.72; letter-spacing:-0.03em; color:#363530; margin-top:-0.06em;">2</div>
-          <div style="width:100%; display:flex; flex-direction:column; gap:10px;">
-            <div style="font-size:clamp(12px,1vw,13px); font-weight:500; letter-spacing:0.16em; color:#A34A24;">TWO TAPS</div>
-            <div style="font-size:clamp(16px,1.25vw,20px); font-weight:400; line-height:1.45; color:#363530; max-width:44ch;">Keep your scent, switch to another, skip a month, or stop.</div>
-          </div>
+        <div style="border-top:1px solid rgba(54,53,48,0.12); border-bottom:1px solid rgba(54,53,48,0.12); padding:clamp(20px,2vw,30px) 0; display:flex; flex-direction:column; gap:10px;">
+          <div style="font-size:clamp(14px,1.15vw,17px); font-weight:500; letter-spacing:0.16em; color:#A34A24;">TWO TAPS</div>
+          <div style="font-size:clamp(16px,1.25vw,20px); font-weight:400; line-height:1.45; color:#363530; max-width:44ch;">Keep your scent, switch to another, skip a month, or stop.</div>
         </div>
       </div>
-      <div style="display:flex; flex-wrap:wrap; align-items:center; gap:clamp(16px,2vw,40px); margin-top:clamp(24px,2vw,36px);">
-          <button type="button" onClick="{{ openCart }}" class="under" style="height:48px; display:flex; align-items:center; font-size:clamp(16px,1.2vw,19px); font-weight:500; color:#A34A24; padding-bottom:2px;">Start with Summer Sunset →</button>
-          <button type="button" onClick="{{ openQuiz }}" class="lnk" style="height:48px; display:flex; align-items:center; font-size:clamp(14px,1.05vw,16px); font-weight:400; color:#5B5A54;">Not sure? Find my scent →</button>
+      <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; text-align:center; gap:12px clamp(16px,2vw,28px); margin-top:clamp(28px,2.8vw,40px);">
+        <button type="button" onClick="{{ openCart }}" style="flex:0 1 auto; min-width:0; height:56px; border:1px solid #A34A24; border-radius:999px; padding:0 28px; display:flex; align-items:center; justify-content:center; font-size:clamp(15px,1.15vw,18px); font-weight:500; color:#A34A24; background:transparent; white-space:nowrap; transition:background 180ms ease, color 180ms ease;" style-hover="background:#A34A24; color:#FFFFFF;">Start with Summer Sunset</button>
+        <button type="button" onClick="{{ openQuiz }}" class="lnk" style="flex:0 1 auto; height:44px; display:flex; align-items:center; justify-content:center; font-size:clamp(13px,1.05vw,16px); font-weight:400; line-height:1.3; color:#5B5A54;">Not sure? Find my scent →</button>
       </div>
     </div>
   </div>
 
   <div style="background:#FBFAF8;">
     <div style="width:100%; max-width:1440px; margin:0 auto; padding:clamp(72px,8vw,130px) clamp(24px,5vw,80px) clamp(72px,8vw,130px) clamp(24px,5vw,80px); box-sizing:border-box; display:flex; flex-direction:column;">
-      <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.2em; color:#A34A24;">04 / WORD ON THE STREET</div>
-      <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(33px,3.4vw,58px); font-weight:300; line-height:1.1; letter-spacing:-0.015em; color:#363530; padding-top:18px;">Three people.<br /><em style="font-weight:300;">Three scents.</em></div>
-      <div style="display:flex; flex-wrap:wrap; gap:0 clamp(24px,3vw,56px); margin-top:clamp(36px,4vw,64px);">
-        <div style="flex:1 1 300px; min-width:280px; border-top:1px solid #EDEAE5; padding:clamp(28px,2.8vw,44px) 0; display:flex; flex-direction:column; gap:16px;">
-          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(21px,1.9vw,30px); font-weight:400; line-height:1.35; color:#363530; max-width:34ch;">“I love that it clips on the visor flat and the scent is just as strong today as it was when I opened it. 100% recommend!”</div>
-          <div style="font-size:clamp(11px,0.95vw,13px); font-weight:500; letter-spacing:0.14em; color:#5B5A54;">HEATHER L. · SCENT OF THE MONTH · STRENGTH: PERFECT</div>
+      <div class="wots" style="display:flex; flex-direction:column; gap:clamp(20px,2.4vw,32px);">
+        <div class="whead" style="display:flex; flex-direction:column; gap:16px; max-width:34ch; padding-bottom:clamp(8px,1vw,16px);">
+          <div style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.2em; color:#A34A24;">04 / WORD ON THE STREET</div>
+          <h2 style="margin:0; font-family:'Meta Serif Pro',serif; font-size:clamp(33px,3.4vw,58px); font-weight:300; line-height:1.1; letter-spacing:-0.015em; color:#363530;">Three people.<br /><em style="font-weight:300;">Three scents.</em></h2>
         </div>
-        <div style="flex:1 1 300px; min-width:280px; border-top:1px solid #EDEAE5; padding:clamp(28px,2.8vw,44px) 0; display:flex; flex-direction:column; gap:16px;">
-          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(21px,1.9vw,30px); font-weight:400; line-height:1.35; color:#363530; max-width:34ch;">“The Real Deal! Best Car Scents I have ever had!!!”</div>
-          <div style="font-size:clamp(11px,0.95vw,13px); font-weight:500; letter-spacing:0.14em; color:#5B5A54;">VASILIOS A. · AMBER · STRENGTH: PERFECT</div>
-        </div>
-        <div style="flex:1 1 300px; min-width:280px; border-top:1px solid #EDEAE5; padding:clamp(28px,2.8vw,44px) 0; display:flex; flex-direction:column; gap:16px;">
-          <div style="font-family:'Meta Serif Pro',serif; font-size:clamp(21px,1.9vw,30px); font-weight:400; line-height:1.35; color:#363530; max-width:34ch;">“We’ll continue to get it. Lawn man approved.”</div>
-          <div style="font-size:clamp(11px,0.95vw,13px); font-weight:500; letter-spacing:0.14em; color:#5B5A54;">WILLIAM S. · TEAK · STRENGTH: PERFECT</div>
-        </div>
-        <div style="flex:1 1 100%; border-top:1px solid #EDEAE5; margin-top:clamp(28px,2.8vw,44px); padding-top:clamp(22px,2vw,32px); text-align:center; font-size:clamp(12px,1vw,14px); font-weight:400; letter-spacing:0.04em; color:#5B5A54;">From 29,000 reviews and 57,000 subscribers.</div>
+        <figure class="wcard" style="margin:0; min-width:0; background:#F6F3EE; border:1px solid #E7E2DA; padding:clamp(26px,2.4vw,38px); display:flex; flex-direction:column; gap:clamp(16px,1.6vw,22px);">
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px;">
+            <span style="font-size:clamp(11px,0.95vw,13px); font-weight:500; letter-spacing:0.16em; color:#A34A24;">01</span>
+            <span aria-hidden="true" style="font-family:'Meta Serif Pro',serif; font-size:clamp(44px,4vw,66px); font-weight:400; line-height:0.6; color:#D9CFC2;">”</span>
+          </div>
+          <blockquote style="margin:0; font-family:'Meta Serif Pro',serif; font-size:clamp(20px,1.7vw,27px); font-weight:400; line-height:1.34; color:#363530; text-wrap:pretty;">“I love that it clips on the visor flat and the scent is just as strong today as it was when I opened it. 100% recommend!”</blockquote>
+          <figcaption style="margin-top:auto; display:flex; flex-direction:column; gap:10px; padding-top:clamp(14px,1.4vw,20px); border-top:1px solid #E2DCD3;">
+            <span style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.14em; color:#363530;">HEATHER L.</span>
+            <span style="display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; font-size:clamp(11px,0.9vw,12px); font-weight:500; letter-spacing:0.12em; color:#5B5A54;">
+              <span style="color:#A34A24;">SCENT OF THE MONTH</span>
+              <span aria-hidden="true" style="width:14px; height:1px; background:#C9C1B5;"></span>
+              <span>STRENGTH: PERFECT</span>
+            </span>
+          </figcaption>
+        </figure>
+        <figure class="wcard wstag2" style="margin:0; min-width:0; background:#F6F3EE; border:1px solid #E7E2DA; padding:clamp(26px,2.4vw,38px); display:flex; flex-direction:column; gap:clamp(16px,1.6vw,22px);">
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px;">
+            <span style="font-size:clamp(11px,0.95vw,13px); font-weight:500; letter-spacing:0.16em; color:#A34A24;">02</span>
+            <span aria-hidden="true" style="font-family:'Meta Serif Pro',serif; font-size:clamp(44px,4vw,66px); font-weight:400; line-height:0.6; color:#D9CFC2;">”</span>
+          </div>
+          <blockquote style="margin:0; font-family:'Meta Serif Pro',serif; font-size:clamp(20px,1.7vw,27px); font-weight:400; line-height:1.34; color:#363530; text-wrap:pretty;">“The Real Deal! Best Car Scents I have ever had!!!”</blockquote>
+          <figcaption style="margin-top:auto; display:flex; flex-direction:column; gap:10px; padding-top:clamp(14px,1.4vw,20px); border-top:1px solid #E2DCD3;">
+            <span style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.14em; color:#363530;">VASILIOS A.</span>
+            <span style="display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; font-size:clamp(11px,0.9vw,12px); font-weight:500; letter-spacing:0.12em; color:#5B5A54;">
+              <span style="color:#A34A24;">AMBER</span>
+              <span aria-hidden="true" style="width:14px; height:1px; background:#C9C1B5;"></span>
+              <span>STRENGTH: PERFECT</span>
+            </span>
+          </figcaption>
+        </figure>
+        <figure class="wcard wstag3" style="margin:0; min-width:0; background:#F6F3EE; border:1px solid #E7E2DA; padding:clamp(26px,2.4vw,38px); display:flex; flex-direction:column; gap:clamp(16px,1.6vw,22px);">
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px;">
+            <span style="font-size:clamp(11px,0.95vw,13px); font-weight:500; letter-spacing:0.16em; color:#A34A24;">03</span>
+            <span aria-hidden="true" style="font-family:'Meta Serif Pro',serif; font-size:clamp(44px,4vw,66px); font-weight:400; line-height:0.6; color:#D9CFC2;">”</span>
+          </div>
+          <blockquote style="margin:0; font-family:'Meta Serif Pro',serif; font-size:clamp(20px,1.7vw,27px); font-weight:400; line-height:1.34; color:#363530; text-wrap:pretty;">“We’ll continue to get it. Lawn man approved.”</blockquote>
+          <figcaption style="margin-top:auto; display:flex; flex-direction:column; gap:10px; padding-top:clamp(14px,1.4vw,20px); border-top:1px solid #E2DCD3;">
+            <span style="font-size:clamp(12px,1vw,14px); font-weight:500; letter-spacing:0.14em; color:#363530;">WILLIAM S.</span>
+            <span style="display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; font-size:clamp(11px,0.9vw,12px); font-weight:500; letter-spacing:0.12em; color:#5B5A54;">
+              <span style="color:#A34A24;">TEAK</span>
+              <span aria-hidden="true" style="width:14px; height:1px; background:#C9C1B5;"></span>
+              <span>STRENGTH: PERFECT</span>
+            </span>
+          </figcaption>
+        </figure>
+        <div class="wnote" style="margin-top:clamp(28px,2.8vw,44px); padding-top:clamp(22px,2vw,32px); border-top:1px solid #EDEAE5; text-align:center; font-size:clamp(12px,1vw,14px); font-weight:400; letter-spacing:0.04em; color:#5B5A54;">From 29,000 reviews and 57,000 subscribers.</div>
       </div>
     </div>
   </div>
@@ -681,21 +746,18 @@
         <div style="height:24px;"></div>
       </div>
 
-      <div style="flex:none; max-height:34%; border-top:1px solid #363530; padding:12px 24px 16px 24px; display:flex; flex-direction:column; gap:6px;">
+      <div style="flex:none; border-top:1px solid #363530; padding:22px 32px 26px 32px; display:flex; flex-direction:column; gap:10px;">
         <div style="display:flex; align-items:baseline; justify-content:space-between; gap:16px;">
           <div style="font-size:12px; font-weight:500; letter-spacing:0.14em; color:#363530;">{{ subLabel }}</div>
           <div style="font-family:'Meta Serif Pro',serif; font-size:26px; font-weight:400; color:#363530;">{{ cartTotal }}</div>
         </div>
-        <div style="font-size:14px; font-weight:400; color:#5B5A54;">{{ totalNote }}</div>
-        <div style="border-top:1px solid #EDEAE5; margin-top:4px; padding:10px 0 2px 0; display:flex; flex-wrap:wrap; gap:2px 10px; font-size:11px; font-weight:500; letter-spacing:0.1em; color:#5B5A54;">
-          <span>CHANGE YOUR SCENT ANY MONTH</span><span aria-hidden="true">·</span>
+        <div style="font-size:14px; font-weight:400; color:#5B5A54; padding-top:4px;">{{ totalNote }}</div>
+        <div style="border-top:1px solid #EDEAE5; margin-top:14px; padding-top:16px; display:flex; flex-direction:column; gap:4px; font-size:11px; font-weight:500; letter-spacing:0.06em; line-height:1.5; color:#5B5A54;">
+          <span>CHANGE YOUR SCENT ANY MONTH</span>
           <span>SAFE AROUND KIDS AND PETS</span>
         </div>
-        <button type="button" onClick="{{ checkout }}" class="cta" style="height:52px; flex:none; margin-top:2px; border-radius:999px; background:#A34A24; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:500; letter-spacing:0.08em;" style-hover="background:#8A3D1D;"><span aria-live="polite">{{ checkoutLabel }}</span></button>
-        <div style="display:flex; gap:8px;">
-          <button type="button" onClick="{{ checkout }}" style="flex:1; height:44px; border-radius:4px; background:#5A31F4; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:500;">Shop Pay</button>
-          <button type="button" onClick="{{ checkout }}" style="flex:1; height:44px; border-radius:4px; background:#000000; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:500;">Apple Pay</button>
-        </div>
+        <button type="button" onClick="{{ checkout }}" class="cta" style="height:52px; flex:none; margin-top:18px; border-radius:999px; background:#A34A24; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:500; letter-spacing:0.08em;" style-hover="background:#8A3D1D;"><span aria-live="polite">{{ checkoutLabel }}</span></button>
+        <div style="padding-top:14px; text-align:center; font-size:11px; font-weight:500; letter-spacing:0.06em; color:#5B5A54;">Apple Pay and Shop Pay available at checkout</div>
       </div>
     </sc-if>
 
@@ -783,12 +845,12 @@
 const STORE = 'drift-prototype-v1';
 
 const SCENTS = {
-  'Cabana': { g1: '#E4C7A8', g2: '#F7F4EF', img: 'assets/world-cabana.webp', line: 'Sunscreen on warm skin, an hour before sunset.', notes: 'COCONUT · BERGAMOT · CEDARWOOD', intensity: 'Balanced — fills the car', clue: 'Coconut, warm sand', t1: 'Cabana', t2: '', pos: '60% 40%', alt: 'A young coconut with a copper straw against open sky' },
-  'Amber': { g1: '#A34A24', g2: '#4A3B31', img: 'assets/world-amber.webp', line: 'A dim room, resin warming on the shelf.', notes: 'VANILLA · AMBER · LAVENDER', intensity: 'Bold — obvious when you open the door', clue: 'Warm resin, fruit', t1: 'Amber', t2: '', pos: '50% 50%', alt: 'Amber resin lit from within' },
-  'Teak': { g1: '#B8825A', g2: '#6E655B', img: 'assets/world-teak.webp', line: 'Dry wood in a workshop after the saw stops.', notes: 'TEAK · AMBER · CEDAR', intensity: 'Balanced — fills the car', clue: 'Dry wood, bronze', t1: 'Teak', t2: '', pos: '52% 50%', alt: 'Cut teak blocks with lichen and cedar sprigs' },
-  'Open Air': { g1: '#FFFFFF', g2: '#C9CBC7', img: 'assets/world-openair.webp', line: 'Clean linen and cool air moving through an open window.', notes: 'FRESH AIR · CRISP LINEN · MORNING DEW', intensity: 'Subtle — noticed up close', clue: 'CLEAN LINEN · COOL AIR', t1: 'Open', t2: 'Air', pos: '58% 50%', alt: 'A linen sachet knotted to a bare branch' },
-  'Grove': { g1: '#EDEAE5', g2: '#AFA898', img: 'assets/world-grove.webp', line: 'Green leaves, bright citrus and soft morning light.', notes: 'JUICY CITRUS · MOUNTAIN GREENS · VANILLA SUGAR', intensity: 'Balanced — fills the car', clue: 'GREEN LEAVES · CITRUS', t1: 'Grove', t2: '', pos: '55% 55%', alt: 'Lemons and a mandarin on linen in low sun' },
-  'Pine': { g1: '#5B5A54', g2: '#363530', img: 'assets/world-pine.webp', line: 'Wet forest floor half an hour after rain.', notes: 'MOUNTAIN PINE · CEDAR WOOD · GREEN MOSS', intensity: 'Bold — obvious when you open the door', clue: 'WET MOSS · PINE', t1: 'Pine', t2: '', pos: '50% 50%', alt: 'Wet moss and pine needles on a forest floor' }
+  'Cabana': { pack: 'assets/pack-cabana.webp', noteIcons: [{"label":"COCONUT","icon":"https://drift.co/cdn/shop/files/Coconut_36f50482-bca7-435e-acb0-0a2b7b61089c.svg"},{"label":"BERGAMOT","icon":"https://drift.co/cdn/shop/files/BERGAMOT.svg"},{"label":"CEDARWOOD","icon":"https://drift.co/cdn/shop/files/Cedar_fdb58bb9-4a89-4e36-97a5-7ae2edf8e4c8.svg"}], g1: '#E4C7A8', g2: '#F7F4EF', img: 'assets/world-cabana.webp', line: 'Sunscreen on warm skin, an hour before sunset.', notes: 'COCONUT · BERGAMOT · CEDARWOOD', intensity: 'Balanced — present, never takes over', clue: 'Coconut, warm sand', t1: 'Cabana', t2: '', pos: '60% 40%', alt: 'A young coconut with a copper straw against open sky' },
+  'Amber': { pack: 'assets/pack-amber.webp', noteIcons: [{"label":"VANILLA","icon":"https://drift.co/cdn/shop/files/VANILLA_a70945db-eb7a-4fd9-a0a4-e6a22b0553b4.svg"},{"label":"GOLDEN AMBER","icon":"https://drift.co/cdn/shop/files/Amber_a0c535af-7172-49f0-8a44-3ec7a967d27d.svg"},{"label":"FRENCH LAVENDER","icon":"https://drift.co/cdn/shop/files/LAVENDER.svg"}], g1: '#A34A24', g2: '#4A3B31', img: 'assets/world-amber.webp', line: 'A dim room, resin warming on the shelf.', notes: 'VANILLA · AMBER · LAVENDER', intensity: 'Bold — noticeable as soon as you enter', clue: 'Warm resin, fruit', t1: 'Amber', t2: '', pos: '50% 50%', alt: 'Amber resin lit from within' },
+  'Teak': { pack: 'assets/pack-teak.webp', noteIcons: [{"label":"TEAKWOOD","icon":"https://drift.co/cdn/shop/files/Teakwood.svg"},{"label":"AMBER","icon":"https://drift.co/cdn/shop/files/Amber_9d88dfc8-9e14-4720-acb5-4ec8d1c46f1b.svg"},{"label":"CEDAR ATLAS","icon":"https://drift.co/cdn/shop/files/Cedar_fdb58bb9-4a89-4e36-97a5-7ae2edf8e4c8.svg"}], g1: '#B8825A', g2: '#6E655B', img: 'assets/world-teak.webp', line: 'Dry wood in a workshop after the saw stops.', notes: 'TEAK · AMBER · CEDAR', intensity: 'Balanced — present, never takes over', clue: 'Dry wood, bronze', t1: 'Teak', t2: '', pos: '52% 50%', alt: 'Cut teak blocks with lichen and cedar sprigs' },
+  'Open Air': { pack: 'assets/pack-openair.webp', noteIcons: [{"label":"FRESH AIR","icon":"https://drift.co/cdn/shop/files/FRESH_AIR_ACCORD.svg"},{"label":"CRISP LINEN","icon":"https://drift.co/cdn/shop/files/CRIS_P_LINEN.svg"},{"label":"MORNING DEW","icon":"https://drift.co/cdn/shop/files/FRESH_b31c5daf-accb-437a-920b-e2a45be07c7e.svg"}], g1: '#FFFFFF', g2: '#C9CBC7', img: 'assets/world-openair.webp', line: 'Clean linen and cool air moving through an open window.', notes: 'FRESH AIR · CRISP LINEN · MORNING DEW', intensity: 'Quiet — you notice it when you look for it', clue: 'CLEAN LINEN · COOL AIR', t1: 'Open', t2: 'Air', pos: '58% 50%', alt: 'A linen sachet knotted to a bare branch' },
+  'Grove': { pack: 'assets/pack-grove.webp', noteIcons: [{"label":"MOUNTAIN GREENS","icon":"https://drift.co/cdn/shop/files/MOUNTAIN_GREENS.svg"},{"label":"JUICY CITRUS","icon":"https://drift.co/cdn/shop/files/CITRUS.svg"},{"label":"VANILLA","icon":"https://drift.co/cdn/shop/files/VANILLA.svg"}], g1: '#EDEAE5', g2: '#AFA898', img: 'assets/world-grove.webp', line: 'Green leaves, bright citrus and soft morning light.', notes: 'JUICY CITRUS · MOUNTAIN GREENS · VANILLA SUGAR', intensity: 'Balanced — present, never takes over', clue: 'GREEN LEAVES · CITRUS', t1: 'Grove', t2: '', pos: '55% 55%', alt: 'Lemons and a mandarin on linen in low sun' },
+  'Pine': { pack: 'assets/pack-pine.webp', noteIcons: [{"label":"MOUNTAIN PINE","icon":"https://drift.co/cdn/shop/files/PINE.svg"},{"label":"MOSS","icon":"https://drift.co/cdn/shop/files/MOSS.svg"},{"label":"CEDAR","icon":"https://drift.co/cdn/shop/files/Cedar_fdb58bb9-4a89-4e36-97a5-7ae2edf8e4c8.svg"}], g1: '#5B5A54', g2: '#363530', img: 'assets/world-pine.webp', line: 'Wet forest floor half an hour after rain.', notes: 'MOUNTAIN PINE · CEDAR WOOD · GREEN MOSS', intensity: 'Bold — noticeable as soon as you enter', clue: 'WET MOSS · PINE', t1: 'Pine', t2: '', pos: '50% 50%', alt: 'Wet moss and pine needles on a forest floor' }
 };
 const NAMES = ['Cabana', 'Amber', 'Teak', 'Open Air', 'Grove', 'Pine'];
 
@@ -1072,11 +1134,15 @@ class Component extends DCLogic {
       nextCounter: '0' + Math.min(6, step) + ' / 06',
       remainingCopy: remaining > 0 ? remaining + ' questions left · about 40 seconds' : 'Ready for your result',
 
-      bandShop: 'Shop ' + NAMES[s.band] + ' →',
+      bandShop: 'Shop ' + NAMES[s.band],
       stickyLabel: s.q1 ? 'Continue discovery · ' + remaining + ' questions left' : 'Find my scent · 45s',
       bandName: band.t1 + (band.t2 ? ' ' + band.t2 : ''),
       bandLine: band.line,
       bandNotes: band.notes,
+      bandNoteList: band.noteIcons,
+      bandHasPack: !!band.pack,
+      bandPack: band.pack || '',
+      bandPackAlt: band.pack ? 'The ' + NAMES[s.band] + ' wood freshener sachet' : '',
       bandIntensity: band.intensity,
 
       showChrome: s.stage !== 'result',
